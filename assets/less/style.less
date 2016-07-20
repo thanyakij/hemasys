@@ -1,0 +1,162 @@
+@import 'variables.less';
+
+body{
+	height: 100%;
+}
+
+.container{
+	margin-top: 20px;
+	&.content{
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+}
+
+input[type="text"], textarea{
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 5px 10px;
+}
+
+footer{
+	min-height: 150px;
+	background-color: #ddd;
+	padding: 40px 0;
+}
+
+.UIboxborder {
+	border: 1px solid #999;
+	padding: 5px;
+}
+
+#dn016{
+	.button-actions{
+		padding-top: 40px;
+		padding-bottom: 20px;
+		.btn{
+			margin-bottom: 20px;
+		}
+	}
+}
+
+#dn056{
+	.search{
+		padding: 12px;
+	}
+	.tab-content{
+		padding: 15px;
+		margin-bottom: 20px;
+		border-left: 1px solid @gray;
+	    border-bottom: 1px solid @gray;
+	    border-right: 1px solid @gray;
+		.form-inline{
+			input[type="text"]{
+				margin: 0 8px;
+			}
+		}
+		.table{
+			tr{
+				th{
+					background-color: @gray-light;
+				}
+			}
+		}
+		.left-panel, .right-panel{
+			padding-top: 10px;
+			padding-bottom: 10px;
+			.inner{
+				padding: 10px;
+				border: 1px solid @gray;
+				border-radius: 3px;
+				display: inline-block;
+				width: 100%;
+			}
+		}
+	}
+}
+
+#dn017{
+	.actions{
+		padding: 25px 20px;
+		border-radius: 4px;
+		background-color: @gray-light;
+		margin-bottom: 20px;
+	}
+}
+
+#dn022{
+	table{
+		tr{
+			th{
+				border: none;
+				text-align: center;
+			}
+			td{
+				border: none;
+				input[type="text"]{
+					width: 45px;
+					text-align: center;
+				}
+			}
+		}
+		&.table-re{
+			tr{
+				td{
+					input[type="text"]{
+						width: auto;
+					}
+				}
+			}
+		}
+		&.table-re-2{
+			tr{
+				td{
+					input[type="text"]{
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	.exit{
+		padding: 20px 0;
+	}
+}
+
+#dn023{
+	table{
+		tr{
+			th{
+				background-color: @gray-light;
+			}
+		}
+	}
+}
+
+#dn057{
+	.panel-heading-width{
+		display: inline-block;
+		width: 100%;
+		.glyphicon{
+			font-size: 24px;
+			margin: 0 5px;
+		}
+	}
+	.filter{
+		.radio{
+			label{
+				input[type="radio"]{
+					margin: 0 5px;
+				}
+			}
+		}
+		.table{
+			tr{
+				th{
+					background-color: @gray-light;
+				}
+			}
+		}
+	}
+}

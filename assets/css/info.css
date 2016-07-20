@@ -1,0 +1,622 @@
+@import url(/assets/fonts/thsarabunnew.css);
+
+
+/* main */
+	html, body, div, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		text-decoration: none;
+	}
+
+	body {
+		font-family: 'THSarabunNew', sans-serif;
+	}
+
+	p {
+
+	}
+
+	::-webkit-input-placeholder {
+   		font-family: 'THSarabunNew';
+   		font-size: 10pt;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+   		font-family: 'THSarabunNew';
+   		font-size: 10pt;
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+   		font-family: 'THSarabunNew';
+   		font-size: 10pt;
+	}
+
+	:-ms-input-placeholder {  
+   		font-family: 'THSarabunNew';
+   		font-size: 10pt;
+	}
+
+	
+
+/* Containers */
+
+	.container {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.container.\31 25\25 {
+		width: 100%;
+		max-width: 1200px;
+		min-width: 960px;
+	}
+
+	.container.\37 5\25 {
+		width: 720px;
+	}
+
+	.container.\35 0\25 {
+		width: 480px;
+	}
+
+	.container.\32 5\25 {
+		width: 240px;
+	}
+
+	.container {
+		width: 960px;
+	}
+
+	@media screen and (min-width: 1281px) {
+
+		.container.\31 25\25 {
+			width: 100%;
+			max-width: 1500px;
+			min-width: 1200px;
+		}
+
+		.container.\37 5\25 {
+			width: 900px;
+		}
+
+		.container.\35 0\25 {
+			width: 600px;
+		}
+
+		.container.\32 5\25 {
+			width: 300px;
+		}
+
+		.container {
+			width: 1200px;
+		}
+
+	}
+
+	@media screen and (max-width: 1280px) {
+
+		.container.\31 25\25 {
+			width: 100%;
+			max-width: 1200px;
+			min-width: 960px;
+		}
+
+		.container.\37 5\25 {
+			width: 720px;
+		}
+
+		.container.\35 0\25 {
+			width: 480px;
+		}
+
+		.container.\32 5\25 {
+			width: 240px;
+		}
+
+		.container {
+			width: 960px;
+		}
+
+	}
+
+
+button,.button {
+		background-color: transparent;
+		border-radius: 2px;
+		border: 0;
+		box-shadow: inset 0 0 0 1px rgba(144, 144, 144, 0.5);
+		display: inline-block;
+		font-family: 'THSarabunNew';
+		font-size: 0.9em;
+		height: 2.75em;
+		padding: 0 2em;
+		text-align: center;
+		text-decoration: none;
+	}
+
+button:hover, .button:hover {
+		background-color: rgba(144, 144, 144, 0.075);
+		}
+
+button:active, .button:active {
+			background-color: rgba(144, 144, 144, 0.2);
+		}
+
+/* section */
+
+	#header {
+		position: relative;
+		background: #0277bd;
+	}
+
+	input[type="text"],
+	input[type="password"],
+	textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		border-radius: 2px;
+		border: none;
+		border: solid 1px rgba(144, 144, 144, 0.5);
+		color: inherit;
+		outline: 0;
+		padding-left: 0.35em;
+	}
+
+
+
+
+	table {
+		border-style: solid;
+		border-width: 1px;
+		border-color: #039be5;
+		border-spacing: 0;
+		margin: 1em auto 1em auto;
+		width: 98%;
+	}
+
+	thead {
+		background-color: #039be5;
+		color: #FFF;
+	}
+
+
+/* footer */
+	.mdl-mega-footer {
+		color:#FFF;
+		background-color:#0277bd;
+		margin-top: 4em;
+	}
+
+	.mdl-mega-footer--bottom-section {
+		display:block;
+		clear:both;
+	}
+
+	.mdl-mega-footer--bottom-section,
+	.mdl-mega-footer__bottom-section{
+		padding-top:10px;
+		margin-bottom:10px;
+	}
+
+
+/* Desktop */
+
+	@media screen and (min-width: 1281px) {
+
+		/* Basic */
+
+			body, input, textarea {
+				font-family: 'THSarabunNew';
+				line-height: 1.75em;
+				font-size: 13pt;
+				margin-top: 2px;
+				margin-bottom: 10px;
+			}
+
+			select {
+				font-family: 'THSarabunNew';
+				line-height: 1.75em;
+				font-size: 1em;
+				margin-top: 2px;
+				margin-bottom: 0px;
+				width: 80%;
+			}
+
+			h2 {
+				font-size: 1.5em;
+				font-weight: 400;
+				letter-spacing: 4px;
+				margin: 0 0 1.5em 0;
+				line-height: 1.75em;
+			}
+
+		/* Table */
+
+			table.default thead {
+				font-size: 0.85em;
+				letter-spacing: 2px;
+			}
+
+		/* form */
+
+			#form {
+				width: 94%;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 2em;
+				margin-bottom: 2em;
+				padding: 0.25em;
+				background-color: #FAFAFA;
+			}
+
+		/* Header */
+
+			#header {
+				margin-left: auto;
+				margin-right: auto;
+				padding-top: 1.5em 0 1.5em 0;
+				padding-right: 0;
+				padding-left: 0;
+				padding-bottom: 0em;
+			}
+
+			#header h1 {
+				font-family: 'thsarabunnew';
+				padding: 1.95em 0 0 10em;
+				font-size: 1.25em;
+				font-weight: 600;
+				color:#FFF;
+			}
+
+			#header p {
+				font-size: 0.85em;
+				color: #fff;
+				line-height: 0.75pt;
+				padding: 0 0 4em 0;
+
+			}
+
+			#header img {
+				display: block;
+				float: left;
+				margin: 0.25em 1.25em 0 8em;
+				width: 140px;
+			}
+
+			#nav {
+				height: 1.75em;
+				background: #039be5;
+			}
+
+			#nav p {
+				font-size: 0.85em;
+				margin-left: 9.75em;
+				line-height: 2.75em;
+			}
+
+			#nav ul {
+				list-style-type: none;
+				color: #FFF;
+				margin: 0;
+				padding-left: 2em;
+				overflow: hidden;
+			}
+
+			#nav li {
+				padding-left: 2em;
+				display: inline;
+			}
+
+			#nav a {
+				color: #FFF;
+			}
+
+			.admin {
+				float:right; 
+				padding-right:3em;
+				margin-left: -3em;
+			}
+
+
+
+			/* form */
+
+			#form h2 {
+				padding: 1em 1em 0 1em;
+			}
+
+			.tform {
+				float: right;
+				width: 350px;
+				margin-top: -4em;
+				border: none;
+			}
+
+			.thead {
+				padding-left: 0.35em;
+			}
+
+
+			div.ui-datepicker {
+		 		font-size: 12px;
+			}
+
+			table tbody {
+				width: 100%;
+				border: 2px solid transparent;
+			}
+
+			tbody td {
+				font-size: 11pt;
+			}
+
+			.pui-column-title {
+				font-size: 1.25em;
+				color: #FFF;
+			}
+
+			.actionb {
+				margin-bottom: 0.5em;
+			}			
+
+			.mdl-mega-footer {
+				padding:25px 40px;
+				font-size: 0.85em;
+			}
+	}
+
+/* ANCIENT MONITOR */
+
+	@media screen and (max-width: 1280px)  {
+
+		/* Header */
+
+			#header {
+				margin-left: auto;
+				margin-right: auto;
+				padding-top: 1.5em 0 1.5em 0;
+				padding-right: 0;
+				padding-left: 0;
+				padding-bottom: 0em;
+			}
+
+			#header h1 {
+				font-family: 'thsarabunnew';
+				padding: 1.95em 0 0 10em;
+				font-size: 1.25em;
+				font-weight: 600;
+				color:#FFF;
+			}
+
+			#header p {
+				font-size: 0.85em;
+				color: #fff;
+				line-height: 0.75pt;
+				padding: 0 0 4em 0;
+
+			}
+
+			#header img {
+				display: block;
+				float: left;
+				margin: 0.25em 1.25em 0 8em;
+				width: 120px;
+			}
+
+			#nav {
+				height: 1.75em;
+				background: #039be5;
+			}
+
+			#nav p {
+				font-size: 0.85em;
+				margin-left: 9.75em;
+				line-height: 2.75em;
+			}
+
+			#nav ul {
+				list-style-type: none;
+				color: #FFF;
+				margin: 0;
+				padding-left: 2em;
+				overflow: hidden;
+			}
+
+			#nav li {
+				padding-left: 2em;
+				display: inline;
+			}
+
+			#nav a {
+				color: #FFF;
+			}
+
+			.admin {
+				float:right; 
+				padding-right:3em;
+				margin-left: -3em;
+			}
+
+
+			/* form */
+
+			#form {
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 2em;
+				margin-bottom: 2em;
+				padding: 0.25em;
+				background-color: #FAFAFA;
+			}
+
+
+			#form h2 {
+				padding: 1em 1em 0 0.5em;
+				font-size: 1.45em;
+			}
+
+			.tform {
+				float: right;
+				width: 350px;
+				margin-top: -2em;
+				border: none;
+			}
+
+			.thead {
+				padding-left: 0.35em;
+			}
+
+
+			div.ui-datepicker {
+		 		font-size: 12px;
+			}
+
+			table tbody {
+				width: 100%;
+				border: 2px solid transparent;
+			}
+
+			tbody td {
+				font-size: 10pt;
+			}
+
+			.pui-column-title {
+				font-size: 1.25em;
+				color: #FFF;
+			}
+
+			.actionb {
+				margin-bottom: 0.5em;
+			}			
+
+			.mdl-mega-footer {
+				padding:25px 40px;
+				font-size: 0.85em;
+			}
+	}
+
+/* MOBILE */
+
+	@media screen and (max-width: 640px)  {
+
+		/* Header */
+
+			#header {
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				padding-top: 0.5em;
+				padding-right: 0;
+				padding-left: 0;
+				padding-bottom: 0.5em;
+			}
+
+			#header h1 {
+				display: none;
+			}
+
+			#header p {
+				display: none;
+			}
+
+			#header img {
+				display: block;
+				float: none;
+				margin: auto;
+				width: 120px;
+			}
+
+			#nav {
+				height: 8em;
+				background: #039be5;
+			}
+
+			#nav ul {
+				list-style-type: none;
+				color: #FFF;
+				margin: 0;
+				padding-left: 2em;
+				overflow: hidden;
+			}
+
+			#nav li {
+				padding-left: 2em;
+				display: block;
+			}
+
+			#nav a {
+				color: #FFF;
+			}
+
+			.admin {
+				float:none; 
+				margin: 0;
+				padding-left: 2em;
+			}
+
+
+			/* form */
+
+			#form {
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 2em;
+				margin-bottom: 2em;
+				padding: 0.25em;
+				background-color: #FAFAFA;
+			}
+
+
+			#form h2 {
+				padding: 1em 1em 0 0.5em;
+				font-size: 1.15em;
+			}
+
+			.tform {
+				float: right;
+				width: 350px;
+				margin-top: -2em;
+				border: none;
+			}
+
+			.thead {
+				padding-left: 0.35em;
+			}
+
+
+			div.ui-datepicker {
+		 		font-size: 10px;
+			}
+
+			table tbody {
+				width: 100%;
+				border: 2px solid transparent;
+			}
+
+			tbody td {
+				font-size: 8pt;
+			}
+
+			.pui-column-title {
+				font-size: 1em;
+				color: #FFF;
+			}
+
+			.actionb {
+				margin-bottom: 0.5em;
+			}			
+
+			.mdl-mega-footer {
+				padding:25px 40px;
+				font-size: 0.65em;
+			}
+	}

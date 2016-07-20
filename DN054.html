@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <style>
+      .UIboxborder {
+        border: 1px solid #999;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Begin DN54-->
+    <div class="UIboxborder">
+      <div class="UIboxborder">
+        <label for="">Various criteria</label>
+        <table style="width:100%">
+          <tr>
+            <th><button>X</button></th>
+            <th>Criteria (4)</th>
+          </tr>
+          <tr>
+            <td>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="criteria" name="criteria">
+                </label>
+              </div>
+            </td>
+            <td>Collection point : 00000W</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="zipcode" name="zipcode">
+                </label>
+              </div>
+            </td>
+            <td>ZIP/Postal Codes</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="zipcode" name="zipcode">
+                </label>
+              </div>
+            </td>
+            <td>ZIP/Postal Codes</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="zipcode" name="zipcode">
+                </label>
+              </div>
+            </td>
+            <td>ZIP/Postal Codes</td>
+          </tr>
+        </table>
+      </div>
+      <div class="UIboxborder" style="height:100px;">
+        <label for="">Detail of the criteria</label>
+        <form action="" class="form-inline">
+          <label for="check_of_eligibility">Option</label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="last_donation" id="last_donation" value="option1" checked>
+              Last Donation
+            </label>
+            <label>
+              <input type="radio" name="last_sample" id="last_sample" value="option2">
+              Last Sample
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <button class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save</button>
+    <button class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Run Search</button>
+    <!--END DN54-->
+  </body>
+</html>

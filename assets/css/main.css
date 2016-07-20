@@ -1,0 +1,23 @@
+.ui-datepicker-trigger{
+	display: none;
+}
+.table-overflow-x{
+	overflow-x: auto;
+	margin-right: 10px;
+}
+
+.fg-red{
+	color: #a94442;
+}
+
+.main-btn{
+	width: 150px;
+}
+.clearfix{
+	margin-bottom: 10px;
+}
+
+textarea{
+	resize: none;
+}
+				

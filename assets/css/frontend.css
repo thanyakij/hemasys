@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 19, 2016, 2:24:49 PM
+    Author     : siamkuriki
+*/
+
+@import url(/assets/fonts/thsarabunnew.css);
+.ui-accordion .ui-accordion-icons {
+    padding-left: 2.2em;
+    margin-right: 0em;
+}
+.rowNoScroll {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}

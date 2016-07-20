@@ -1,0 +1,104 @@
+body {
+  height: 100%;
+}
+.container {
+  margin-top: 20px;
+}
+.container.content {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+input[type="text"],
+textarea {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+footer {
+  min-height: 150px;
+  background-color: #ddd;
+  padding: 40px 0;
+}
+.UIboxborder {
+  border: 1px solid #999;
+  padding: 5px;
+}
+#dn016 .button-actions {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+#dn016 .button-actions .btn {
+  margin-bottom: 20px;
+}
+#dn056 .search {
+  padding: 12px;
+}
+#dn056 .tab-content {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-left: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+}
+#dn056 .tab-content .form-inline input[type="text"] {
+  margin: 0 8px;
+}
+#dn056 .tab-content .table tr th {
+  background-color: #eeeeee;
+}
+#dn056 .tab-content .left-panel,
+#dn056 .tab-content .right-panel {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#dn056 .tab-content .left-panel .inner,
+#dn056 .tab-content .right-panel .inner {
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  display: inline-block;
+  width: 100%;
+}
+#dn017 .actions {
+  padding: 25px 20px;
+  border-radius: 4px;
+  background-color: #eeeeee;
+  margin-bottom: 20px;
+}
+#dn022 table tr th {
+  border: none;
+  text-align: center;
+}
+#dn022 table tr td {
+  border: none;
+}
+#dn022 table tr td input[type="text"] {
+  width: 45px;
+  text-align: center;
+}
+#dn022 table.table-re tr td input[type="text"] {
+  width: auto;
+}
+#dn022 table.table-re-2 tr td input[type="text"] {
+  width: 100%;
+}
+#dn022 .exit {
+  padding: 20px 0;
+}
+#dn023 table tr th {
+  background-color: #eeeeee;
+}
+#dn057 .panel-heading-width {
+  display: inline-block;
+  width: 100%;
+}
+#dn057 .panel-heading-width .glyphicon {
+  font-size: 24px;
+  margin: 0 5px;
+}
+#dn057 .filter .radio label input[type="radio"] {
+  margin: 0 5px;
+}
+#dn057 .filter .table tr th {
+  background-color: #eeeeee;
+}
