@@ -1,11 +1,12 @@
 <?php
-global $title; 
+global $title;
 $title = "Planning File";
 
 include ("pages/setting.php");
 include ("pages/header.php");
 
 ?>
+<script src="assets/js/view/DN023.js"></script>
 <script src="assets/js/jquery-2.2.1.js" type="text/javascript"></script>
 <script src="assets/jquery-ui/jquery-ui.js" type="text/javascript"></script>
 <script src="assets/js/main.js" type="text/javascript"></script>
@@ -20,7 +21,8 @@ include ("pages/header.php");
 		$("input[type='text']").attr("disabled", "disabled");
 	});
 </script>
-<div id="<?php echo $pageClass; ?>" class="container">
+<div id="<?php echo $pageClass; ?>" class="container" ng-controller="DN023Ctrl">
+    <pre>{{ donor | json }}</pre>
     <div class="row">
         <div class="name col-sm-12">
             <p><strong>HIIG Donor No. 1005613568 : </strong><span>MR. Chalachai</span></p>
@@ -163,10 +165,9 @@ include ("pages/header.php");
         <button class="btn btn-lg btn-danger" tabindex="47">EXIT</button>
         <p></p>
     </section>
-    
+
 </div>
 
-<?php 
+<?php
   include ("pages/footer.php");
 ?>
-
