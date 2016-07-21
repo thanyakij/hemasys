@@ -5,6 +5,8 @@ $title = "Planning File";
 include ("pages/setting.php");
 include ("pages/header.php");
 
+$donor_id = '0000010195';
+
 ?>
 <script src="assets/js/view/DN023.js"></script>
 <script src="assets/js/jquery-2.2.1.js" type="text/javascript"></script>
@@ -22,7 +24,13 @@ include ("pages/header.php");
 	});
 </script>
 <div id="<?php echo $pageClass; ?>" class="container" ng-controller="DN023Ctrl">
-    <pre>{{ donor | json }}</pre>
+    <div ng-init="donor_id='<?php echo $donor_id ?>'"></div>
+    <pre>{{ donor_biological | json }}</pre>
+    <pre>{{ donneur | json }}</pre>
+    <pre>{{ pexamen | json }}</pre>
+    <pre>{{ presultat | json }}</pre>
+    <pre>{{ pparecr | json }}</pre>
+    <pre>{{ ptitre | json }}</pre>
     <div class="row">
         <div class="name col-sm-12">
             <p><strong>HIIG Donor No. 1005613568 : </strong><span>MR. Chalachai</span></p>
