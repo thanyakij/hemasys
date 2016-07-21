@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="spark">
+<html ng-app="hemasys">
     <head>
       <meta charset="utf-8">
       <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
