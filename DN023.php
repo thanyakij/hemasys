@@ -26,7 +26,7 @@ $donor_id = '0000010195';
 <div id="<?php echo $pageClass; ?>" class="container" ng-controller="DN023Ctrl">
     <div ng-init="donor_id='<?php echo $donor_id ?>'"></div>
     <pre>{{ donor_biological | json }}</pre>
-    <pre>{{ donneur | json }}</pre>
+    <pre>{{ donor | json }}</pre>
     <pre>{{ pexamen | json }}</pre>
     <pre>{{ presultat | json }}</pre>
     <pre>{{ pparecr | json }}</pre>
