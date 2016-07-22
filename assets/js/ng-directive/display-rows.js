@@ -1,4 +1,6 @@
 app.directive('displayRows', function() {
+  var block_width = '100%';
+
   function addStylesheet() {
     angular
       .element(document)
@@ -20,7 +22,7 @@ app.directive('displayRows', function() {
     for (var i=0; i<elems.length; i++) {
       var elem = elems[i];
       elem.style.display = "block";
-      if (elem.tagName == "TH" || elem.tagName == "TD") setWidthOfBlock(elem, '33.33%');
+      if (elem.tagName == "TH" || elem.tagName == "TD") setWidthOfBlock(elem, block_width);
     }
   }
 
@@ -29,6 +31,7 @@ app.directive('displayRows', function() {
     link: function(scope, element, attrs, ctrl) {
       if (!ctrl) return;
       var number = attrs.displayRows, trs = element.find('tr'), limit_height = 0, temp = 0, elements = [];
+      block_width = (100 / element.find('th').length) + '%';
       if (!number) (number = 10);
       number = parseInt(number);
 
@@ -45,11 +48,11 @@ app.directive('displayRows', function() {
       }
 
       addStylesheet();
+      setDisplay(element.find('th'));
       setDisplay(element.find('tbody'));
       setDisplay(element.find('thead'));
       setDisplay(element.find('tr'));
       setDisplay(element.find('td'));
-      setDisplay(element.find('th'));
 
       var children = element[0].children;
       for (var i=0; i < children.length; i++) {

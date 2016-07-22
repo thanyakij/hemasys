@@ -16,13 +16,31 @@ app.directive('dateInput', function() {
       var val = '';
       if (element.val()) val = element.val();
       if (attrs.ngValue) val = attrs.ngValue;
-      
+
       val = moment(val, 'DD-MMM-YYYY');
       if (val.format('DD-MMM-YYYY') != 'Invalid date') {
         val = val.format('DD-MMM-') + (parseInt(val.format('YYYY')) + 543);
         ctrl.$setViewValue(val);
         ctrl.$render();
       }
+
+      ctrl.$parsers.push(function(val) {
+        if(angular.isUndefined(val)) {
+          var val = '';
+        }
+        var clean = val.substring(0, 10);
+        if(val !== clean) {
+          ctrl.$setViewValue(clean);
+          ctrl.$render();
+        }
+        return clean;
+      });
+
+      element.bind('keypress', function(event) {
+        if(event.keyCode === 32) {
+          event.preventDefault();
+        }
+      });
 
       element.bind('blur', function() {
         var val = element.val();
