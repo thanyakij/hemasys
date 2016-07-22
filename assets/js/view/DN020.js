@@ -3,6 +3,9 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
   var donor_id = '1004621184';
   $scope.donor = {};
   $scope.medical = [];
+  $scope.selectedMedical = {};
+  $scope.selectedMedical2 = {};
+  $scope.checkAuthen = true;
 
   $http({
     method: 'GET',
@@ -21,7 +24,31 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
   });
 
   $scope.clickRow = function(data) {
-    console.log(data);
+    var v_date = moment(data.DATE_OF_INTERVIEW, 'DD-MMM-YYYY').format('YYYY-MM-DD');
+    var v_donor_id = data.DONOR_ID.trim();
+    $http({
+      method: 'GET',
+      url: VariablesService.host + '/api/Donor_medical/data/' + v_donor_id + '/' + v_date
+    }).then(function(response) {
+      $scope.selectedMedical = response.data;
+      $scope.selectedMedical.allPresser = $scope.selectedMedical.SYSTOLIC_PRESSURE + ' / ' + $scope.selectedMedical.DIASTOLIC_PRESSURE;
+    })
+
+    $http({
+      method: 'GET',
+      url: VariablesService.host + '/api/Complementary_to_medical/data/' + v_donor_id + '/' + v_date
+    }).then(function(response) {
+      $scope.selectedMedical2 = response.data;
+    })
+  }
+
+  $scope.authenChecker = function() {
+    $scope.checkAuthen = false;
+  }
+
+  $scope.saveData = function(){
+    console.log("SAVE ONE : ", $scope.selectedMedical);
+    console.log("SAVE TWO : ", $scope.selectedMedical2);
   }
 
 }]);
