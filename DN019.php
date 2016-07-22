@@ -10,6 +10,7 @@ include ("pages/header.php");
 <script src="assets/jquery-ui/jquery-ui.js" type="text/javascript"></script>
 <script src="assets/js/main.js" type="text/javascript"></script>
 <script src="assets/js/calendar.js" type="text/javascript"></script>
+<script src="assets/js/view/DN019.js"></script>
 
 <link rel="stylesheet" href="assets/jquery-ui/themes/redmond/jquery-ui.css" type="text/css"/>
 <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
@@ -78,13 +79,13 @@ include ("pages/header.php");
                 width:150px;
             }
         </style>
-    <div class="">
+    <div class="" ng-app="hemasys" ng-controller="dn019">
         <div class="col-lg-8">
             <form class="fomr-inline">
                 <div class="form-group">
                 <label for="" class="col-md-2 control-label">Hematos No.</label>
                 <div class="col-md-4">
-                    <p>1005901648</p>
+                    <p>{{donor.DONOR_ID}}</p>
                 </div>
             </div>
             <div class="form-group">
@@ -104,12 +105,12 @@ include ("pages/header.php");
                     <label for="" class="col-md-2">Gender</label>
                     <div class="col-md-3 form-group">
                          <label class="radio-inline radiowidth">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" tabindex="2">Male
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" tabindex="2" ng-model="donor.GENDE" value="M">Male
                         </label>
                     </div>
                     <div class="col-md-3 form-group">
                          <label class="radio-inline radiowidth">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" tabindex="3">Female
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" tabindex="3" ng-model="donor.GENDE" value="F">Female
                         </label>
                     </div>
                     <div class="col-md-4"></div>
@@ -119,32 +120,36 @@ include ("pages/header.php");
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">Title</label>
                     <div class="col-sm-10">
-                        <select class="form-control"></select>
+                        <select class="form-control" ng-model="donor.DONOR_IDENTITY_TITLE">
+                            <option value="000">AAA</option>
+                            <option value="001">BBB</option>
+                            <option value="002">CCC</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">Fist Names</label>
                     <div class="col-sm-4">
-                        <input type="" class="form-control required"  tabindex="5" placeholder="">
+                        <input type="" class="form-control required"  tabindex="5" placeholder="" ng-model="donor.FIRST_NAME">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">Surname</label>
                     <div class="col-sm-4">
-                        <input type="" class="form-control required" tabindex="6" placeholder="">
+                        <input type="" class="form-control required" tabindex="6" placeholder="" ng-model="donor.SURNAME">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="dob" class="col-sm-2 control-label">DOB</label>
                     <div class="col-sm-4">
-                        <input type="text" id="dob" name="dob" class="form-control dndate"  tabindex="7" placeholder="">
+                        <input type="text" id="dob" name="dob" class="form-control dndate"  tabindex="7" placeholder="" ng-model="donor.DATE_OF_BIRTH">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="age" class="col-sm-2 control-label">Age</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="age" name="age" placeholder="" tabindex="8">
+                        <input type="text" class="form-control" id="age" name="age" placeholder="" tabindex="8" ng-model="donor.AGE">
                     </div>
                     <div class="col-sm-2" style="line-height: 30px">
 						ปี
@@ -182,7 +187,7 @@ include ("pages/header.php");
                 <div class="form-group" style="margin-bottom:0;">
                     <label for="" class="col-sm-1 control-label">Country</label>
                     <div class="col-sm-3">
-                        <select class="form-control" tabindex="13">
+                        <select class="form-control" tabindex="13" ng-model="donor.CODE_OF_COUNTRY_OF_NATIONALITY">
 							<option value="1">Thailand</option>
 							<option value="2">Laos</option>
 						</select>
@@ -191,7 +196,7 @@ include ("pages/header.php");
                 <div class="form-group">
                     <label for="" class="col-sm-1 control-label">Region</label>
                     <div class="col-sm-3">
-                        <select class="form-control" tabindex="14">
+                        <select class="form-control" tabindex="14" ng-model="donor.CODE_OF_REGION">
 							<option value="1">Central</option>
 							<option value="2">North</option>
 						</select>
@@ -208,64 +213,72 @@ include ("pages/header.php");
                 </div>
                 <div class="col-xs-12 padding"></div>
                 <div class="form-group" style="margin-bottom:0;">
-                    <label for="" class="col-sm-1 control-label">Address1</label>
+                    <label for="" class="col-sm-1 control-label">Address</label>
                     <div class="col-sm-6">
-                        <input type="" class="form-control"  placeholder="" tabindex="16">
+                        <input type="" class="form-control"  placeholder="" tabindex="16" ng-model="donor.ADDRESS">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-1 control-label">Town</label>
                     <div class="col-sm-4">
-                        <input type="" class="form-control" tabindex="17" placeholder="">
+                        <input type="" class="form-control" tabindex="17" placeholder="" ng-model="donor.TOWN">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-1 control-label">Postcode</label>
                     <div class="col-sm-2">
-                        <input type="" class="form-control required" id="postcode" name="postcode" tabindex="18" placeholder="">
+                        <input type="" class="form-control required" id="postcode" name="postcode" tabindex="18" placeholder="" ng-model="donor.POSTAL_OR_ZIP_CODE">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:0;">
                     <label for="" class="col-sm-1 control-label">Country</label>
                     <div class="col-sm-3">
-                        <select class="form-control" id="country" name="country" tabindex="19">
+                        <select class="form-control" id="country" name="country" tabindex="19" ng-model="donor.CODE_OF_COUNTRY_OF_RESIDENCE">
+                            <option value="1">Thailand</option>
+                            <option value="2">Laos</option>
 						</select>
                     </div>
                 </div>
                 <div class="form-group" >
                     <label for="" class="col-sm-1 control-label">Category</label>
                     <div class="col-sm-4">
-                        <input type="" class="form-control" tabindex="20" placeholder="">
+                        <select class="form-control" id="category" name="category" ng-model="donor.USUAL_CATEGORY_OF_DONATION">
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-1 control-label">Profession</label>
                     <div class="col-sm-5">
-                        <input type="" class="form-control required" tabindex="21" placeholder="">
+                        <select class="form-control" id="profession" name="profession" ng-model="donor.SOCIO_PROFESSIONAL_CATEGORY">
+                            <option value="1">ไม่ทราบ</option>
+                            <option value="2">ประชาชนทั่วไป</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group" >
                     <label for="" class="col-sm-1 control-label">Company</label>
                     <div class="col-sm-5">
-                        <input type="" class="form-control" tabindex="22" placeholder="">
+                        <input type="" class="form-control" tabindex="22" placeholder="" ng-model="donor.COMPANY">
                     </div>
                 </div>
                 <div class="col-sm-12 padding"></div>     
             </div>         
         </div>
             
-        <div class="col-lg-4"">
+        <div class="col-lg-4">
                 <div class="form-group"></div>
                 <div class="form-group" >
                     <label for="" class="col-sm-2 control-label">Mobile</label>
                     <div class="col-sm-10">
-                        <input type="" class="form-control" tabindex="23" placeholder="">
+                        <input type="" class="form-control" tabindex="23" placeholder="" ng-model="donor.PERSONAL_PHONE_NUMBER">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">Tel.</label>
                     <div class="col-sm-10">
-                        <input type="" class="form-control" tabindex="24" placeholder="">
+                        <input type="" class="form-control" tabindex="24" placeholder="" ng-model="model.OTHER_TELEPHONE_NUMBER">
                     </div>
                 </div>
                 <div class="form-group">
@@ -287,24 +300,24 @@ include ("pages/header.php");
                 <div class="form-group" >
                     <label for="" class="col-sm-2 control-label">Note1</label>
                     <div class="col-sm-10">
-                        <input type="" class="form-control" tabindex="28" placeholder="">
+                        <input type="" class="form-control" tabindex="28" placeholder="" ng-model="donor.NOTES_ABOUT_THE_PHONE">
                     </div>
                 </div>
                 <div class="form-group form-group-sm" >
                     <label for="" class="col-sm-2 control-label">Note2</label>
                     <div class="col-sm-10">
-                        <input type="" class="form-control" tabindex="29" placeholder="">
+                        <input type="" class="form-control" tabindex="29" placeholder="" ng-model="donor.NOTES_OTHER_TELEPHONE_NUM">
                     </div>
                 </div>
                 <div class="col-xs-12 padding"></div>
                 <div class="form-group form-group-sm">
                     <label for="dateLastAttendance" class="col-sm-4 control-label">Last attendance</label>
                     <div class="col-sm-8">
-                        <input type="" class="form-control" tabindex="30" id="dateLastAttendance" name="dateLastAttendance" placeholder="">
+                        <input type="" class="form-control" tabindex="30" id="dateLastAttendance" name="dateLastAttendance" placeholder="" ng-model="donor.DATE_OF_LAST_VISIT">
                     </div>
                     <label for="" class="col-sm-4 control-label">Total donations</label>
                     <div class="col-sm-2 rmpadding">
-                        <input type="" class="form-control" tabindex="31" placeholder="">   
+                        <input type="" class="form-control" tabindex="31" placeholder="" ng-model="donor.NUMBER_OF_EXTERNAL_DONATIONS">   
                     </div>
                     <div class="col-sm-1 rmpadding">
                         <button type="" class="btn btn-default" tabindex="32">
@@ -313,11 +326,11 @@ include ("pages/header.php");
                     </div>
                     <label for="" class="col-sm-2 control-label">Computer</label>
                     <div class="col-sm-3">
-                        <input type="" class="form-control" name="" value="" tabindex="33">
+                        <input type="" class="form-control" name="" value="" tabindex="33" ng-model="donor.NR_OF_COMPUTERIZED_DONATIONS">
                     </div>
-                    <label for="" class="col-sm-4 control-label">Last award</label>
+                    <label for="" class="col-sm-4 control-label">Last award </label>
                     <div class="col-sm-8">
-                        <select class="form-control" tabindex="34">
+                        <select class="form-control" tabindex="34" ng-model="donor.LAST_AWARD">
 							<option value="1">Option 1</option>
 							<option value="2">Option 2</option>
 							<option value="3">Option 3</option>
@@ -331,7 +344,7 @@ include ("pages/header.php");
                     <label for="" class="col-sm-2 control-label">Doctor</label>
                     <div class="col-sm-10">
                         <div class="input-group">
-                            <input type="" class="form-control" tabindex="34" placeholder="">
+                            <input type="" class="form-control" tabindex="34" placeholder="" ng-model="donor.FAMILY_DOCTOR">
                             <span class="input-group-btn">
                                 <button type="" class="btn btn-default">
                                     <span class="glyphicon glyphicon-chevron-right"></span>
