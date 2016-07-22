@@ -1,6 +1,6 @@
 <?php
 
-$page = $_get['page'];
+$page = $_GET['page'];
 $pageBody = $page . "php";
 
 ?>
