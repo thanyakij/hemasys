@@ -20,17 +20,16 @@ $donor_id = '0000010195';
 <script type="text/javascript">
 	$(function(){
 		$("input[id^='lastDate']").val(formatDate(new Date()));
-		// $("input[type='text']").attr("disabled", "disabled");
 	});
 </script>
 <div id="<?php echo $pageClass; ?>" class="container" ng-controller="DN023Ctrl">
     <div ng-init="donor_id='<?php echo $donor_id ?>'"></div>
-    <!-- <pre>{{ donor_biological | json }}</pre>
+    <pre>{{ donor_biological | json }}</pre>
     <pre>{{ donor | json }}</pre>
     <pre>{{ pexamen | json }}</pre>
     <pre>{{ presultat | json }}</pre>
     <pre>{{ pparecr | json }}</pre>
-    <pre>{{ ptitre | json }}</pre> -->
+    <pre>{{ ptitre | json }}</pre>
     <div class="row">
         <div class="name col-sm-12">
             <p><strong>HIIG Donor No. 1005613568 : </strong><span>MR. Chalachai</span></p>
