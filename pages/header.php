@@ -20,6 +20,7 @@
       <script src="assets/js/ng-directive/uppercase.js"></script>
       <script src="assets/js/ng-directive/valid-email.js"></script>
       <script src="assets/js/ng-directive/row-selected-color.js"></script>
+      <script src="assets/js/ng-directive/display-rows.js"></script>
       <script src="assets/js/jquery-2.2.1.js"></script>
       <script src="assets/js/bootstrap.min.js"></script>
       <style type="text/css">
