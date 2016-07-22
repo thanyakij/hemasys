@@ -38,6 +38,10 @@ include ("pages/header.php");
             .col-sm-12{
               padding-bottom: 40px;
             }
+            .clickHighlight tr.selected {
+              background-color: rgba(41, 103, 182, 0.89);
+              color: #FFF;
+            }
         </style>
 		
 
@@ -45,7 +49,7 @@ include ("pages/header.php");
 		<script src="assets/jquery-ui/jquery-ui.js" type="text/javascript"></script>
 		<script src="assets/js/main.js" type="text/javascript"></script>
 		<script src="assets/js/calendar.js" type="text/javascript"></script>
-
+    <script src="assets/js/view/DN020.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="assets/jquery-ui/themes/redmond/jquery-ui.css" type="text/css"/>
 		<link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
 
@@ -67,36 +71,40 @@ include ("pages/header.php");
 				
 				$("input[id^='date']").val(getCurrentTimeWithSecString());
 			});
+      $(document).ready(function(){
+        $("tbody").click(function() {
+          console.log("qweqwe");
+        })
+      });
 		</script>
     </head>
     <body>
       <div class="container">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10">
+        <div class="col-lg-10" ng-controller="medicalFile">
           <div class="panel panel-default">
-            <div class="panel-heading">HIIG Donor No. 1005613568 : MR. Chalachai</div>
+            <div class="panel-heading">HIIG Donor No. {{donor.DONOR_ID}} : {{donor.FIRST_NAME}} {{donor.SURNAME}}</div>
               <table class="table table-bordered table-hover" id="dataTable">
                 <thead>
                   <tr>
-                      <th>Date</th><th>Point</th><th>Site</th><th>Outcome</th><th>Donation type</th><th>Doctor</th><th>Secretary</th>
+                      <th>Date</th>
+                      <th>Point</th>
+                      <th>Site</th>
+                      <th>Outcome</th>
+                      <th>Donation type</th>
+                      <th>Doctor</th>
+                      <th>Secretary</th>
                   </tr>
                 </thead>
-                <tbody >
-                  <tr>
-                      <td>18-ก.ค-2559</td><td>NULL</td><td>NULL</td><td>NULL</td>
-                      <td>NULL</td><td>NULL</td><td>NULL</td>
-                  </tr>
-                  <tr>
-                      <td>18-ก.ค-2559</td><td>NULL</td><td>NULL</td><td>NULL</td>
-                      <td>NULL</td><td>NULL</td><td>NULL</td>
-                  </tr>
-                  <tr>
-                      <td>18-ก.ค-2559</td><td>NULL</td><td>NULL</td><td>NULL</td>
-                      <td>NULL</td><td>NULL</td><td>NULL</td>
-                  </tr>
-                  <tr>
-                      <td>18-ก.ค-2559</td><td>NULL</td><td>NULL</td><td>NULL</td>
-                      <td>NULL</td><td>NULL</td><td>NULL</td>
+                <tbody class="clickHighlight">
+                  <tr class="highlight" ng-repeat="med in medical" ng-click="clickRow(med)">
+                      <td>{{med.DATE_OF_INTERVIEW}}</td>
+                      <td>{{med.COLLECTION_POINT}}</td>
+                      <td>{{med.SITE}}</td>
+                      <td>{{med.NOTE}}</td>
+                      <td>{{med.CATEGORY_OF_DONATION}}</td>
+                      <td>{{med.PHYSICIAN}}</td>
+                      <td>{{med.CODE_OF_SECRETARY}}</td>
                   </tr>
                 </tbody>
               </table>
