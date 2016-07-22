@@ -25,18 +25,18 @@
       <script src="assets/js/bootstrap.min.js"></script>
       <style type="text/css">
       </style>
-      <title><?php
-        echo $title;
-        echo " ".$separator." ";
-        echo $siteName;
-        echo $titleSuffix;
-      ?></title>
       <?php 
       
       include ("pages/setting.php");
       include ("pages/route.php");
 
       ?>
+      <title><?php
+        echo $title;
+        echo " ".$separator." ";
+        echo $siteName;
+        echo $titleSuffix;
+      ?></title>
 
       <?php
         $pageClass = basename($_SERVER["SCRIPT_FILENAME"], '.php');
