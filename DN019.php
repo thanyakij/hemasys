@@ -79,7 +79,7 @@ include ("pages/header.php");
                 width:150px;
             }
         </style>
-    <div class="" ng-app="hemasys" ng-controller="dn019">
+    <div class="" ng-controller="dn019">
         <div class="col-lg-8">
             <form class="fomr-inline">
                 <div class="form-group">
@@ -88,6 +88,7 @@ include ("pages/header.php");
                     <p>{{donor.DONOR_ID}}</p>
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="" class="col-md-2 control-label">Status</label>
                 <div class="col-md-4">
@@ -143,7 +144,7 @@ include ("pages/header.php");
                 <div class="form-group">
                     <label for="dob" class="col-sm-2 control-label">DOB</label>
                     <div class="col-sm-4">
-                        <input type="text" id="dob" name="dob" class="form-control dndate"  tabindex="7" placeholder="" ng-model="donor.DATE_OF_BIRTH">
+                        <input id="dob" name="dob" class="form-control"  tabindex="7" placeholder="" ng-model="donor.DATE_OF_BIRTH" date-input>
                     </div>
                 </div>
                 <div class="form-group">
@@ -152,7 +153,7 @@ include ("pages/header.php");
                         <input type="text" class="form-control" id="age" name="age" placeholder="" tabindex="8" ng-model="donor.AGE">
                     </div>
                     <div class="col-sm-2" style="line-height: 30px">
-						ปี
+                        ปี
                     </div>
                 </div>
             </div>
@@ -313,7 +314,7 @@ include ("pages/header.php");
                 <div class="form-group form-group-sm">
                     <label for="dateLastAttendance" class="col-sm-4 control-label">Last attendance</label>
                     <div class="col-sm-8">
-                        <input type="" class="form-control" tabindex="30" id="dateLastAttendance" name="dateLastAttendance" placeholder="" ng-model="donor.DATE_OF_LAST_VISIT">
+                        <input class="form-control" tabindex="30" id="dateLastAttendance" name="dateLastAttendance" placeholder="" ng-model="donor.DATE_OF_LAST_VISIT" date-input>
                     </div>
                     <label for="" class="col-sm-4 control-label">Total donations</label>
                     <div class="col-sm-2 rmpadding">
