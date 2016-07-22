@@ -5,8 +5,7 @@ $title = "Planning File";
 include ("pages/setting.php");
 include ("pages/header.php");
 
-$donor_id = '0000010195';
-
+$donor_id = $_GET['donorid']; // Example: 0000010195
 ?>
 <script src="assets/js/view/DN023.js"></script>
 <script src="assets/js/jquery-2.2.1.js" type="text/javascript"></script>
