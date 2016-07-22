@@ -1,1 +1,1 @@
-const app = angular.module('spark', []);
+const app = angular.module('hemasys', []);
