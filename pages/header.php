@@ -31,6 +31,12 @@
         echo $siteName;
         echo $titleSuffix;
       ?></title>
+      <?php 
+      
+      include ("pages/setting.php");
+      include ("pages/route.php");
+
+      ?>
 
       <?php
         $pageClass = basename($_SERVER["SCRIPT_FILENAME"], '.php');
