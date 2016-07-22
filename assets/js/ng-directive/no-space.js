@@ -1,4 +1,4 @@
-app.directive('uppercase', ['$interval', function($interval) {
+app.directive('noSpace', ['$interval', function($interval) {
   function init(scope, element, attrs, ctrl) {
     var val = '';
     if (scope[attrs.ngModel]) val = scope[attrs.ngModel];
@@ -21,15 +21,11 @@ app.directive('uppercase', ['$interval', function($interval) {
       $interval(function() {
         var val = element.val();
         if(angular.isUndefined(val)) val = '';
-        var clean = val.toUpperCase();
-        if(val !== clean) render(ctrl, clean);
+        render(ctrl, val.replace(/\s+/g, ''));
       });
 
-      ctrl.$parsers.push(function(val) {
-        if(angular.isUndefined(val)) val = '';
-        var clean = val.toUpperCase();
-        if(val !== clean) render(ctrl, clean);
-        return clean;
+      element.bind('keypress', function(event) {
+        if (event.keyCode === 32) event.preventDefault();
       });
     }
   };

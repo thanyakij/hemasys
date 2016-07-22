@@ -7,75 +7,118 @@ app.directive('dateInput', function() {
     monthsShort: monthsShort
   });
 
-  let today = moment(new Date());
-  let currentYear = parseInt(today.format('YYYY')) + 543;
+  var today = moment(new Date());
+  var currentYear = parseInt(today.format('YYYY')) + 543;
+
+  function init(scope, element, attrs, ctrl) {
+    var val = '';
+    if (scope[attrs.ngModel]) val = scope[attrs.ngModel];
+    if (element.val()) val = element.val();
+    if (attrs.ngValue) val = attrs.ngValue;
+    val = convertYear(val);
+    render(ctrl, val)
+  }
+
+  function render(ctrl, value) {
+    ctrl.$setViewValue(value);
+    ctrl.$render();
+  }
+
+  function monthNumber(value) {
+    var number = monthsShort.indexOf(value) + 1;
+    if (number < 10) (number = '0' + number);
+    return number;
+  }
+
+  function monthLabel(number) {
+    if (monthNumber(number) == '00') {
+      return monthsShort[parseInt(number) - 1];
+    }
+    return number;
+  }
+
+  function now() {
+    return today.format('DD-MMM-') + currentYear;
+  }
+
+  function replaceLabel(value, a, b) {
+    var value = value.split('-');
+    var day_length = value[0].length;
+    var year_length = value[2].length;
+
+    if (day_length < 2) {
+      for (var i=day_length; i < 2; i++) (value[0] = '0' + value[0]);
+    }
+    if (year_length < 4) {
+      for (var i=year_length; i < 4; i++) (value[2] = '0' + value[2]);
+    }
+
+    return value.join('-').replace('-'+a+'-', '-'+b+'-');
+  }
+
+  function invalid(value) {
+    var format = (value.split('-').length != 3)
+    var parser = (moment(value, 'DD-MMM-YYYY').format('DD-MMM-YYYY') == 'Invalid date');
+    return (format || parser);
+  }
+
+  function setDay(value) {
+    if (value.length > 0 && value.length < 3) {
+      try {
+        value = parseInt(value) + today.format('-MMM-') + currentYear;
+      } catch (err) {
+        value = now();
+      }
+    }
+
+    return value
+  }
+
+  function convertYear(value) {
+    var value = value.split('-');
+    if (isNaN(parseInt(value[2]))) {
+      return value.join('-');
+    }
+    value[2] = parseInt(value[2]) + 543;
+    return value.join('-');
+  }
 
   return {
     require: '?ngModel',
     link: function(scope, element, attrs, ctrl) {
-      var val = '';
-      if (element.val()) val = element.val();
-      if (attrs.ngValue) val = attrs.ngValue;
-
-      val = moment(val, 'DD-MMM-YYYY');
-      if (val.format('DD-MMM-YYYY') != 'Invalid date') {
-        val = val.format('DD-MMM-') + (parseInt(val.format('YYYY')) + 543);
-        ctrl.$setViewValue(val);
-        ctrl.$render();
-      }
+      if(!ctrl) return;
+      init(scope, element, attrs, ctrl);
 
       ctrl.$parsers.push(function(val) {
-        if(angular.isUndefined(val)) {
-          var val = '';
-        }
-        var clean = val.substring(0, 10);
-        if(val !== clean) {
-          ctrl.$setViewValue(clean);
-          ctrl.$render();
-        }
+        if(angular.isUndefined(val)) val = '';
+        var clean = val.substring(0, 11);
+        if(val !== clean) render(ctrl, clean);
         return clean;
       });
 
       element.bind('keypress', function(event) {
-        if(event.keyCode === 32) {
-          event.preventDefault();
-        }
+        if (event.keyCode === 32) event.preventDefault();
       });
 
       element.bind('blur', function() {
         var val = element.val();
-        if (!val.match('-')) {
-          val = val + '-' + today.format('MM') + '-' + currentYear;
+        val = setDay(val);
+        if (!val || invalid(val)) val = now();
+        var month = val.split('-')[1];
+        var label = monthLabel(month);
+
+        if(angular.isUndefined(label)) {
+          render(ctrl, now());
         } else {
-          var temp = val.split('-');
-          if (temp.length == 3) {
-            val = temp[0] + '-' + temp[1] + '-' + temp[2];
-          } else {
-            val = 'Invalid date';
-          }
+          render(ctrl, replaceLabel(val, month, label));
         }
-
-        var clean = moment(val, 'DD-MM-YYYY').format('DD-MMM-YYYY')
-        if (clean === 'Invalid date') {
-          clean = today.format('DD-MMM-') + currentYear;
-        }
-
-        ctrl.$setViewValue(clean);
-        ctrl.$render();
       });
 
       element.bind('focus', function() {
         var val = element.val();
-        if (!val) {
-          val = today.format('DD-MMM-') + currentYear;
-        }
-
-        var temp = val.split('-');
-        var month = monthsShort.indexOf(temp[1]) + 1;
-        temp = temp[0] + '-' + month + '-' + temp[2];
-
-        ctrl.$setViewValue(temp);
-        ctrl.$render();
+        if (!val) val = now();
+        var month = val.split('-')[1];
+        render(ctrl, replaceLabel(val, month, monthNumber(month)));
         this.select();
       });
     }
