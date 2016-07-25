@@ -20,7 +20,8 @@
         'ng-directive/valid-email.js',
         'ng-directive/row-selected-color.js',
         'ng-directive/display-rows.js',
-        'ng-directive/no-space.js'
+        'ng-directive/no-space.js',
+        'ng-directive/focus.js'
       ];
 
   files.forEach(file => { document.write(`<script src="` + current_path + file +`"></script>`); });
