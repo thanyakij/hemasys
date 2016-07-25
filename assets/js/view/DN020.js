@@ -30,7 +30,7 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
       method: 'GET',
       url: VariablesService.host + '/api/Donor_medical/data/' + v_donor_id + '/' + v_date
     }).then(function(response) {
-      $scope.selectedMedical = response.data;
+      angular.extend($scope.selectedMedical, response.data);
       $scope.selectedMedical.allPresser = $scope.selectedMedical.SYSTOLIC_PRESSURE + ' / ' + $scope.selectedMedical.DIASTOLIC_PRESSURE;
     })
 
@@ -38,7 +38,7 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
       method: 'GET',
       url: VariablesService.host + '/api/Complementary_to_medical/data/' + v_donor_id + '/' + v_date
     }).then(function(response) {
-      $scope.selectedMedical2 = response.data;
+      angular.extend($scope.selectedMedical, response.data);
     })
   }
 
@@ -47,8 +47,15 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
   }
 
   $scope.saveData = function(){
+    $http({
+      method: 'POST',
+      url: VariablesService.host + '/api/Donor_medical/create',
+      data: $scope.selectedMedical
+    }).then(function(response) {
+      console.log(response);
+    })
     console.log("SAVE ONE : ", $scope.selectedMedical);
-    console.log("SAVE TWO : ", $scope.selectedMedical2);
+    // console.log("SAVE TWO : ", $scope.selectedMedical2);
   }
 
 }]);
