@@ -1,8 +1,13 @@
+<?php
+  include ("pages/setting.php");
+  include ("pages/header.php");
+?>
+
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
   <meta charset="UTF-8"></meta>
   <head>
-    <script data-require="angular.js@1.3.9" data-semver="1.3.9" src="assets/js/angular.js"></script>
+    <script src="assets/js/view/DN004.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <style>
       body {
@@ -30,7 +35,261 @@
       }
     </style>
 
-    <script>
+    
+  </head>
+  <body class="container" ng-controller="collectionPointCtrl">
+    <form name="cp" ng-submit="submit()">
+      <div class="col-lg-8">
+        <div class="form-group" style="padding-bottom:0; margin-bottom:5px;">
+          <label class="col-sm-1 control-label">Code</label>
+          <div class="col-sm-3">
+            <input type="" class="form-control" placeholder=""  maxlength="6" ng-model="cp.COLLECTION_POINT_CODE">
+          </div>
+          <div class="form-group" style="padding-bottom:0; margin-bottom:15px;">
+          <label class="col-sm-1 control-label">Site</label>
+          <div class="col-sm-4 input-group">
+            <input type="" class="form-control" placeholder=""  maxlength="4" ng-model="cp.SITE_CODE">
+            <span class="input-group-btn"><button class="btn btn-default" type="">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              </button
+            </span>
+            <div class="col-sm-3">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Description</label>
+          <div class="col-sm-9">
+            <input type="" class="form-control" placeholder="" ng-model="cp.NAME">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Name of location</label>
+          <div class="col-sm-9">
+            <input type="" class="form-control" placeholder="" ng-model="cp.LOCATION_NAME">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Address1</label>
+          <div class="col-sm-9">
+            <input type="" class="form-control" placeholder="" ng-model="cp.ADDRESS1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Address2</label>
+          <div class="col-sm-9">
+            <input type="" class="form-control" placeholder="" ng-model="cp.ADDRESS2">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Province</label>
+          <div class="col-sm-4">
+            <input type="" class="form-control" placeholder="" ng-model="cp.PROVINCE">
+          </div>
+          <label class="col-sm-2 control-label">Country</label>
+          <div class="col-sm-4">
+            <input type="" class="form-control" placeholder="" ng-model="cp.COUNTY_CODE">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Rout</label>
+          <div class="col-sm-4">
+            <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.ROUTE_CODE">
+          </div>
+          <label class="col-sm-2 control-label">Postcode</label>
+          <div class="col-sm-4">
+            <input type="" class="form-control" placeholder=""  maxlength="5" ng-model="cp.ZIPCODE">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Region</label>
+          <div class="col-sm-4">
+            <input type="" class="form-control" placeholder="" ng-disabled="true">
+          </div>
+          <label class="col-sm-2 control-label">UrbanComm</label>
+          <div class="col-sm-4">
+            <input type="" class="form-control" placeholder="" ng-disabled="true">
+          </div>
+        </div>
+        <div class="form-group" style="padding-bottom:0; margin-bottom:15px;">
+          <label class="col-sm-3 control-label">Association</label>
+          <div class="col-sm-5 input-group">
+            <input type="" class="form-control" placeholder=""  maxlength="3" ng-model="cp.ASSOCIATION_CODE">
+            <span class="input-group-btn"><button class="btn btn-default" type="">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              </button>
+            </span>
+            <div class="col-sm-4">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Surface</label>
+            <div class="col-sm-8">
+            <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.SERFACE">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Sanitary</label>
+            <div class="col-sm-8">
+            <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.TOILET_COUNT">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Cabin</label>
+            <div class="col-sm-8">
+            <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.CABIN_COUNT">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">PowerSP</label>
+            <div class="col-sm-8">
+            <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.ELECTRICAL_SOCKET_COUNT">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Kitchens</label>
+            <div class="col-sm-8">
+            <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.KITCHEN_COUNT">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Type</label>
+            <div class="col-sm-8">
+              <select class="form-control" ng-model="cp.COLLECTION_TYPE_CODE">
+                <option value="1">Type 1</option>
+                <option value="2">Type 2</option>
+                <option value="3">Type 3</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Category</label>
+            <div class="col-sm-8">
+              <select class="form-control" ng-model="cp.CATEGORY_CODE">
+                <option value="1">Category 1</option>
+                <option value="2">Category 2</option>
+                <option value="3">Category 3</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Method</label>
+            <div class="col-sm-8">
+              <select class="form-control" ng-model="cp.COLLECTION_MODE">
+                <option value="1">Method 1</option>
+                <option value="2">Method 2</option>
+                <option value="3">Method 3</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Plasma</label>
+            <div class="col-sm-8">
+              <div class="col-xs-8 big-checkbox">
+                <input type="checkbox" placeholder="" ng-disabled="true">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Donation</label>
+            <div class="col-sm-8">
+              <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.STAT_EXPECTED">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label class="col-xs-4 control-label">in use</label>
+          <div class="col-xs-8 big-checkbox">
+            <input type="checkbox" placeholder="" ng-model="cp.ACTIVE" ng-true-value="'T'" ng-false-value="'F'">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-6 control-label">Disactivation date</label>
+          <div class="col-xs-6">
+            <input class="form-control" placeholder="" ng-model="cp.DEACTIVATED_DATE" date-input>
+          </div>
+        </div>
+        <div class="form-group"></div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Mobile</label>
+          <div class="col-sm-9">
+            <input type="" class="form-control" placeholder=""  maxlength="10" ng-model="cp.COMMUNITY_TEL">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Tel.</label>
+          <div class="col-sm-9">
+            <input type="" class="form-control" placeholder=""  maxlength="10" ng-model="cp.COMMUNITY_SITE_TEL">
+          </div>
+        </div>
+        <div class="form-group"> </div>
+        <div class="form-group"> </div>
+        <div class="col-xs-12 form-group rmpadding">
+          <label class="control-label">Condition of assignment to a donor</label>
+          <div class="input-group">
+            <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.CONDITION_CODE">
+            <span class="input-group-btn">
+              <button type="" class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="col-xs-12 form-group rmpadding">
+          <label class="control-label">New community if false conditionr</label>
+          <div class="input-group">
+            <input type="" class="form-control" placeholder="" ng-disabled="true" ng-model="cp.NEW_COLLECTION_POINT_CODE">
+            <span class="input-group-btn">
+              <button type="" class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12" style="padding-top:10px;">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-11 form-inline">
+          <label class="control-label">Collection frequency</label>
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
+        </div>
+      </div>
+      <div class="col-lg-12 padBottom">
+        <div class="col-lg-1"> </div>
+        <div class="col-lg-3"><button type="submit" class="btn btn-success btn-block">Save</button></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-3"><button type="" class="btn btn-primary btn-block">OK</button></div>
+        <div class="col-lg-3"><button type="" class="btn btn-danger btn-block">Abort</button></div>
+      </div>
+    </form>
+  </body>
+</html>
+
+
+<!-- 
+  <script>
       var app = angular.module('app',[]);
       app.controller('collectionPointCtrl', function($scope) {
         $scope.submit = function() {
@@ -185,253 +444,5 @@
         };
       });
     </script>
-  </head>
-  <body class="container" ng-controller="collectionPointCtrl">
-    <form name="cp" ng-submit="submit()">
-      <div class="col-lg-8">
-        <div class="form-group" style="padding-bottom:0; margin-bottom:5px;">
-          <label class="col-sm-1 control-label">Code</label>
-          <div class="col-sm-3">
-            <input type="" class="form-control" ng-class="{ 'invalid': cp.$error.code }" placeholder="" ng-model="cp.code" valid-code maxlength="6">
-          </div>
-          <div class="form-group" style="padding-bottom:0; margin-bottom:15px;">
-          <label class="col-sm-1 control-label">Site</label>
-          <div class="col-sm-4 input-group">
-            <input type="" class="form-control" ng-class="{ invalid: cp.$error.site }" placeholder="" ng-model="cp.site" valid-code maxlength="4">
-            <span class="input-group-btn"><button class="btn btn-default" type="">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              </button>
-            </span>
-            <div class="col-sm-3">
-              <p></p>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Description</label>
-          <div class="col-sm-9">
-            <input type="" class="form-control" placeholder="" ng-model="cp.description" ng-class="{ invalid: cp.$error.description }">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Name of location</label>
-          <div class="col-sm-9">
-            <input type="" class="form-control" placeholder="" ng-model="cp.name_of_location" ng-class="{ invalid: cp.$error.name_of_location }">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Address1</label>
-          <div class="col-sm-9">
-            <input type="" class="form-control" placeholder="" ng-model="cp.address1" ng-class="{ invalid: cp.$error.address1 }">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Address2</label>
-          <div class="col-sm-9">
-            <input type="" class="form-control" placeholder="" ng-model="cp.address2" ng-class="{ invalid: cp.$error.address2 }">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Province</label>
-          <div class="col-sm-4">
-            <input type="" class="form-control" placeholder="" ng-model="cp.province" ng-class="{ invalid: cp.$error.province }">
-          </div>
-          <label class="col-sm-2 control-label">Country</label>
-          <div class="col-sm-4">
-            <input type="" class="form-control" placeholder="" ng-model="cp.country" ng-class="{ invalid: cp.$error.country }">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Rout</label>
-          <div class="col-sm-4">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-          </div>
-          <label class="col-sm-2 control-label">Postcode</label>
-          <div class="col-sm-4">
-            <input type="" class="form-control" placeholder="" ng-model="cp.postcode" valid-number maxlength="5" ng-class="{ invalid: cp.$error.postcode }">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Region</label>
-          <div class="col-sm-4">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-          </div>
-          <label class="col-sm-2 control-label">UrbanComm</label>
-          <div class="col-sm-4">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-          </div>
-        </div>
-        <div class="form-group" style="padding-bottom:0; margin-bottom:15px;">
-          <label class="col-sm-3 control-label">Association</label>
-          <div class="col-sm-5 input-group">
-            <input type="" class="form-control" placeholder="" ng-model="cp.association" valid-code maxlength="3" ng-class="{ invalid: cp.$error.association }">
-            <span class="input-group-btn"><button class="btn btn-default" type="">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              </button>
-            </span>
-            <div class="col-sm-4">
-              <p></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Surface</label>
-            <div class="col-sm-8">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Sanitary</label>
-            <div class="col-sm-8">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Cabin</label>
-            <div class="col-sm-8">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">PowerSP</label>
-            <div class="col-sm-8">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Kitchens</label>
-            <div class="col-sm-8">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-            </div>
-          </div>
-        </div>
 
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Type</label>
-            <div class="col-sm-8">
-              <select class="form-control" ng-model="cp.type" ng-class="{ invalid: cp.$error.type }">
-                <option value="1">Type 1</option>
-                <option value="2">Type 2</option>
-                <option value="3">Type 3</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Category</label>
-            <div class="col-sm-8">
-              <select class="form-control" ng-model="cp.category" ng-class="{ invalid: cp.$error.category }">
-                <option value="1">Category 1</option>
-                <option value="2">Category 2</option>
-                <option value="3">Category 3</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Method</label>
-            <div class="col-sm-8">
-              <select class="form-control" ng-model="cp.method" ng-class="{ invalid: cp.$error.method }">
-                <option value="1">Method 1</option>
-                <option value="2">Method 2</option>
-                <option value="3">Method 3</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Plasma</label>
-            <div class="col-sm-8">
-              <div class="col-xs-8 big-checkbox">
-                <input type="checkbox" placeholder="" ng-disabled="true">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Donation</label>
-            <div class="col-sm-8">
-              <input type="" class="form-control" placeholder="" ng-disabled="true">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="form-group">
-          <label class="col-xs-4 control-label">in use</label>
-          <div class="col-xs-8 big-checkbox">
-            <input type="checkbox" placeholder="" ng-model="cp.in_use">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-xs-6 control-label">Disactivation date</label>
-          <div class="col-xs-6">
-            <input type="" class="form-control" placeholder="" ng-model="cp.disactivation_date" ng-disabled="cp.in_use" ng-class="{ invalid: cp.$error.disactivation_date }">
-          </div>
-        </div>
-        <div class="form-group"></div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Mobile</label>
-          <div class="col-sm-9">
-            <input type="" class="form-control" placeholder="" ng-model="cp.mobile" valid-number maxlength="10" ng-class="{ invalid: cp.$error.mobile }">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Tel.</label>
-          <div class="col-sm-9">
-            <input type="" class="form-control" placeholder="" ng-model="cp.tel" valid-number maxlength="10" ng-class="{ invalid: cp.$error.tel }">
-          </div>
-        </div>
-        <div class="form-group"> </div>
-        <div class="form-group"> </div>
-        <div class="col-xs-12 form-group rmpadding">
-          <label class="control-label">Condition of assignment to a donor</label>
-          <div class="input-group">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-            <span class="input-group-btn">
-              <button type="" class="btn btn-default">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-              </button>
-            </span>
-          </div>
-        </div>
-        <div class="col-xs-12 form-group rmpadding">
-          <label class="control-label">New community if false conditionr</label>
-          <div class="input-group">
-            <input type="" class="form-control" placeholder="" ng-disabled="true">
-            <span class="input-group-btn">
-              <button type="" class="btn btn-default">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-              </button>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-12" style="padding-top:10px;">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-11 form-inline">
-          <label class="control-label">Collection frequency</label>
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-          <input type="" class="form-control widthinput" placeholder="" ng-disabled="true">
-        </div>
-      </div>
-      <div class="col-lg-12 padBottom">
-        <div class="col-lg-1"> </div>
-        <div class="col-lg-3"><button type="submit" class="btn btn-success btn-block">Save</button></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-3"><button type="" class="btn btn-primary btn-block">OK</button></div>
-        <div class="col-lg-3"><button type="" class="btn btn-danger btn-block">Abort</button></div>
-      </div>
-    </form>
-  </body>
-</html>
+ -->
