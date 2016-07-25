@@ -22,7 +22,8 @@
         'components/ng-directive/display-rows.js',
         'components/ng-directive/no-space.js',
         'components/ng-directive/focus.js',
-        'angular-service/variables-service.js'
+        'angular-service/variables-service.js',
+        'angular-service/collection_point-factory.js'
       ];
 
   files.forEach(file => { document.write(`<script src="` + current_path + file +`"></script>`); });
