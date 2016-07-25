@@ -1,9 +1,9 @@
 <?php
-global $title; 
-$title = "Planning File";
+  global $title; 
+  $title = "Planning File";
 
-include ("pages/setting.php");
-include ("pages/header.php");
+  include ("pages/setting.php");
+  include ("pages/header.php");
 
 ?>
 
@@ -139,13 +139,13 @@ include ("pages/header.php");
                 <div class="form-group">
                   <label for="" class="col-sm-4 control-label">Pulse Rate</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control edit" tabindex="6" id="pulseRate" name="pulseRate" ng-model="selectedMedical2.PULSE">
+                    <input type="text" class="form-control edit" tabindex="6" id="pulseRate" name="pulseRate" ng-model="selectedMedical.PULSE">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="" class="col-sm-4 control-label">Temperature</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control edit" tabindex="7" id="temperature" name="temperature" ng-model="selectedMedical2.DONOR_TEM">
+                    <input type="text" class="form-control edit" tabindex="7" id="temperature" name="temperature" ng-model="selectedMedical.DONOR_TEM">
                   </div>
                 </div>
                 <div class="form-group">
@@ -160,25 +160,25 @@ include ("pages/header.php");
                 <div class="form-group">
                   <label for="" class="col-sm-4 control-label">HB</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control edit" tabindex="9" id="hb" name="hb" ng-model="selectedMedical2.MEDICAL_EXAM0">
+                    <input type="text" class="form-control edit" tabindex="9" id="hb" name="hb" ng-model="selectedMedical.MEDICAL_EXAM0">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="" class="col-sm-4 control-label">Plt</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control edit" tabindex="10" id="plt" name="plt" ng-model="selectedMedical2.MEDICAL_EXAM1">
+                    <input type="text" class="form-control edit" tabindex="10" id="plt" name="plt" ng-model="selectedMedical.MEDICAL_EXAM1">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="" class="col-sm-4 control-label">Hb Test</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control edit" id="hb_test" name="hb_test" ng-model="selectedMedical2.MEDICAL_EXAM2">
+                    <input type="text" class="form-control edit" id="hb_test" name="hb_test" ng-model="selectedMedical.MEDICAL_EXAM2">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="" class="col-sm-4 control-label">Heart/Lung</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control edit" ng-model="selectedMedical2.MEDICAL_EXAM3">
+                    <input type="text" class="form-control edit" ng-model="selectedMedical.MEDICAL_EXAM3">
                   </div>
                 </div>
                 <div class="form-group">

@@ -1,11 +1,22 @@
+<?php
+  global $title; 
+  $title = "Site Search";
+
+  include ("pages/setting.php");
+  include ("pages/header.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery-1.11.2.min.js"></script>   
+        <script src="assets/js/jquery-1.11.2.min.js"></script>
+
+        <script src="assets/js/view/DN005.js" type="text/javascript"></script>
+        <script src="assets/js/angular-service/collection_point-factory.js"></script>
     </head>
-    <body>
+    <body ng-controller="siteSearch">
         <style>
             body{
                 padding-top:12px;
@@ -50,13 +61,13 @@
            <div class="form-group">
                 <label for="" class="col-sm-3 control-label">Type</label>
                 <div class="col-sm-9">
-                  <input type="" class="form-control" style="width:330px" placeholder="">
+                  <input type="" class="form-control" style="width:330px" placeholder="" ng-model="data_search.type">
                 </div>
             </div>
             <div class="form-group" style="padding-bottom:0; margin-bottom:15px;">
                 <label for="" class="col-sm-3 control-label">Code</label>
                 <div class="col-sm-9 input-group">
-                  <input type="" class="form-control"  placeholder="">
+                  <input type="" class="form-control"  placeholder="" ng-model="data_search.code">
                   <span class="input-group-btn"><button class="btn btn-default" type="">
                       <span class="glyphicon glyphicon-chevron-right"></span>
                       </button>
@@ -91,7 +102,7 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-3"><button type="" class="btn btn-success btn-block">Save</button></div>    
             <div class="col-lg-2"></div>
-            <div class="col-lg-3"><button type="" class="btn btn-primary btn-block">OK</button></div>
+            <div class="col-lg-3"><button type="" class="btn btn-primary btn-block" ng-click="search()">OK</button></div>
             <div class="col-lg-3"><button type="" class="btn btn-danger btn-block">Abort</button></div>
         </div>
     </div>  
