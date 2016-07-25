@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        			<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+        <link rel="" href=""> 
+        <style>
+            .UIboxborder{
+                border:1px #999 solid; 
+                padding:5px;
+            }
+			
+					   .input-field label {
+				 color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+        </style>   
+		
+		<script>
+		$(document).ready(function(){
+			$('select').material_select();
+			$('.modal-trigger').leanModal();
+				
+				$("#addiden").click(function(){
+					    $("#iden").append(" <tr>                         <td><input type=\"text\" class=\"num\" maxlength=\"13\"></td><td><select><option>ABMDR ID</option><option>เลขประจำตัวผู้บริจาคโลหิต</option><option>National ID</option></select></td><td><input type=\"text\"></td><td><a class=\"btn sitebtn modal-trigger grey tiny\"  href=\"#sitelist\">>></a></td><td>xxxxx</td>                        </tr>");
+						$('select').material_select();
+							$('.modal-trigger').leanModal();
+				});
+				
+				$('.num').bind('keypress', function(e) {			
+						var k = e.which;
+						var ok = k == 8 || k == 47 || k >= 65 && k <= 90 || // A-Z / , bspc
+								k >= 97 && k <= 122 || // a-z//  
+								k >= 48 && k <= 57; // 0-9
+						if (!ok){
+							e.preventDefault();
+						}
+						$(this).val($(this).val().toUpperCase());
+				}); 	
+		});
+		</script>
+		
+    </head>
+    <body>
+	
+		<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+	
+	
+	 <!-- Site List -->
+  <div id="sitelist" class="modal" >
+    <div class="modal-content">
+      <h4>Site list</h4>
+	  
+	  <table class="highlight">
+		<thead>
+			<TR>
+				<TD>Code</TD>
+				<TD>X</TD>
+				<TD>Description</TD>
+			</TR>
+		</thead>
+		
+		<tbody>
+			<TR class="siteitem">
+				<TD>1008</TD>
+				<TD><input type="checkbox"><label></label></TD>
+				<TD>NBC - WHO</TD>
+			</TR>
+			<TR class="siteitem">
+				<TD>1111</TD>
+				<TD><input type="checkbox"><label></label></TD>
+				<TD>Site use for training sessions</TD>
+			</TR>
+			<TR class="siteitem">
+				<TD>9999</TD>
+				<TD><input type="checkbox"><label></label></TD>
+				<TD>Useless</TD>
+			</TR>
+			<TR  class="siteitem">
+				<TD>1000</TD>
+				<TD><input type="checkbox"><label></label></TD>
+				<TD>NBC - National Blood Centre</TD>
+			</TR>
+		</tbody>
+	  </table>
+	  
+	
+    </div>
+    <div class="modal-footer">
+ 
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">All</a>
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">(None)</a>
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
+	       <a href="#!" class="btn green modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+  </div>
+	
+	  <p class="blue-text text-darken-2" style="padding: 5px;">NBC Donor No. 1005901646 : Mr. เอ ทดสอบ</p>
+	
+        <br>
+        <div class="col-md-10">
+            <div class="col-md-12">
+            <div class="row">
+                <div class="col s12 m9">
+                    <div style="height: 200px; overflow-y: scroll;">
+					<table  class="highlight">
+					<thead>
+                        <tr>
+                            <th>Number</th>
+                            <th> Type</th>
+                            <th colspan="3">Site</th>
+							
+                        </tr>
+					</thead>
+						<tbody id="iden">
+                        <tr>
+                            <td><input type="text" class="num" maxlength="13"></td><td><select><option>ABMDR ID</option><option>เลขประจำตัวผู้บริจาคโลหิต</option><option>National ID</option></select></td><td><input type="text"></td><td><a class="btn grey tiny sitebtn modal-trigger" href="#sitelist">>></a></td><td>xxxxxxxxxxxxxxxxxxx</td>
+                        </tr>
+                       <!-- <tr>
+                            <td><input type="text" class="num" maxlength="13"></td><td><select><option>ABMDR ID</option><option>เลขประจำตัวผู้บริจาคโลหิต</option><option>National ID</option></select></td><td><input type="text"></td><td><a class="btn grey tiny">>></a></td>
+                        </tr>-->
+
+						</tbody>
+                    </table>
+					</div>
+                </div>
+                <div class="col s12 m3">
+                    <p><button type="" class="grey btn" id="addiden">+</button></p>
+                    <p><button type="" class="grey btn">-</button></p>
+                </div>
+            </div>
+            </div>
+
+
+            
+        </div>
+        		<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+			<div class="col s4"><button type="" class="btn green">Save</button> </div>
+			<div class="col s4"><button type="" class="btn grey">OK</button> </div>
+			<div class="col s4"><button type=""  class="btn grey">Abort</button></div>
+                <!--<div class="col s6 m3"><button type="" class="btn yellow darken-2">Modification</button></div>
+                <div class="col s6 m3"><button type="" class="btn grey">Details</button></div>
+                
+                <div class="col s6 m3"><button type="" class="btn grey">Regents</button></div>
+                <div class="col s6 m3"><button type="" class="btn grey">Exit</button></div>-->
+			</div>
+			</div>
+		
+			          <div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+        
+
+    </body>
+	
+	
+</html>

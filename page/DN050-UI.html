@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+        
+			<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+				<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+        <link rel="" href="">    
+		
+		<script>
+			$(document).ready(function(){
+				$(document).on("click", ".item1", function(){
+					$(".item1").removeClass("yellow");
+					$(this).toggleClass("yellow");
+				});
+				
+				$(document).on("click", ".item2", function(){
+					$(".item2").removeClass("yellow");
+					$(this).toggleClass("yellow");
+				});
+			});
+		</script>
+    </head>
+    <body>
+        <style>
+            body{
+                
+            }
+            			   .input-field label {
+				 color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+			   
+			   .fieldname {
+			   font-weight: bold;
+			   }
+        </style>
+		
+		
+				<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+		<br><br>
+        <div class="" style="padding: 20px;">
+            <a class="btn grey">Clear</a> <a class="btn grey"><i class="material-icons">search</i></a> <a class="btn grey"><<</a> <a class="btn grey">>></a> <a class="btn grey"><i class="material-icons">print</i></a> <a class="btn grey">?</a>
+            <div class="row">
+			
+				<div style="height: 200px; overflow-y: scroll" class="col s10">
+                <table class="table table-bordered table-hover highlight">
+                    <thead>
+                        <th>Sample number</th><th>External sample ID</th><th>indv or prod</th><th>Date</th><th>Laboratory Date</th><th>Point</th>
+                    </thead>
+                    <tbody>
+                        <tr class="item2"><td>as</td><td>as</td><td>User</td><td>b</td><td>b</td><td>b</td></tr>
+                        <tr class="item2"><td>as</td><td>as</td><td>User</td><td>b</td><td>b</td><td>b</td></tr>
+                        <tr class="item2"><td>as</td><td>as</td><td>User</td><td>b</td><td>b</td><td>b</td></tr>
+                        <tr class="item2"><td>as</td><td>as</td><td>User</td><td>b</td><td>b</td><td>b</td></tr>
+                    </tbody>
+                </table>
+				</div>
+				
+				<div class="col s2">
+					<a class="red btn-large">Delete</a>
+				</div>
+				
+            <div class="input-field col s7">  
+                    <label for="" class="control-label">Details</label>
+                  
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                   </div>
+				   <div class="input-field col s2">  
+				   
+						<a class="btn grey">>></a>
+				   </div>
+                  
+			<div class="col s12">&nbsp;</div>	  
+				  
+				  
+		<div class="col s4">
+			<div class="input-field col s12">  
+                    <label for="" class="control-label">Site</label>
+                        <input type="text" class="form-control"  placeholder="" readonly>
+            </div>
+					 
+            <div class="input-field col s12">  
+                    <label for="" class="control-label">Location</label>
+                     <input type="text" class="form-control"  placeholder="" readonly>
+            </div>
+			
+            <div class="input-field col s12">  
+                    <label for="" class="control-label">Department</label>
+                
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                 
+            </div>
+            <div class="input-field col s12">  
+                    <label for="" class="control-label">Requester</label>
+                 
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                    
+            </div>
+            <div class="input-field col s12">  
+                    <label for="" class="control-label">Letter</label>
+                    
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                   
+            </div>
+		</div>
+		
+		
+		<div class="col s4">
+			<div class="input-field col s12">  
+                    <label for="" class="l">Time</label>
+                        <input type="text" class="form-control"  placeholder="" readonly>
+            </div>
+					 
+            <div class="input-field col s12">  
+                    <label for="" class="">Duration</label>
+                     <input type="text" class="form-control"  placeholder="" readonly>
+            </div>
+			
+            <div class="input-field col s12">  
+					<input type="checkbox" class=""  placeholder="" disabled checked>
+                    <label for="" class="">Autotranfusion</label>
+                
+                      
+                 
+            </div>
+            <div class="input-field col s12">  
+					<input type="checkbox" class=""  placeholder="" disabled checked>
+                    <label for="" class="">Entry Verified</label>
+                 
+                       
+                    
+            </div>
+            <div class="input-field col s12">  
+			
+					<input type="checkbox" class=""  placeholder="" disabled checked>
+                    <label for="" class="">In Progress</label>
+                    
+                        
+                   
+            </div>
+			
+			            <div class="input-field col s12">  
+			
+					<a class="btn grey">Regent</a>
+                    
+                        
+                   
+            </div>
+		</div>
+			
+		<div class="col s4">	
+            <div class="input-field col s12">  
+                    <label for="" class="control-label">Category</label>
+                    
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                    
+            </div>
+            <div class="input-field col s12">  
+                    <label for="" class="control-label">Bag Type</label>
+                    
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                    
+            </div>
+            <div class="input-field col s12">  
+                    
+                    
+                                         <label for="" class="control-label">Use</label>
+                    
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                   
+            </div>
+            
+                <div class="input-field col s12">  
+                       <label for="" class="control-label">Sampler</label>
+                    
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                </div>
+            
+			
+            <div class="input-field col s12">  
+                    
+                    <label for="" class="control-label">Problem</label>
+                    
+                        <input type="text" class="form-control"  placeholder="" readonly>
+                    
+            </div>
+            
+		</div>
+
+         
+		 
+		 
+		 </div><br><br>
+			<div style="height: 200px; overflow-y: scroll">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>Code</th><th>Exams</th><th>Qual. Result</th><th>Quant. Result</th><th >In Progress</th><th >Comm.</th><th colspan="2">Work Area</th>
+                </thead>
+                <tbody>
+                    <tr class="item1">
+                        <td>as</td>
+						<td>as</td>
+						<td>as</td>
+                        <td><input type="checkbox" name="" value="" readonly></td>
+                        <td><input type="checkbox" name="" value="" readonly><label></label></td>
+						<td><input type="checkbox" name="" value="" readonly><label></label></td>
+                        <td><input type="text" name="" value="111" readonly><label></label> </td>
+						<td><a class="btn grey">>></a></td>
+                    </tr>
+                    <tr class="item1">
+                        <td>as</td>
+						<td>as</td>
+						<td>as</td>
+                        <td><input type="checkbox" name="" value="" readonly></td>
+                        <td><input type="checkbox" name="" value="" readonly><label></label></td>
+						<td><input type="checkbox" name="" value="" readonly><label></label></td>
+                        <td><input type="text" name="" value="111" readonly><label></label> </td>
+						<td><a class="btn grey">>></a></td>
+                    </tr>
+                    <tr class="item1">
+                        <td>as</td>
+						<td>as</td>
+						<td>as</td>
+                        <td><input type="checkbox" name="" value="" readonly></td>
+                        <td><input type="checkbox" name="" value="" readonly><label></label></td>
+						<td><input type="checkbox" name="" value="" readonly><label></label></td>
+                        <td><input type="text" name="" value="111" readonly><label></label> </td>
+						<td><a class="btn grey">>></a></td>
+                    </tr>
+                </tbody>
+            </table>
+			</div>
+            </div>  
+          </div>
+        </div>
+		
+		<div class="center-align">
+		            <a class="btn grey">Analysis</a> <a class="btn grey"><i class="material-icons">add</i></a> <a class="btn grey">Sample</a> <a class="btn grey">OK</a> 
+		</div>
+				<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+
+               <button type="" class="btn grey">Return</button>
+			</div>
+			</div>
+<div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+    </body>
+</html>

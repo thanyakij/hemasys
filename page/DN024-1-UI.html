@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+        <link rel="" href=""> 
+        <style>
+            .UIboxborder{
+                border:1px #999 solid; 
+                padding:5px;
+            }
+			
+			   .input-field label {
+				 color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+			   
+			   .fieldname {
+			   font-weight: bold;
+			   }
+        </style>   
+
+		<script>
+			$(document).ready(function(){
+				
+				$(document).on("click", ".qualitylist", function(){
+					$(".qualitylist").removeClass("yellow lighten-1");
+					$(this).addClass("yellow");
+				});
+				
+				$("select").material_select();
+
+			var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
+			
+			
+				
+				var now = new Date();
+				var today = now.getDate();
+				var thismonth = now.getMonth()+1;
+				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543+1900;}
+				var getdate = today + "-" + month[thismonth] + "-" + thisyear;
+				var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+				$("#resultdate").val(getdate + " " + time);
+				$("#decisiondate").val(getdate + " " + time);
+				// Materialized Init
+				Materialize.updateTextFields();
+			/*
+				// DATE VALIDATION
+				$("#resultdate").blur(function(){
+				var getdate = $("#resultdate").val().split("/");
+				var now = new Date();
+				var today = now.getDate();
+				var thismonth = now.getMonth()+1;
+				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
+				
+				var newstrdate = "";
+				if (getdate[0] > 31) {getdate[0] = 31;}
+				if (getdate[1] > 12) {getdate[1] = 12;}
+				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
+				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
+				if (getdate[2]) {
+				      if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
+					  if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
+					  if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
+					  newstrdate+=getdate[2];
+					  }else{
+					  if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
+					  if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
+					  }
+				$("#resultdate").val(newstrdate);
+			});
+		
+			$("#resultdate").focus(function(){
+				if ($("#resultdate").val()){
+					var getdate = $("#resultdate").val().split(" ");
+					var newstrdate = "";
+					newstrdate+=getdate[0]+"/";
+					switch(getdate[1]) {
+					case "ม.ค." : getdate[1]="1";break;
+					case "ก.พ." : getdate[1]="2";break;
+					case "มี.ค." : getdate[1]="3";break;
+					case "เม.ย." : getdate[1]="4";break;
+					case "พ.ค." : getdate[1]="5";break;
+					case "มิ.ย." : getdate[1]="6";break;
+					case "ก.ค." : getdate[1]="7";break;
+					case "ส.ค." : getdate[1]="8";break;
+					case "ก.ย." : getdate[1]="9";break;
+					case "ต.ค." : getdate[1]="10";break;
+					case "พ.ย." : getdate[1]="11";break;
+					case "ธ.ค." : getdate[1]="12";break;
+					}
+					newstrdate+=getdate[1]+"/";		
+					newstrdate+=getdate[2];
+					$("#resultdate").val(newstrdate);
+				}
+			});
+			$('#resultdate').bind('keypress', function(e) {			
+						var k = e.which;
+						var ok = k == 8 || k == 47 || // a-z, / , bspc
+								k >= 48 && k <= 57; // 0-9
+						if (!ok){
+							e.preventDefault();
+						}
+			}); 	*/		
+			
+			});
+		</script>
+		</head>
+    <body>
+	
+		<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+	<main>
+        <p class="center-align blue-text text-darken-2">NBC Donor No. 1006801646 Donation No. 10059T1119 (20 ก.ค. 2559)</p>
+        <div class="col-md-10">
+            <div class="col-md-12">
+                <div class="">
+                    <table style="width: 100%" class="highlight">
+                        <th>Product</th>
+                        <th>Creation</th>
+                        <th>Incident</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Decision</th>
+						<th>Comment</th>
+                        <tr class="qualitylist">
+                            <td>NULL</td><td>NULL</td><td>NULL</td><td>NULL</td><td><select></select><label></label></td><td>NULL</td><td>NULL</td>
+
+                        </tr>
+                        <tr class="qualitylist">
+                            <td>NULL</td><td>NULL</td><td>NULL</td><td>NULL</td><td><select></select><label></label></td><td>NULL</td><td>NULL</td>
+                        </tr>
+                    </table>
+                </div>
+				<br>
+				
+                <div class="row UIboxborder" style="padding: 5px; margin: 5px;">
+                    <h5>&nbsp;Details</h5>
+					<div class="col s6 ">
+						
+						<div class="col s4 fieldname">Incident Id</div><div class="col s8"><input type="text" readonly ></div>
+						<div class="col s4 fieldname">Type of hold</div><div class="col s8"><input type="text" readonly ></div>
+						<div class="col s4 fieldname">Reference</div><div class="col s8"><input type="text" readonly ></div>
+						<div class="col s4 fieldname">Reason</div><div class="col s8"><input type="text" readonly ></div>
+						<div class="col s4 fieldname">Description</div><div class="col s8"><input type="text" readonly ></div>
+						<div class="col s4 fieldname">Site</div><div class="col s8"><input type="text" readonly ></div>						
+						<div class="col s4 fieldname">Status</div><div class="col s8"><input type="text" readonly ></div>
+						<div class="col s4 fieldname">Decision</div><div class="col s8"><input type="text" readonly ></div>						
+						<div class="col s4 fieldname">&nbsp;</div><div class="col s4  fieldname center-align">Date</div><div class="col s4  fieldname center-align">User</div>
+						<div class="col s4 fieldname">Creation</div><div class="col s4  center-align"><input type="text" readonly ></div><div class="col s4 center-align"><input type="text" readonly ></div>		
+						<div class="col s4 fieldname">Modification</div><div class="col s4  center-align"><input type="text" readonly ></div><div class="col s4 center-align"><input type="text" readonly ></div>		
+					</div>
+						
+					<div class="col s6">
+						<div class="col s4 fieldname">Product</div><div class="col s8"><input type="text" readonly ></div>
+						<div class="col s4 fieldname">Donation No.</div><div class="col s8"><input type="text" readonly ></div>
+						<div class="col s4 ">&nbsp;</div><div class="col s8">&nbsp;</div>
+						<div class="col s4 fieldname">Decision</div><div class="col s8"><input type="text" readonly ></div>
+						
+						<div class="col s6 fieldname center-align">Date</div><div class="col s6  fieldname center-align">User</div>
+						<div class="col s6  center-align"><input type="text" readonly id="decisiondate"></div><div class="col s6 center-align"><input type="text" readonly ></div>						
+						<div class="col s4 fieldname">Comment</div><div class="col s12">
+         <textarea id="textarea1" class="materialize-textarea" length="100"></textarea>&nbsp;</div>
+
+					
+					</div>
+                     
+                </div>
+            
+           
+            </div> 
+		</main>
+			
+		<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+
+               <button type="" class="btn grey">Exit</button>
+			</div>
+			</div>
+<div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+		
+        </div>
+       
+    </body>
+</html>

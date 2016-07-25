@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8">
+    
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+				<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+    <style>
+      .UIboxborder {
+        border: 1px solid #999;
+        padding: 5px;
+      }
+	  
+	  
+	  			   .input-field label {
+				 color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+			   
+			   .fieldname {
+			   font-weight: bold;
+			   }
+    </style>
+	<script>
+		$(document).ready(function(){
+			$("select").material_select();
+		});
+	</script>
+	
+	
+  </head>
+  <body>
+  
+  				<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+  
+    <div class="" id="Search-by-criteria">
+      <!--Begin DN051-->
+      <div class="UIboxborder">
+        <form class="form-inline">
+          <div class="input-field">
+            <label for="Select">Search</label>
+            <input type="text" class="form-control" id="select_box1" name="select_box1">
+            <input type="text" class="form-control" id="select_box2" name="select_box2">
+          </div>
+          <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
+          <button type="submit" class="btn btn-default">+</button>
+          <button type="submit" class="btn btn-default">-</button>
+        </form>
+      </div>
+      <!--End DN051-->
+
+      <!--Begin DN053-->
+      <div class="UIboxborder">
+        <form class="form-inline">
+          <div class="input-field">
+            <label for="Search-type">Search type</label>
+            <input type="text" class="form-control" id="search_type" name="search_type">
+          </div>
+        </form>
+      </div>
+
+      <!--Begin-DN053-Leftbox-->
+      <div class="UIboxborder">
+        <form class="UIboxborder form-group">
+          
+          <div class="input-field">
+		  <label for="list_of_collection_points">List of collection points</label>
+            <input type="text" class="form-control" id="list_of_collection_points" name="list_of_collection_points">
+          </div>
+          <div class="input-field">
+            <label for="">To exclude</label>
+            <input type="text" class="form-control" id="toexclude" name="toexclude">
+          </div>
+        </form>
+
+        <form action="" class="UIboxborder form-group">
+          
+          <div class="input-field">
+		  <label for="Deferral">Deferral</label>
+            <input type="text" class="form-control" id="deferral" name="deferral">
+          </div>
+          <div class="input-field">
+            <label for="Toexclude">To exclude</label>
+            <input type="text" class="form-control" id="toexclude" name="toexclude">
+          </div>
+        </form>
+
+        <form action="" class="UIboxborder form-group">
+          <label for="Endofdonation">End of donation prohibition by catagory</label>
+          <div class="form-inline">
+			<div class="input-field">
+  		   <label for="relatedcord">Related Cord Blood Mother</label>
+            <input type="text" class="form-control" id="relatedcord" name="relatedcord">
+			</div>
+		   <div class="input-field">
+            <label for="platelet_apheresis">Platelet Apheresis</label>
+            <input type="text" class="form-control" id="platelet_apheresis" name="platelet_apheresis">
+          </div>
+          <div class="input-field">
+            <label for="plasma_apheresis1">Plasma Apheresis(HRIG)</label>
+            <input type="text" class="form-control" id="plasma_apheresis1" name="plasma_apheresis1">
+			<div class="input-field">
+            <label for="granulocytes_apheresis">Granulocytes Apheresis</label>
+            <input type="text" class="form-control" id="granulocytes_apheresis" name="granulocytes_apheresis">
+          </div>
+          <div class="input-field">
+            <label for="plasma_apheresis2">Plasma Apheresis(HRIG)</label>
+            <input type="text" class="form-control" id="plasma_apheresis2" name="plasma_apheresis2">
+		  </div>
+		  <div class="input-field">
+            <label for="redcell_apheresis">Red Cell Apheresis</label>
+            <input type="text" class="form-control" id="redcell_apheresis" name="redcell_apheresis">
+			</div>
+          </div>
+        </form>
+
+        <form action="" class="UIboxborder form-group">
+          <label for="check_of_eligibility">Check of eligibility</label>
+          <div class="radio">
+            
+              <input type="radio" name="check_of_eligibility_yes" id="check_of_eligibility_yes" value="option1" checked>
+             <label> Yes
+            </label>
+            
+              <input type="radio" name="check_of_eligibility_no" id="check_of_eligibility_no" value="option2">
+              <label>No
+            </label>
+          </div>
+        </form>
+
+        <form action="" class="UIboxborder form-group">
+          <label for="conditions">Conditions</label>
+          <div class="form-inline">
+            <input type="text" class="form-control" id="conditions" name="conditions">
+          </div>
+        </form>
+      </div>
+      <!--End-DN53box-Leftbox-->
+
+      <!--Begin-DN53-Rightbox-->
+      <div class="UIboxborder">
+        <label for="">Various criteria</label>
+        <table style="width:100%">
+        <tr>
+          <th><button>X</button></th>
+          <th>Criteria (1)</th>
+        </tr>
+        <tr>
+          <td>
+            <div class="checkbox">
+           
+                <input type="checkbox" id="criteria" name="criteria"><label></label>
+             
+            </div>
+          </td>
+          <td>ZIP/Postal Codes</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="checkbox">
+             
+                <input type="checkbox" id="zipcode" name="zipcode"><label></label>
+              
+            </div>
+          </td>
+          <td>ZIP/Postal Codes</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="checkbox">
+              
+                <input type="checkbox" id="zipcode" name="zipcode"><label></label>
+              
+            </div>
+          </td>
+          <td>ZIP/Postal Codes</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="checkbox">
+              
+                <input type="checkbox" id="zipcode" name="zipcode"><label></label>
+              
+            </div>
+          </td>
+          <td>ZIP/Postal Codes</td>
+        </tr>
+        </table>
+      </div>
+      <div class="UIboxborder" style="height:100px;">
+        <label for="">Detail of the criteria</label>
+      </div>
+      <!--End-DN53-Rightbox-->
+    </div>
+    <!--End-DN53-->
+
+
+	
+	
+					<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+
+                   <button class="btn green"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save</button>
+    <button class="btn grey"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Run Search</button>
+    <button class="btn grey">OK</button>
+    <button class="btn grey"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Exit</button>
+			</div>
+			</div>
+<div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+  </body>
+</html>

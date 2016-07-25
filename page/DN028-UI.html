@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+        <link rel="" href=""> 
+        <style>
+            .UIboxborder{
+                border:1px #999 solid; 
+                padding:5px;
+            }
+			
+			   .input-field label {
+				 color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+        </style>   
+
+		<script>
+			$(document).ready(function(){
+				$(".modalbtn").hide();
+				$(".reasonbtn").hide();
+				$("#deletebtn").hide();
+
+			$("#authen-button").click(function(){
+				$("input").removeAttr("disabled");
+				$("input").removeAttr("readonly");
+				$(".modalbtn").show();
+				$("#modification").html("Save");
+				$("#modification").removeClass("yellow");
+				$("#modification").addClass("green");
+				$("#deletebtn").show();
+			});
+			
+
+			$("#detailbtn").click(function(){
+				$("input").attr("disabled", true);
+				$("input").attr("readonly", true);
+				$(".modalbtn").hide();
+				$("#modification").html("Modification");
+				$("#modification").removeClass("green");
+				$("#modification").addClass("yellow");
+				$("#deletebtn").hide();
+			});
+
+			$("#nottested").change(function(){
+				if ($(this).prop('checked')) {$(".reasonbtn").show();}else{$(".reasonbtn").hide();}
+			});
+			
+			var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
+			$('.modal-trigger').leanModal();
+			
+				
+				var now = new Date();
+				var today = now.getDate();
+				var thismonth = now.getMonth()+1;
+				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543+1900;}
+				var getdate = today + "-" + month[thismonth] + "-" + thisyear;
+				var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+				$("#resultdate").val(getdate + " " + time);
+				// Materialized Init
+				Materialize.updateTextFields();
+			/*
+				// DATE VALIDATION
+				$("#resultdate").blur(function(){
+				var getdate = $("#resultdate").val().split("/");
+				var now = new Date();
+				var today = now.getDate();
+				var thismonth = now.getMonth()+1;
+				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
+				
+				var newstrdate = "";
+				if (getdate[0] > 31) {getdate[0] = 31;}
+				if (getdate[1] > 12) {getdate[1] = 12;}
+				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
+				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
+				if (getdate[2]) {
+				      if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
+					  if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
+					  if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
+					  newstrdate+=getdate[2];
+					  }else{
+					  if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
+					  if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
+					  }
+				$("#resultdate").val(newstrdate);
+			});
+		
+			$("#resultdate").focus(function(){
+				if ($("#resultdate").val()){
+					var getdate = $("#resultdate").val().split(" ");
+					var newstrdate = "";
+					newstrdate+=getdate[0]+"/";
+					switch(getdate[1]) {
+					case "ม.ค." : getdate[1]="1";break;
+					case "ก.พ." : getdate[1]="2";break;
+					case "มี.ค." : getdate[1]="3";break;
+					case "เม.ย." : getdate[1]="4";break;
+					case "พ.ค." : getdate[1]="5";break;
+					case "มิ.ย." : getdate[1]="6";break;
+					case "ก.ค." : getdate[1]="7";break;
+					case "ส.ค." : getdate[1]="8";break;
+					case "ก.ย." : getdate[1]="9";break;
+					case "ต.ค." : getdate[1]="10";break;
+					case "พ.ย." : getdate[1]="11";break;
+					case "ธ.ค." : getdate[1]="12";break;
+					}
+					newstrdate+=getdate[1]+"/";		
+					newstrdate+=getdate[2];
+					$("#resultdate").val(newstrdate);
+				}
+			});
+			$('#resultdate').bind('keypress', function(e) {			
+						var k = e.which;
+						var ok = k == 8 || k == 47 || // a-z, / , bspc
+								k >= 48 && k <= 57; // 0-9
+						if (!ok){
+							e.preventDefault();
+						}
+			}); 	*/		
+			
+			});
+		</script>
+		</head>
+    <body>
+	
+		<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+	<main>
+	
+
+<!-- Authentication -->
+  <div id="authen" class="modal" >
+    <div class="modal-content">
+      <h4>User Password</h4>
+	 
+	 <div class="row">
+		<div class="col s12 input-field">
+			<input type="text" id="username"><label for="username">User</label>
+		</div>
+		<div class="col s12 input-field">
+			<input type="password" id="password"><label for="username">Password</label>
+		</div>
+	 </div>
+	 
+	 
+  </div>
+    
+    <div class="modal-footer">
+	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green" id="authen-button">Ok</a>
+	  
+    </div>
+  </div>
+	
+<!-- Reason for not tested -->
+  <div id="reasonlist" class="modal" >
+    <div class="modal-content">
+      <h4>Reason for not testing</h4>
+	  <p>Choice: 
+	  <input name="group1" type="radio" id="test1" checked/>
+      <label for="test1">Site</label>
+	  
+	  <input name="group1" type="radio" id="test2" />
+      <label for="test2">Regroupment</label>
+	  
+	  <input name="group1" type="radio" id="test3" />
+      <label for="test3">Centre</label>
+	  
+	  <input name="group1" type="radio" id="test4" />
+      <label for="test4">All</label>
+	  </p>
+        <div class="collection">
+    <a href="#!" class="collection-item">CBC<span class="badge">CBC abnormal</span></a>
+    <a href="#!" class="collection-item">CS<span class="badge">Clotted sample</span></a>
+    <a href="#!" class="collection-item">DNA<span class="badge">DNA not pass criteria</span></a>
+    <a href="#!" class="collection-item">DUP<span class="badge">Duplicate stem cell registration</span></a>
+  </div>
+    </div>
+    <div class="modal-footer">
+	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
+	  
+    </div>
+  </div>
+  
+ <!-- Lablist -->
+  <div id="lablist" class="modal" >
+    <div class="modal-content">
+      <h4>List of Laboratory</h4>
+	  <p>Choice: 
+	  <input name="group1" type="radio" id="test1" checked/>
+      <label for="test1">Site</label>
+	  
+	  <input name="group1" type="radio" id="test2" />
+      <label for="test2">Regroupment</label>
+	  
+	  <input name="group1" type="radio" id="test3" />
+      <label for="test3">Centre</label>
+	  
+	  <input name="group1" type="radio" id="test4" />
+      <label for="test4">All</label>
+	  </p>
+        <div class="collection">
+    <a href="#!" class="collection-item">1000<span class="badge">NBC Laboratory</span></a>
+    <a href="#!" class="collection-item">1020<span class="badge">RBC 2 - Lopburi Laboratory</span></a>
+    <a href="#!" class="collection-item">1030<span class="badge">RBC 3 - Conburi Laboratoryี</span></a>
+    <a href="#!" class="collection-item">1040<span class="badge">RBC 4 - Ratchaburi Laboratory</span></a>
+  </div>
+    </div>
+    <div class="modal-footer">
+	 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
+	 
+    </div>
+  </div>
+  
+  
+  
+	
+        <p class="center-align blue-text text-darken-2">Donation examination 10059T1119 (NBC Donor No. 1006801646)</p>
+        <div class="col-md-10">
+            <div class="col-md-12">
+                <div class="" style="padding: 8px;height: 150px;overflow-y: scroll;">
+                    <table style="width: 100%" class="highlight">
+                        <th>Examination</th>
+                        <th>Results</th>
+                        <th>Quant.Result</th>
+                        <th>executing laboratory</th>
+                        <th>Abnormal</th>
+                        <th>Comm</th>
+                        <tr>
+                            <td>NULL</td><td>NULL</td><td>NULL</td><td>NULL <a class="btn grey tiny modal-trigger modalbtn" href="#lablist">>></a></td>
+                            <td><input type="checkbox" name="" value="" id="c1" disabled checked><label for="c1"></label></td>
+                            <td><input type="checkbox" name="" value="" id="c2" disabled><label for="c2"></label></td>
+                        </tr>
+                        <tr>
+                            <td>NULL</td><td>NULL</td><td>NULL</td><td>NULL  <a class="btn grey tiny modal-trigger modalbtn" href="#lablist">>></a></td>
+                            <td><input type="checkbox" name="" value="" id="c3" disabled><label for="c3"></label></td>
+                            <td><input type="checkbox" name="" value="" id="c4" disabled><label for="c4"></label></td>
+                        </tr>
+                    </table>
+ </div>
+<p class="right-align"><a class="btn grey" id="deletebtn">Delete</a>
+
+               
+                <div class="row">
+                    <div class="col s12 " style="border: solid 1px #000;padding: 5px;"> 
+					<h5>Detail</h5>
+					<div class="col s6">
+						<div class="col s12 m12 input-field">
+                        <label for="">Result</label><input class="" type="text" name="" value="" readonly>
+						</div>
+						<div class="col s6 m4 input-field">
+                        <input class="" type="checkbox" name="" value="1" readonly id="nottested" disabled>
+						<label for="nottested">Not tested</label>
+						</div>
+						<div class="col s6 m8 input-field ">
+                        <label for="resultdate " class="active">Result Date</label><input class="active" type="text" name="" id="resultdate" readonly>
+						</div>
+				
+						<div class="col s9 m9 input-field">
+                        <label for="">Reason</label><input class="" type="text" name="" id="reason" value="" readonly>
+						</div>
+						
+						<div class="col s3 m3 input-field">
+							<a class="btn grey modal-trigger reasonbtn" href="#reasonlist">>></a>
+						</div>
+						
+	
+						
+					</div>
+						
+					<div class="col s6">
+						<div class="col s4 m4 input-field">
+                        <label for="">Input</label><input class="" type="text" name="" value="" readonly>
+						</div>
+						<div class="col s4 m4 input-field">
+                        <label for="">Input 2</label><input class="" type="text" name="" value="" readonly>
+						</div>
+						<div class="col s4 m4 input-field">
+                        <label for="">Input 3</label><input class="" type="text" name="" value="" readonly>
+						</div>		
+						
+						<div class="col s4 m4 input-field">
+                        <label for="">Validation 1</label><input class="" type="text" name="" value="" readonly>
+						</div>		
+						
+						<div class="col s4 m4 input-field">
+                        <label for="">Validation 2</label><input class="" type="text" name="" value="" readonly>
+						</div>		
+						
+					</div>
+                     </div>
+                </div>
+            
+           
+            </div> 
+		</main>
+			
+		<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+                <div class="col s6 m3"><a type="" class="btn yellow darken-2 modal-trigger" href="#authen" id="modification">Modification</a></div>
+                
+                <div class="col s6 m3"><a class="btn  grey" id="detailbtn">Details</a></div>
+
+ <div class="col s6 m3"><a type="" class="btn  grey" href="#okbtn">Ok</a></div>
+                
+                <div class="col s6 m3"><button type="" class="btn grey">Exit</button></div>
+			</div>
+			</div>
+<div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+		
+        </div>
+       
+    </body>
+</html>

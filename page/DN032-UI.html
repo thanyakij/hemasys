@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="jquery.min.js"></script>  
+		<script src="js/materialize.min.js"></script>	
+		<script>
+			$(document).ready(function(){
+			
+			
+			var fromdatevalue;
+			var todatevalue;
+			
+			 $('select').material_select();
+			 $('input#input_text, textarea#textarea1').characterCounter();
+			
+				$(document).on("click", ".commentlist", function(){
+					$(".commentlist").removeClass("yellow lighten-1");
+					$(this).addClass("yellow");
+				});
+			
+				var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
+				var getdate = $("#fromdate").val().split("/");
+				
+				var now = new Date();
+				var today = now.getDate();
+				var thismonth = now.getMonth()+1;
+				var thisyear = now.getYear(); thisyear+=543+1900;
+				
+				//thisyear=2559;
+				
+				$("#addbtn").click(function(){
+					$("#comment").append("<tr class=\"commentlist\"><td>"+today+"-"+month[thismonth]+"-"+thisyear+"</td><td>19-ธ.ค.-9999</td><td><input type=\"checkbox\" id=\"printable2\" name=\"printable2\" value=\"\"><label for=\"printable2\"></label></td><td><select id=\"type1\"><option></option></select></td><td>NULL</td></tr>");
+					$("select").material_select();
+				});
+				
+				
+				$("#fromdate").val(today+"-"+month[thismonth]+"-"+thisyear);
+				
+				// DATE VALIDATION
+				$("#fromdate").blur(function(){
+				var getdate = $("#fromdate").val().split("/");
+				var now = new Date();
+				var today = now.getDate();
+				var thismonth = now.getMonth()+1;
+				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
+				
+				var newstrdate = "";
+				if (getdate[0] > 31) {getdate[0] = 31;}
+				if (getdate[1] > 12) {getdate[1] = 12;}
+				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
+				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
+				if (getdate[2]) {
+				      if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
+					  if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
+					  if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
+					  newstrdate+=getdate[2];
+					  }else{
+					  if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
+					  if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
+					  }
+					  fromdatevalue = getdate[2] + getdate[1] + getdate[0];
+				// กรณีใส่มาติดกันไม่มีคั่น
+				if ($("#fromdate").val().length == 8 && !isNaN($("#fromdate").val())) {
+					var data1 = parseInt($("#fromdate").val().substr(0,2));
+					var data2 = parseInt($("#fromdate").val().substr(2,2));
+					var data3 = parseInt($("#fromdate").val().substr(4,4));
+					if (data3 < 2500) {data3+=543;}
+					newstrdate = data1 + " " + month[data2] + " " + data3;
+					fromdatevalue = $("#fromdate").val().substr(4,4) + $("#fromdate").val().substr(2,2) +$("#fromdate").val().substr(0,2);
+				}
+				if ((todatevalue && fromdatevalue) && (todatevalue < fromdatevalue)) {alert("ค่าของ Valid from ต้องไม่มากกว่า Valid to");}
+				$("#fromdate").val(newstrdate);
+			});
+		
+			$("#fromdate").focus(function(){
+				if ($("#fromdate").val()){
+					var getdate = $("#fromdate").val().split(" ");
+					var newstrdate = "";
+					newstrdate+=getdate[0]+"/";
+					switch(getdate[1]) {
+					case "ม.ค." : getdate[1]="1";break;
+					case "ก.พ." : getdate[1]="2";break;
+					case "มี.ค." : getdate[1]="3";break;
+					case "เม.ย." : getdate[1]="4";break;
+					case "พ.ค." : getdate[1]="5";break;
+					case "มิ.ย." : getdate[1]="6";break;
+					case "ก.ค." : getdate[1]="7";break;
+					case "ส.ค." : getdate[1]="8";break;
+					case "ก.ย." : getdate[1]="9";break;
+					case "ต.ค." : getdate[1]="10";break;
+					case "พ.ย." : getdate[1]="11";break;
+					case "ธ.ค." : getdate[1]="12";break;
+					}
+					newstrdate+=getdate[1]+"/";		
+					newstrdate+=getdate[2];
+					$("#fromdate").val(newstrdate);
+				}
+			});
+			$('#fromdate').bind('keypress', function(e) {
+					var k = e.which;
+						var ok = k == 8 || k == 47 || // a-z, / , bspc
+								k >= 48 && k <= 57; // 0-9
+						if (!ok){
+							e.preventDefault();
+						}
+			}); 
+			
+			
+				// DATE VALIDATION
+				$("#todate").blur(function(){
+				var getdate = $("#todate").val().split("/");
+				var now = new Date();
+				var today = now.getDate();
+				var thismonth = now.getMonth()+1;
+				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
+				
+				var newstrdate = "";
+				if (getdate[0] > 31) {getdate[0] = 31;}
+				if (getdate[1] > 12) {getdate[1] = 12;}
+				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
+				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
+				if (getdate[2]) {
+				      if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
+					  if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
+					  if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
+					  newstrdate+=getdate[2];
+					  }else{
+					  if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
+					  if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
+					  }
+					  todatevalue = getdate[2] + getdate[1] + getdate[0];
+				// กรณีใส่มาติดกันไม่มีคั่น
+				if ($("#todate").val().length == 8 && !isNaN($("#todate").val())) {
+					var data1 = parseInt($("#todate").val().substr(0,2));
+					var data2 = parseInt($("#todate").val().substr(2,2));
+					var data3 = parseInt($("#todate").val().substr(4,4));
+					if (data3 < 2500) {data3+=543;}
+					newstrdate = data1 + " " + month[data2] + " " + data3;
+					todatevalue = $("#todate").val().substr(4,4) + $("#todate").val().substr(2,2) +$("#todate").val().substr(0,2);
+				}
+				if ((todatevalue && fromdatevalue) && (todatevalue < fromdatevalue)) {alert("ค่าของ Valid from ต้องไม่มากกว่า Valid to");}
+				$("#todate").val(newstrdate);
+			});
+		
+			$("#todate").focus(function(){
+				if ($("#todate").val()){
+					var getdate = $("#todate").val().split(" ");
+					var newstrdate = "";
+					newstrdate+=getdate[0]+"/";
+					switch(getdate[1]) {
+					case "ม.ค." : getdate[1]="1";break;
+					case "ก.พ." : getdate[1]="2";break;
+					case "มี.ค." : getdate[1]="3";break;
+					case "เม.ย." : getdate[1]="4";break;
+					case "พ.ค." : getdate[1]="5";break;
+					case "มิ.ย." : getdate[1]="6";break;
+					case "ก.ค." : getdate[1]="7";break;
+					case "ส.ค." : getdate[1]="8";break;
+					case "ก.ย." : getdate[1]="9";break;
+					case "ต.ค." : getdate[1]="10";break;
+					case "พ.ย." : getdate[1]="11";break;
+					case "ธ.ค." : getdate[1]="12";break;
+					}
+					newstrdate+=getdate[1]+"/";		
+					newstrdate+=getdate[2];
+					$("#todate").val(newstrdate);
+				}
+			});
+			$('#todate').bind('keypress', function(e) {			
+						var k = e.which;
+						var ok = k == 8 || k == 47 || // a-z, / , bspc
+								k >= 48 && k <= 57; // 0-9
+						if (!ok){
+							e.preventDefault();
+						}
+			}); 			
+				
+			});
+		</script>
+    </head>
+    <body>
+        <style>
+            .UIboxborder{
+                border:1px #999 solid; 
+                padding:5px;
+            }
+			
+					   .input-field label {
+				 color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+        </style>
+		
+							<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+		
+		
+       <p class="blue-text text-darken-2" style="padding: 5px;">NBC Donor No. 1005901646 : Mr. เอ ทดสอบ</p>
+        
+            
+			<!--
+			<div class="row " id="">
+               <table class="highlight">
+                   <th>Code</th><th>Applic date</th><th>Comm</th>
+                   <tr>
+                       <td>NULL</td>
+                       <td>NULL</td>
+                       <td><input type="checkbox" name="" value="" id="comm"><label for="comm"></label></td>
+                   </tr>
+               </table>
+               <div class="center-align"><button type="" class="btn grey">Create</button> <button type="" class="btn grey">Remove</button></div>
+            </div>
+			-->
+			
+			
+            <div class="row " style="padding: 5px; ">
+                
+				<div class="col s10" style="height: 180px;overflow-y: scroll;">
+				<table class="highlight">
+					<thead>
+                    <th>Start Date</th><th>End date</th><th>Print</th><th>Type</th><th>Text</th>
+                    </thead>
+					<tbody id="comment">
+					<tr class="commentlist">
+                        <td>NULL</td><td>31-ธ.ค.-9999</td><td><input type="checkbox" id="printable1" name="printable1" value=""><label for="printable1"></label></td><td>
+						<select id="type1">
+							<option></option>
+						</select>
+						</td><td>aaaaaaaaaaaaaaaaa</td>
+                    </tr>
+                    <tr class="commentlist">
+                        <td>NULL</td><td>31-ธ.ค.-9999</td><td><input type="checkbox" id="printable2" name="printable2" value=""><label for="printable2"></label></td><td><select id="type1">
+							<option></option>
+						</select></td><td>NULL</td>
+                    </tr>
+					</tbody>
+                </table>
+
+            </div>
+			<div class="col s2">
+ <div class="center-align"><button type="" id="addbtn" class="btn grey">+</button> <br><br><button type="" class="btn grey">-</button></div>			
+			</div>
+		</div>	
+			
+		<div class="container col s12">	
+			             
+			<br>
+             <div class="row " style="border: 1px solid #000;padding: 10px;">
+                 <h5>Details</h5>  
+                     <div class="col s12 m6 input-field">
+                         <label style="padding:0px;margin:0px;" for="">Valid from</label>
+						  <input class="form-control" style="padding:0px;" type="text" id="fromdate" name="" value="">
+                         
+                     </div>
+			         <div class="col s12 m6 input-field">
+                            
+                            <!--<input class="" type="text" id="information_type" name="information_type" value="">-->
+							
+							<select id="information_type">
+								<option></option>
+							</select>
+                            <label class="" for="information_type">Type</label>
+                    </div>
+		 
+                     <div class="col s12 m6 input-field">
+                        <label for="">to</label>
+                         <input class="form-control" type="text" id="todate" name="" value="31-ธ.ค.-9999">
+                     </div>
+                     
+                    <div class="col s12 m6 input-field">
+                             <input class="" type="checkbox" id="printable" name="printable" value="">
+							 <label style="" for="printable">printable</label>
+                    </div>
+						 
+           
+               
+               
+		<div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" length="100"></textarea>
+            <label for="textarea1">text</label>
+          </div>
+		  
+		  </div>
+            
+        </div>
+        
+			   		 		<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+			
+			<button type="" class="btn grey">OK</button> 
+                <button type="" class="btn grey">Abort</button>
+			
+                <!--<div class="col s6 m3"><button type="" class="btn yellow darken-2">Modification</button></div>
+                <div class="col s6 m3"><button type="" class="btn grey">Details</button></div>
+                
+                <div class="col s6 m3"><button type="" class="btn grey">Regents</button></div>
+                <div class="col s6 m3"><button type="" class="btn grey">Exit</button></div>-->
+			</div>
+			</div>
+			         <div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+    </body>
+</html>

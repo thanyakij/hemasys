@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+    
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+				<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+    </head>
+    <body>
+        <style>
+ body{
+               
+            }
+            .UIboxborder{
+                border:1px #999 solid; 
+                padding:5px;
+            }
+            .padding{
+              
+            }
+			
+			    .input-field label {
+				 color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+
+        </style>  
+		<script>
+			$(document).ready(function(){
+				$("select").material_select();
+				$('.modal-trigger').leanModal();
+				
+				// Binding event to code type
+				$('#code').bind('keypress', function(e) {
+						var k = e.which;
+						var ok = k == 8 || k >= 65 && k <= 90 || // A-Z
+								k >= 97 && k <= 122 || // a-z
+								k >= 48 && k <= 57; // 0-9
+						if (!ok){
+							e.preventDefault();
+						}else{}
+				}); 
+				$('#code').bind('keyup', function(e) {
+					$(this).val($(this).val().toUpperCase());
+				});
+				
+				
+			});
+		</script>
+  <!-- Site List -->
+  <div id="sitelist" class="modal" >
+    <div class="modal-content">
+      <h4>Site list</h4>
+	  
+	  <table class="highlight">
+		<thead>
+			<TR>
+				<TD>Code</TD>
+				<TD>X</TD>
+				<TD>Description</TD>
+			</TR>
+		</thead>
+		
+		<tbody>
+			<TR class="siteitem">
+				<TD>1008</TD>
+				<TD><input type="checkbox"><label></label></TD>
+				<TD>NBC - WHO</TD>
+			</TR>
+			<TR class="siteitem">
+				<TD>1111</TD>
+				<TD><input type="checkbox"><label></label></TD>
+				<TD>Site use for training sessions</TD>
+			</TR>
+			<TR class="siteitem">
+				<TD>9999</TD>
+				<TD><input type="checkbox"><label></label></TD>
+				<TD>Useless</TD>
+			</TR>
+			<TR  class="siteitem">
+				<TD>1000</TD>
+				<TD><input type="checkbox"><label></label></TD>
+				<TD>NBC - National Blood Centre</TD>
+			</TR>
+		</tbody>
+	  </table>
+	  
+	
+    </div>
+    <div class="modal-footer">
+ 
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">All</a>
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">(None)</a>
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
+	       <a href="#!" class="btn green modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+  </div>
+
+	  				<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>	
+	
+   <div class="container">
+   
+         <h4>Code authorized by sites and/or regroupping of sites</h4>
+	  <p>Choice: 
+	  <input name="group1" type="radio" id="test1" checked/>
+      <label for="test1">Code</label>
+	  
+	  <input name="group1" type="radio" id="test2" />
+      <label for="test2">Type</label>
+	  
+
+	  </p>
+   
+       <div class="row">
+           
+              
+             
+              
+           <div class="col s12 input-field">
+               
+                
+                   <select id="type">
+					<option >Community</option>
+				   </select>
+                <label for="type" class="col-sm-3 control-label">Type</label>
+            </div>
+             
+  <div class="col s9 input-field">
+                  <input type="text"  id="code" placeholder="">
+				  <label>Code</label>
+                </div>
+				
+				<div class="col s3 input-field">
+                  <a class="modal-trigger btn grey" href="#sitelist">>></a>
+                </div>
+           
+			 
+      
+	   
+	   <div class="col s6"> 
+       <div class="col-lg-12">
+           <div class="col-md-6 headText"><b>List of Sitess</b></div>
+           <div class="col-md-6 headText"><b>Regroupments of sites</b></div>
+       </div>
+	   
+	   
+	  
+       <div class="col-lg-1"></div>
+       <div class="col-lg-5" style="width:350px; height:250px; border:2px solid #ddd;">
+           <div class="col-xs-6 pad">
+               <input type="" class="form-control" name="" value="">
+           </div>
+       </div>
+	  </div> 
+	   
+	   
+	 <div class="col s6">   
+       <div class="col s12">
+           <button style="" class="btn btn-default btn-lg btn-block" type="button" 
+           data-toggle="modal" data-target="#myModal">
+               <span class="glyphicon glyphicon-search"></span>
+               Search</button>
+       </div>
+
+       <div class="col s12" style="width:350px; height:250px; border:2px solid #ddd;">
+           <div class="col-xs-6 pad">
+               <input type="" class="form-control" name="" value="">
+           </div>           
+       </div>
+	  </div>
+	</div>
+    </div>  
+   </div>
+   
+   
+   
+
+   
+						<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+
+        <div class="row">
+            <div class="col s4">
+                <button class="btn green" type="">Save</button>
+            </div>
+            <div class="col s4">
+                <a class="btn grey" href="#planlist">Ok</a>
+            </div>
+            <div class="col s4">
+                <button class="btn grey" type="">Abort</button>
+            </div> 
+        </div>
+			</div>
+			</div>
+<div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+   
+    </body>
+</html>
