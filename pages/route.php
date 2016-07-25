@@ -6,6 +6,7 @@ if(isset($_GET['page'])) {
   $page = "HM01";
 }
 
+include $page . ".php";
 ?>
 
 <?php /*
