@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			<meta charset="UTF-8">
+      		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+    </head>
+    <body>
+        <style>
+            .UIboxborder{
+                border:1px #999 solid; 
+                padding:5px;
+            }
+			
+					   .input-field label {
+				 color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+        </style>
+		
+		<script>
+			$(document).ready(function(){
+				$(document).on("click", ".deferitem", function(){
+					$(".deferitem").removeClass("yellow lighten-1");
+					$(this).addClass("yellow");
+				});
+			});
+		</script>
+        <!--
+        <div class="UIboxborder" id="">
+           <table>
+               <th>Code</th><th>Applic date</th><th>Comm</th>
+               <tr>
+                   <td>NULL</td>
+                   <td>NULL</td>
+                   <td><input type="checkbox" id="" name="" value=""></td>
+               </tr>
+           </table>
+           <button type="">Create</button><button type="">Remove</button>
+        </div>
+        <div class="UIboxborder">
+            <label for="">Code</label><input class="form-control" type="" id="" name="" value=""><br>
+            <label for="">Donation No</label><input class="form-control" type="" id="" name="" value=""><br>
+            <label for="">Doctor</label><input class="form-control" type="" id="" name="" value=""><br>
+            <label for="">Origin</label><input class="form-control" type="" id="" name="" value=""><br>
+            <label for="">Comment</label><textarea rows="2" cols=""></textarea><br>
+        </div>
+        -->
+		
+					<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+		
+        <p class="blue-text text-darken-2" style="padding: 5px;">NBC Donor No. 1005901646 : Mr. เอ ทดสอบ</p>
+        <div class="container">
+            <div class="row ">
+                <table class="highlight">
+                    <th>Category</th><th>End date</th><th>Type</th><th>Code</th>
+                    <tr class="deferitem ">
+                        <td>NULL</td><td>NULL</td><td>NULL</td><td>NULL</td>
+                    </tr>
+                    <tr class="deferitem">
+                        <td>NULL</td><td>NULL</td><td>NULL</td><td>NULL</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row center-align">
+				<div class="col s2 right-align">
+                <button type="submit" class="btn green" style="margin-left:15px;">Details</button></div><div class="col s10"> <p class="red-text">Warning: This list may contains deferral reasons induced by results from samples in progreess</p></div>
+				
+				
+            </div>
+
+        </div>
+       
+	   
+	   
+	   		 		<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+			<button type="submit" class="btn grey" style="margin-left:15px;">Exit</button>
+                <!--<div class="col s6 m3"><button type="" class="btn yellow darken-2">Modification</button></div>
+                <div class="col s6 m3"><button type="" class="btn grey">Details</button></div>
+                
+                <div class="col s6 m3"><button type="" class="btn grey">Regents</button></div>
+                <div class="col s6 m3"><button type="" class="btn grey">Exit</button></div>-->
+			</div>
+			</div>
+<div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+    </body>
+</html>

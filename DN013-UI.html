@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+    
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+				<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+    </head>
+    <body>
+        <style>
+            body{
+                
+            }
+
+            
+        </style>
+		<script>
+			$(document).ready(function(){
+				$("select").material_select();
+				$('.modal-trigger').leanModal();
+				
+								$(document).on("click", ".item1", function(){
+					//$(".item1").removeClass("yellow lighten-1");
+					//$(this).addClass("yellow");
+				});
+				
+				$(document).on("click", ".useritem", function(){
+					$(".useritem").removeClass("yellow");
+					$(this).toggleClass("yellow");
+				});
+				
+				
+				$(document).on("click", ".siteitem", function(){
+					$(".siteitem").removeClass("yellow");
+					$(this).toggleClass("yellow");
+				});
+			});
+			
+
+		</script>
+		
+		
+		  <!-- Display of available personnel -->
+  <div id="personnellist" class="modal" >
+    <div class="modal-content">
+      <h4>Display of available personnel</h4>
+	  <p>Choice: 
+	  <input name="group1" type="radio" id="test1" checked/>
+      <label for="test1">Site</label>
+	  
+	  <input name="group1" type="radio" id="test2" />
+      <label for="test2">Regroupment</label>
+	  
+	  <input name="group1" type="radio" id="test3" />
+      <label for="test3">Centre</label>
+	  
+	  <input name="group1" type="radio" id="test4" />
+      <label for="test4">All</label>
+	  </p>
+	<div style="height: 200px;overflow-y: scroll;">
+	  <table class="highlight">
+		<thead>
+			<TR>
+				<TD>Code</TD>
+				<TD>Surname</TD>
+				<TD>Firstname</TD>
+				<TD>Address</TD>
+				<TD>County</TD>
+			</TR>
+		</thead>
+		
+		<tbody>
+			<TR class="siteitem">
+				<TD>2</TD>
+				<TD>Bower</TD>
+				<TD>Nick</TD>
+				<TD>ที่อยู่ ที่อยู่</TD>
+				<TD>xxxx</TD>
+			</TR>
+			<TR class="siteitem">
+				<TD>2</TD>
+				<TD>Bower</TD>
+				<TD>Nick</TD>
+				<TD>ที่อยู่ ที่อยู่</TD>
+				<TD>xxxx</TD>
+			</TR>
+			<TR class="siteitem">
+				<TD>2</TD>
+				<TD>Bower</TD>
+				<TD>Nick</TD>
+				<TD>ที่อยู่ ที่อยู่</TD>
+				<TD>xxxx</TD>
+			</TR>
+			<TR  class="siteitem">
+				<TD>2</TD>
+				<TD>Bower</TD>
+				<TD>Nick</TD>
+				<TD>ที่อยู่ ที่อยู่</TD>
+				<TD>xxxx</TD>
+			</TR>
+		</tbody>
+	  </table>
+	 </div>
+	
+    </div>
+    <div class="modal-footer">
+
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
+	       <a href="#!" class="btn green modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+  </div>
+		
+		
+			  				<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+        <div class="container row">
+            
+            <div class="col-lg-10 ">
+				<div class="col s10" style="height: 200px;overflow-y: scroll;">
+                <table class="highlight center">
+                <thead>
+                    <th style="width:50%">Role</th>
+                    <th class="center-align" colspan="2">User</th>
+                </thead>
+                <tbody>
+                    <tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">User xxxxxxxxxxxx</td><td><a class="btn grey  modal-trigger" href="#personnellist">>></a></td></tr>
+	                <tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">User</td><td><a class="btn grey  modal-trigger" href="#personnellist">>></a></td></tr>
+                    <tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">User</td><td><a class="btn grey modal-trigger" href="#personnellist">>></a></td></tr>
+                    <tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">User</td><td><a class="btn grey modal-trigger" href="#personnellist">>></a></td></tr>
+                </tbody>
+            </table>
+				</div>
+            <div class="col s2 center-align">
+<br>
+                    <a type="" class="btn grey modal-trigger" href="#personnellist">+</a>
+<br><br>
+                    <a type="" class="btn grey">-</a>
+               
+            </div>
+			
+			<div class="col s12">&nbsp;</div> 
+			
+		<div class="col s12" style="border: 1px solid #000;padding: 10px;">
+				<h5>Details</h5>
+            <div class="input-field col s12">  
+                    <label for="" class="col-sm-2 control-label">Description</label>
+					<input type="text">
+            </div> 
+            <div class="input-field col s12">  
+                    <label for="" class="col-sm-2 control-label">address1</label>
+					<input type="text">
+            </div>
+            <div class="input-field col s12">  
+                    <label for="" class="col-sm-2 control-label">Address2</label>
+					<input type="text">
+            </div>
+            <div class="input-field col s6">  
+                    <label for="" class="col-sm-2 control-label">Postcode</label>
+					<input type="text">
+            </div>
+            <div class="input-field  col s6">  
+                    <label for="" class="col-sm-2 control-label">Country</label>
+					<input type="text">
+            </div>
+            <div class="input-field  col s4">  
+                    <label for="" class="col-sm-2 control-label">1st phone number</label>
+					<input type="text">
+            </div>
+            <div class="input-field  col s4">  
+                    <label for="" class="col-sm-1 control-label">2nd phone number</label>
+					<input type="text">
+            </div>
+            <div class="input-field  col s4">  
+                    <label for="" class="col-sm-1 control-label">Fax</label>
+					<input type="text">
+            </div>
+            <div class="input-field col s12">  
+                    <label for="" class="col-sm-2 control-label">Notes</label>
+                    <input type="text">
+            </div>
+		</div>
+            
+        </div>
+		
+		</div>
+		
+		<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+
+        <div class="row">
+            <div class="col s4">
+                <button class="btn green" type="">Save</button>
+            </div>
+            <div class="col s4">
+                <a class="btn grey" href="#planlist">Ok</a>
+            </div>
+            <div class="col s4">
+                <button class="btn grey" type="">Abort</button>
+            </div> 
+        </div>
+			</div>
+			</div>
+<div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+    </body>
+</html>

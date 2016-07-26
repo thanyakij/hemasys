@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+			<script>
+			$(document).ready(function(){
+							$('.modal-trigger').leanModal();
+							$('select').material_select();
+							$('#association').bind('keypress', function(e) {
+						var k = e.which;
+						var ok = k == 8 || k >= 65 && k <= 90 || // A-Z
+								k >= 97 && k <= 122 || // a-z
+								k >= 48 && k <= 57; // 0-9
+						if (!ok){
+							e.preventDefault();
+						}else{}
+				}); 
+				$('#association').bind('keyup', function(e) {
+					$(this).val($(this).val().toUpperCase());
+				});
+				
+				
+				$(document).on("click", ".collection-item", function(){
+					$(".collection-item").removeClass("yellow  lighten-1");
+					$(this).addClass("yellow lighten-1");
+				});
+				
+				});
+			</script>
+    </head>
+    <body>
+        <style>
+            .UIboxborder{
+                border:1px #999 solid; 
+                padding:5px;
+            }
+			
+					   .input-field label {
+				 color: #333;
+			   }
+			   label{
+				color: #333;
+			   }
+			   /* label focus color */
+			   .input-field input[type=text]:focus + label {
+				 color: #333;
+			   }
+        </style>
+		
+	<nav class="red lighten-2">
+		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+		 
+		 <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+		  </ul>
+		  <div class="right">
+		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+		  </div>
+		 <div class="right-align ">
+			<div class="valign-wrapper right">
+				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+			</div>
+		  </div>
+	</nav>
+		
+  <!-- Association -->
+  <div id="listassoc" class="modal" >
+    <div class="modal-content">
+      <h4>List of Association</h4>
+	  <p>Choice: 
+	  <input name="group1" type="radio" id="test1" checked/>
+      <label for="test1">Site</label>
+	  
+	  <input name="group1" type="radio" id="test2" />
+      <label for="test2">Regroupment</label>
+	  
+	  <input name="group1" type="radio" id="test3" />
+      <label for="test3">Centre</label>
+	  
+	  <input name="group1" type="radio" id="test4" />
+      <label for="test4">All</label>
+	  </p>
+        <div class="collection">
+    <a href="#!" class="collection-item">101<span class="badge">เหล่ากาชาดจังหวัดเชียงใหม่</span></a>
+    <a href="#!" class="collection-item">102<span class="badge">โรงพยาบาลระนอง</span></a>
+    <a href="#!" class="collection-item">103<span class="badge">เหล่ากาชาดจังหวัดจันทบุรี</span></a>
+    <a href="#!" class="collection-item">104<span class="badge">เหล่ากาชาดจังหวัดสมุทรปราการ</span></a>
+  </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
+    </div>
+  </div>
+		
+		
+		<div class="blue-text text-darken-2 center-align " style="border: 1px solid #555; padding: 5px;">
+
+           1080036346 &nbsp; &nbsp; Mr.chalachaibub
+
+        </div>
+        
+		<br>
+		<div class="row">
+		
+			<div class="col m6" >
+			
+			<div class="col m12" style="padding: 10px; border: 1px solid #333;">
+			<h5>Invitation</h5>
+			
+			<div>
+			      <input type="checkbox" name="" id="email" value=""><label for="email">invitation by mail</label>
+		   </div>
+		   
+		   <div>
+           <input type="checkbox" name="" id="brochure" value=""><label for="brochure">Sending brochure</label>
+		   </div>
+		   
+		   <div>
+           <input type="checkbox" name="" id="divers" value=""><label for="divers">Send mail Diver</label>
+		   </div>
+		   
+		   <div class="col s9 center-align input-field " style="overflow-y: scroll; height: 180px;">
+           <select id="invite">
+			<option>Mobile Only</option>
+		   </select>
+		   <label for="invite">Invitation by telephone</label>
+		   
+		   </div>
+		    
+			<div class="col s3 center-align">
+				<button type="" class="btn green">+</button> <br><br>
+				<button type="" class="btn grey">-</button>
+			</div>
+		   
+		   
+		  <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" length="100"></textarea>
+            <label for="textarea1">Notes</label>
+          </div>
+		   
+		   </div>
+
+             <div class="input-field col s12">&nbsp;</div>
+       
+    <div class="col s12">    
+        <div class="input-field col s4 m4">
+            <label for="association">Association</label>
+			<input id="association" type="text" name="" value="" maxlength="3">
+		</div>
+		<div class="input-field col s2">
+			<a class="btn grey modal-trigger" href="#listassoc">>></a>
+		</div>
+		<div class="input-field col s6 blue-text text-darken-1">
+			ชื่อหน่วย
+		</div>
+	</div>	
+	
+	<div class="col s12">	
+		<div class="input-field col s4 m4">
+            <label for="reconnect">Entity of re-connection</label>
+			<input id="reconnect" type="text" name="" value="" maxlength="3">
+        </div>
+		<div class="input-field col s2">
+		<a class="btn grey">>></a>
+		</div>
+		<div class="input-field col s6">
+			<p class="blue-text text-darken-1">ชื่อหน่วย</p>
+		</div>
+	</div>	
+        
+		
+		</div>
+		
+		<div class="col m6">
+		 <div class="UIboxborder">
+            <p>Number of unanswered invitation</label> : 0</p>
+            <h5>Last Invitation</h5>
+			<p>Date : 15-Apr-2559</p>
+			<p>Type : </p>
+			<p>Reference :  send SMS to Donor</p>
+			
+        </div>
+		</div>
+		
+		
+		</div>
+		</div>
+		<footer class="page-footer red lighten-2">
+			<div class="container">
+			<div class="row center-align ">
+			<button type="" class="btn green">OK</button> <button type=""  class="btn grey">Abort</button>
+                <!--<div class="col s6 m3"><button type="" class="btn yellow darken-2">Modification</button></div>
+                <div class="col s6 m3"><button type="" class="btn grey">Details</button></div>
+                
+                <div class="col s6 m3"><button type="" class="btn grey">Regents</button></div>
+                <div class="col s6 m3"><button type="" class="btn grey">Exit</button></div>-->
+			</div>
+			</div>
+		
+<div class="footer-copyright">
+            <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+			</div>
+			</div>
+		</footer>
+    </body>
+</html>

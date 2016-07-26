@@ -10,8 +10,12 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
     url: VariablesService.host + '/api/Donor/read/0000010195'
   }).then(function(res) {
     //Intitial dob string format to date format
+
     $scope.dob = new Date(res.data.DATE_OF_BIRTH);
     $scope.donor = res.data;
+
+    $scope.donor.DATE_OF_BIRTH = moment(res.data.DATE_OF_BIRTH, 'DD-MMM-YYYY').format('DD-MMM-YYYY');
+    $scope.donor.DATE_OF_LAST_VISIT = moment(res.data.DATE_OF_LAST_VISIT, 'DD-MMM-YYYY').format('DD-MMM-YYYY');
 
     $scope.donor.CODE_OF_COUNTRY_OF_NATIONALITY = '1';
     $scope.donor.CODE_OF_COUNTRY_OF_RESIDENCE = '2';
@@ -26,6 +30,5 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
     $scope.donor.AGE = Math.abs(ageDate.getUTCFullYear() - 1970);
     
     console.log($scope.donor);
-    console.log($scope.donor.LAST_AWARD);
   })
 }])
