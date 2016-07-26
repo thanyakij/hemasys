@@ -1,5 +1,18 @@
 ﻿( function( $ ) {
-	
+
+	$.toast = function(massege,time){
+		$("body").append('<div class="snackbar"></div>')
+		$(".snackbar").text(massege).addClass("show")
+		setTimeout(function(){$(".snackbar").removeClass("show")},time)
+	}
+	$.urlParam = function(name){
+			var param = new RegExp('[\?&]'+ name +'=([^&#]*)').exec(window.location.href);
+			if(param == null){
+				return null
+			}else{
+				return param[1]||0
+			}
+	}
 	$( document ).ready(function() {
 		$("textarea").val("");
 		$("input[type='text']").keypress(function(e){			
