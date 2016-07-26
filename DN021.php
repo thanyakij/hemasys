@@ -31,7 +31,7 @@
         <div class="col-lg-10">
         <div class="panel panel-default">
           <div class="panel-heading">HIIG Donor No. {{donor.DONOR_ID}} : {{donor.FIRST_NAME}} {{donor.SURNAME}}</div>
-          <table class="table table-bordered table-hover">
+          <table class="table table-bordered table-hover" ng-model="qwe" row-selected-color>
             <tr>
               <th width="30%">Exams</th>
               <th width="30%">Result</th>
@@ -39,17 +39,12 @@
               <th >Date of first det.</th>
               <th >Date of last det.</th>
             </tr>
-            <tr>
-              <td>Null</td><td>Null</td><td>Null</td><td>Null</td><td>Null</td>
-            </tr>
-            <tr>
-              <td>Null</td><td>Null</td><td>Null</td><td>Null</td><td>Null</td>
-            </tr>
-            <tr>
-              <td>Null</td><td>Null</td><td>Null</td><td>Null</td><td>Null</td>
-            </tr>
-            <tr>
-              <td>Null</td><td>Null</td><td>Null</td><td>Null</td><td>Null</td>
+            <tr ng-repeat="list in lists" ng-click="clickRow(list)">
+              <td>{{list.EXAMINATION_CODE}}</td>
+              <td>{{list.RESULT}}</td>
+              <td>{{list.RESULT_UNIT}}</td>
+              <td>{{list.FIRST_DETERMINATION_DATE}}</td>
+              <td>{{list.LAST_DETERMINATION_DATE}}</td>
             </tr>
           </table>
           </div>
@@ -68,13 +63,13 @@
           <div class="form-group">
             <label for="" class="col-sm-4 control-label">First sample</label>
             <div class="col-sm-8">
-              <input type="" class="form-control"  placeholder="">
+              <input type="" class="form-control"  placeholder="" ng-model="selectedRow.FIRST_DETERMINATION_DATE">
             </div>
           </div>
           <div class="form-group">
             <label for="" class="col-sm-4 control-label">Last sample</label>
             <div class="col-sm-8">
-              <input type="" class="form-control"  placeholder="">
+              <input type="" class="form-control"  placeholder="" ng-model="selectedRow.LAST_DETERMINATION_DATE">
             </div>
           </div>
         </div>
@@ -83,19 +78,19 @@
           <div class="form-group">
             <label for="" class="col-sm-5 control-label">Sample tested</label>
             <div class="col-sm-3">
-              <input type="" class="form-control"  placeholder="">
+              <input type="" class="form-control"  placeholder="" ng-model="selectedRow.DETERMINATIONS">
             </div>
           </div>
           <div class="form-group">
             <label for="" class="col-sm-5 control-label">First authorising lab</label>
             <div class="col-sm-7">
-              <input type="" class="form-control"  placeholder="">
+              <input type="" class="form-control"  placeholder="" ng-model="selectedRow.FIRST_DETERMINATION_LAB">
             </div>
           </div>
           <div class="form-group">
             <label for="" class="col-sm-5 control-label">Last authorising lab</label>
             <div class="col-sm-7">
-              <input type="" class="form-control"  placeholder="">
+              <input type="" class="form-control"  placeholder="" ng-model="selectedRow.LAST_DETERMINATION_LAB">
             </div>
           </div>
           <div class="form-group">

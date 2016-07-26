@@ -1,6 +1,9 @@
-<h1>Hello sis</h1>
-<?php 
+<?php
+  include ("pages/nav.php");
+  include ("pages/route.php");
+?>
+<?php /*
 echo $pageBody; 
 echo '<br>';
-echo $_SERVER['REQUEST_URI'];
+echo $_SERVER['REQUEST_URI']; */
 ?>

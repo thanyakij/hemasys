@@ -1,5 +1,6 @@
 app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope, $http, VariablesService) {
-
+  
+  var donor_id = '0000010195';
   $scope.donor = {};
   $scope.dob = '';
   let ageDifMs = '';
@@ -7,7 +8,7 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
 
   $http({
     method: 'GET',
-    url: VariablesService.host + '/api/Donor/read/0000010195'
+    url: VariablesService.host + '/api/Donor/read/' + donor_id
   }).then(function(res) {
     //Intitial dob string format to date format
 
@@ -29,6 +30,15 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
     ageDate = new Date(ageDifMs);                       //miliseconds from epoch
     $scope.donor.AGE = Math.abs(ageDate.getUTCFullYear() - 1970);
     
-    console.log($scope.donor);
-  })
+
+
+  });
+
+  $http({
+    method: 'GET',
+    url: VariablesService.host + '/api/Donor/get_aborh/' + donor_id
+  }).then(function(res) {
+    console.log('On getBorh ' + res);
+  });
+
 }])

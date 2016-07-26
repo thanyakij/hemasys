@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 	<head>
 
@@ -202,124 +203,179 @@
 </tbody>
 </table>
   </div>
-    </div>
-    <div class="modal-footer">
-		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
+=======
+<html ng-app='hemasys'>
+  <head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/primeui/primeui.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="jquery.min.js"></script>
+    <script src="assets/js/components/scripts.js"></script>
+		<script src="js/materialize.min.js"></script>
+		<script src="assets/js/view/DN009.js"></script>
+  </head>
+  <style>
+    .UIboxborder{
+      border:1px #999 solid;
+      padding:5px;
+    }
 
-    </div>
-  </div>
-			
-			
-			
-  <div id="planlist" class="modal" >
-    <div class="modal-content">
-      <h4>Planning List</h4>
-	  <p>Choice: 
-	  <input name="group1" type="radio" id="test1" checked/>
-      <label for="test1">Site</label>
-	  
-	  <input name="group1" type="radio" id="test2" />
-      <label for="test2">Regroupment</label>
-	  
-	  <input name="group1" type="radio" id="test3" />
-      <label for="test3">Centre</label>
-	  
-	  <input name="group1" type="radio" id="test4" />
-      <label for="test4">All</label>
-	  </p>
-	  
+    .input-field label {
+      color: #333;
+    }
 
-	  <div class="input-field">
-			<label>Start Date</label><input type="text" id="searchfilter">
-	  </div>
-	  
-  <div style="height: 200px; overflow: scroll;">
-	<table class="highlight">
-		<THEAD><Tr><TD>Code</TD><TD>Description</TD></Tr></THEAD>
-		<TBODY>
-			<TR class="planitem"><TD>02-Oct-2559</TD><TD>0E0964 : บริษัทอิซุซุมอเตอร์ (ประเทศไทย) จำกัด</TD></TH>
-			<TR class="planitem"><TD>20-Jun-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
-			<TR class="planitem"><TD>26-May-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
-			<TR class="planitem"><TD>14-Mar-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
-		</TBODY>
-	</table>
- </div>
-  
-    </div>
-    <div class="modal-footer">
-		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
+    label {
+      color: #333;
+    }
 
+    .input-field input[type=text]:focus + label {
+      color: #333;
+    }
+  </style>
+  <body>
+		<!-- Collection Point List -->
+	  <div id="collectionlist" class="modal" >
+      <div class="modal-content">
+        <h4>List of collection points</h4>
+        <p>Choice:
+      	  <input name="group1" type="radio" id="test1" checked/>
+          <label for="test1">Site</label>
+
+      	  <input name="group1" type="radio" id="test2" />
+          <label for="test2">Regroupment</label>
+
+	        <input name="group1" type="radio" id="test3" />
+          <label for="test3">Centre</label>
+
+	        <input name="group1" type="radio" id="test4" />
+          <label for="test4">All</label>
+	      </p>
+
+    	  <div>Filter</div>
+
+    	  <div class="input-field">
+    			<label>Description</label><input type="text" id="searchfilter" ng-model="searchfilter" uppercase string-and-number>
+    	  </div>
+
+        <div class="collection" style="height: 200px;overflow: scroll;">
+          <table class="highlight">
+            <thead>
+               <tr><td class="grey lighten-3">Code</td><td class="grey lighten-3">Description</td></tr>
+            </thead>
+            <tbody>
+               <tr class="colitem"><td class="">00000W</td><td>COLLECTION POINT TEST</td></tr>
+               <tr class="colitem"><td class="">0A000</td><td>ศูนย์บริการโลหิตแห่งชาติ</td></tr>
+               <tr class="colitem"><td class="">0A0900</td><td>เนื่องในโอกาสพิเศษต่างๆ</td></tr>
+               <tr class="colitem"><td class="">0A0901</td><td>เจ้าหน้าที่ศูนย์บริการโลหิตฯ</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+  		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
+      </div>
+>>>>>>> 958b2d5ed94565bc07d78b1191ae7366de89c667
     </div>
-  </div>
-		
-		
-		
-		
-	  				<nav class="red lighten-2">
-		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
-		 
-		 <ul class="right hide-on-med-and-down">
-          <li><a href="sass.html" class="btn grey">Logout</a></li>
-		  </ul>
-		  <div class="right">
-		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+
+    <div id="planlist" class="modal" >
+      <div class="modal-content">
+        <h4>Planning List</h4>
+    	  <p>Choice:
+      	  <input name="group1" type="radio" id="test1" checked/>
+          <label for="test1">Site</label>
+
+      	  <input name="group1" type="radio" id="test2" />
+          <label for="test2">Regroupment</label>
+
+      	  <input name="group1" type="radio" id="test3" />
+          <label for="test3">Centre</label>
+
+      	  <input name="group1" type="radio" id="test4" />
+          <label for="test4">All</label>
+    	  </p>
+
+    	  <div class="input-field">
+    			<label>Start Date</label><input type="text" id="searchfilter">
+    	  </div>
+
+        <div style="height: 200px; overflow: scroll;">
+        	<table class="highlight">
+        		<THEAD><Tr><TD>Code</TD><TD>Description</TD></Tr></THEAD>
+        		<TBODY>
+        			<TR class="planitem"><TD>02-Oct-2559</TD><TD>0E0964 : บริษัทอิซุซุมอเตอร์ (ประเทศไทย) จำกัด</TD></TH>
+        			<TR class="planitem"><TD>20-Jun-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
+        			<TR class="planitem"><TD>26-May-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
+        			<TR class="planitem"><TD>14-Mar-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
+        		</TBODY>
+        	</table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+  		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
+      </div>
+    </div>
+
+		<nav class="red lighten-2">
+		  <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+  		<ul class="right hide-on-med-and-down">
+        <li><a href="sass.html" class="btn grey">Logout</a></li>
+  		</ul>
+		  <div class="right">&nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล</div>
+
+		  <div class="right-align ">
+  			<div class="valign-wrapper right">
+  				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+  			</div>
 		  </div>
-		 <div class="right-align ">
-			<div class="valign-wrapper right">
-				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
-			</div>
-		  </div>
-	</nav>	
-		
-		<br><br>
+    </nav>
+
+	  <br><br>
+
     <div class="container">
-	<h4>Search for planning file</h4>
-        <div class="row">
-
-            <div class="input-field col s3 ">
-                <label for="code" class="col-sm-3 control-label">Code</label>
-                  <input type="text" class="form-control" id="code" placeholder="" maxlength="6">
-            </div>
-			
-			            <div class="form-group col s2 ">
-		<br><a class="modal-trigger btn grey" href="#collectionlist">>></a>
-            </div>
-			
-			            <div class="input-field col s6 blue-text text-darken-2 left-align">
-		 <p>               ชื่อหน่วย ชื่อหน่วย ชื่อหน่วย</p>
-            </div>
-
-
-
-            <div class="input-field padding col s12">
-                <label for="" class="">Planning Date</label>
-                  <input type="text" class="form-control" id="plandate"  placeholder="">
-            </div>
+    	<h4>Search for planning file</h4>
+      <div class="row">
+        <div class="input-field col s3 ">
+          <label for="code" class="col-sm-3 control-label">Code</label>
+          <input type="text" class="form-control" id="code" ng-model="code" max-length="6" uppercase>
         </div>
 
-    
+        <div class="form-group col s2 ">
+          <br><a class="modal-trigger btn grey" href="#collectionlist">>></a>
+        </div>
 
+        <div class="input-field col s6 blue-text text-darken-2 left-align">
+          <p>               ชื่อหน่วย ชื่อหน่วย ชื่อหน่วย</p>
+        </div>
 
-
-   
-   
+        <div class="input-field padding col s12">
+          <label for="" class="">Planning Date</label>
+          <input type="text" class="form-control" id="plandate" ng-model="plandate" date-input  placeholder="">
+        </div>
+      </div>
     </div>
-	
-						<footer class="page-footer red lighten-2">
-			<div class="container">
-			<div class="row center-align ">
 
-        <div class="row">
-            <div class="col s4">
+		<footer class="page-footer red lighten-2">
+  			<div class="container">
+    			<div class="row center-align ">
+
+            <div class="row">
+              <div class="col s4">
                 <button class="btn grey" type="">Create</button>
-            </div>
-            <div class="col s4">
-                <a id="searchbtn" class="btn grey modal-trigger disabled" href="#planlist" disabled>Search</a>
-            </div>
-            <div class="col s4">
+              </div>
+              <div class="col s4">
+                <a id="searchbtn" class="btn grey modal-trigger" ng-class="{ disabled: !(code.length==6 && plandate) }" href="#planlist">Search</a>
+              </div>
+              <div class="col s4">
                 <button class="btn grey" type="">Exit</button>
+<<<<<<< HEAD
             </div> 
         </div>
 			</div>
@@ -332,4 +388,18 @@
 			</div>
 		</footer>
     </body>
+=======
+              </div>
+            </div>
+    			</div>
+  			</div>
+        <div class="footer-copyright">
+          <div class="container">
+            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
+    			  <p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+    			</div>
+  			</div>
+	  </footer>
+  </body>
+>>>>>>> 958b2d5ed94565bc07d78b1191ae7366de89c667
 </html>

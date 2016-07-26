@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html ng-app="hemasys">
-    <head>
+<html ng-app="hemasys"><head>
       <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
       <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css" />
       <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      
       <script src="assets/js/components/scripts.js"></script>
-      <script src="assets/js/angular-service/variables-service.js"></script>
       <script src="assets/js/jquery-2.2.1.js"></script>
       <script src="assets/js/bootstrap.min.js"></script>
-      <style type="text/css">
-      </style>
+      
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/materialize.min.js"></script>	
       <?php
 
       include ("pages/setting.php");
-      include ("pages/route.php");
 
       ?>
       <title><?php
