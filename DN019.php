@@ -158,7 +158,7 @@ include ("pages/header.php");
                 </div>
             </div>
             <div class="col-md-2">
-                <h1 style="font-size: 500%; color:red;"><b>AB+</b></h1>
+                <h1 style="font-size: 500%; color:red;"><b>{{donor.ABORH}}</b></h1>
             </div>   
             <div class="col-md-12">
                 <div class="form-group" style="margin-bottom:0;">
@@ -369,7 +369,7 @@ include ("pages/header.php");
                     </div>
                     <label for="" class="col-sm-1 control-label rmpadding">Sample number</label>
                     <div class="col-sm-2">
-                        <input type="" class="form-control" tabindex="37" placeholder="">
+                        <input type="" class="form-control" tabindex="37" placeholder="" ng-model="dornor.SAMPLE_NUMBER">
                     </div>
                     <label for="rank" class="col-sm-1 control-label">Ranks</label>
                     <div class="col-sm-1">

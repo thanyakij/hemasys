@@ -14,20 +14,122 @@ include ("pages/header.php");
 
 <link rel="stylesheet" href="assets/jquery-ui/themes/redmond/jquery-ui.css" type="text/css"/>
 <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
-
+<style>
+    div#myDate form table.table tbody tr:hover{background-color:red;}
+</style>
 <script type="text/javascript">
+    $(document).ready(function(){
+        var host = window.location.host
+        $("#bagTypeBtn").click(function(){
+            window.location.href= "http://"+host+"/hemasys2/views/DN019.php"
+        });
+        // $("div#myDate form table.table tbody tr:hover").mouseup(function(){
+        //     console.log("aaa")
+        // })
+        $("div#myDate form table.table tbody").on('click', 'tr', function() {
+            console.log("My TD:first-child is:" + $(this).children('td:first-child').html())
+            //alert("You clicked my <tr>!");
+            //get <td> element values here!!??
+        });
+    });
 	$(function(){
 		//setGlobal
 		setGlobalCode($("#collection_point_code"), 6, 6, false);
 		setGlobalCode($("#bagType"), 3, 3, false);
-		
 		$("#plan_date").datepicker().datepicker("setDate", new Date());
 		$("#plan_date").val(toDatepickerValue($("#plan_date").val()));
 		$(".datepicker-plandate").click(function(){
 			$("#plan_date").datepicker("show");
 		});
+        var planDate = $("#plan_date").val()
+        var pointCode = $("#collection_point_code").val()
+        var bagType = $("#bagType").val()
+        // var  = $("#").val()
+        // var  = $("#").val()
+        // var  = $("#").val()
+        // var  = $("#").val()
+        // var  = $("#").val()
+        // var  = $("#").val()
+        // var  = $("#").val()
+
+        var dialog1 = $( "#myDate" ).dialog({
+            autoOpen: false,
+            height: 500,
+            width: 800,
+            modal: true,
+            buttons: {
+                Ok: function() {
+                    dialog1.dialog( "close" );
+                } ,
+                Cancel: function() {
+                    dialog1.dialog( "close" );
+                }
+            },
+        });
+        var dialog2 = $( "#myCode" ).dialog({
+            autoOpen: false,
+            height: 500,
+            width: 800,
+            modal: true,
+            buttons: {
+                Ok: function() {
+                    dialog2.dialog( "close" );
+                } ,
+                Cancel: function() {
+                    dialog2.dialog( "close" );
+                }
+            },
+        });
+        $("#plandateBtn").click(function(){
+            // var date = $("#plan_date").val().toString()
+            // var url = "http://192.168.0.145/api/donor/read/"+date
+            //     $.post(url,function(donor){
+            //         console.log(donor)
+            //     })
+            dialog1.dialog( "open" );
+        })
+        $("#codeBtn").click(function(){
+            dialog2.dialog( "open" );
+        });
+        
 	});
 </script>
+
+<div id="myDate" title="Collection plan date" class="modal">
+    <form action="">
+        <table class="table table-bordered table-hover">
+                <thead>
+                    <th style="width:25%;">Date</th>
+                    <th style="width:25%;">Code</th>
+                    <th style="width:50%;">Description</th>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>a</td><td>a</td></tr>
+	                <tr><td>2</td><td>a</td><td>a</td></tr>
+                    <tr><td>3</td><td>a</td><td>a</td></tr>
+                    <tr><td>4</td><td>a</td><td>a</td></tr>
+                    <tr><td>5</td><td>a</td><td>a</td></tr>
+                </tbody>
+        </table>
+    </form>
+</div>
+<div id="myCode" class="modal">
+    <form action="">
+        <table class="table table-bordered table-hover">
+                <thead>
+                    <th style="width:25%;">Date</th>
+                    <th style="width:25%;">Code</th>
+                    <th style="width:50%;">Description</th>
+                </thead>
+                <tbody>
+                    <tr><td>User</td><td>a</td><td>a</td></tr>
+	                <tr><td>User</td><td>a</td><td>a</td></tr>
+                    <tr><td>User</td><td>a</td><td>a</td></tr>
+                    <tr><td>User</td><td>a</td><td>a</td></tr>
+                </tbody>
+        </table>
+    </form>
+</div>
 
 <div id="<?php echo $pageClass; ?>" class="container">
         <form>
@@ -40,7 +142,7 @@ include ("pages/header.php");
                         <div class="input-group">
                             <input id="plan_date" name="plan_date" class="form-control blurdate" tabindex="1" type="text" value="">
                             <span class="input-group-btn">
-                              <button class="btn btn-default datepicker-plandate" type="button">
+                              <button class="btn btn-default" id="plandateBtn" type="button">
                                 <i class="glyphicon glyphicon-chevron-right"></i>
                               </button>
                             </span>
@@ -60,7 +162,7 @@ include ("pages/header.php");
                         <div class="input-group">
                             <input id="collection_point_code" name="collection_point_code" tabindex="2" class="form-control" type="text" value="">
                             <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">
+                              <button class="btn btn-default" id="codeBtn" type="button">
                                 <i class="glyphicon glyphicon-chevron-right"></i>
                               </button>
                             </span>
@@ -101,7 +203,7 @@ include ("pages/header.php");
                        <div class="input-group">
                             <input class="form-control" type="text" id="bagType" name="bagType" tabindex="4" name="" value="">
                             <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">
+                              <button class="btn btn-default" id="bagTypeBtn" type="button">
                                 <i class="glyphicon glyphicon-chevron-right"></i>
                               </button>
                             </span>
@@ -137,8 +239,8 @@ include ("pages/header.php");
     <section class="button-actions">
         <div class="row clearfix">
             <div class="col-sm-2 col-sm-offset-1">
-                <a href="dn017.php">
-                    <button href="#" class="btn btn-lg btn-primary main-btn" tabindex="6">Secretarial<br/>Reception</button>
+                <a href="DN017.php">
+                    <button href="#" id="Secretarial" class="btn btn-lg btn-primary main-btn" tabindex="6">Secretarial<br/>Reception</button>
                 </a>
             </div>
             <div class="col-sm-2">

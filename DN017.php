@@ -23,13 +23,65 @@ include ("pages/header.php");
 		setGlobalCode($("#abmdrId"), 0, 0, true);
 		setGlobalCode($("#identifier"), 20, 20, true);
 		
-		$("#dateOfBirth").val(formatDate(new Date()));
+		//$("#dateOfBirth").val(formatDate(new Date()));
 		$("#age").html(calDOB(strToDate($("#dateOfBirth").val()))+" years");
 		$("#dateOfBirth").datepicker();
 		$("#dateOfBirth").blur(function(){
 			$("#age").html(calDOB(strToDate($(this).val()))+" years");
 		});
+        $("#exitBtn").click(function(){
+            window.location.href="http://127.0.0.1:1212/hemasys2/views/DN016.php"
+        })
 	});
+    $(document).ready(function(){
+        $("#searchBtn").click(function(){
+            //console.log("Testing Function")
+            var doId = $("#donor_id").val();
+            var natId = $("#Nid").val();
+            var abmId = $("#abmdrId").val();
+            var name = $("input[name='firstName']").val();
+            var sname = $("input[name='surName']").val();
+            var dob = $("input[name='dateOfBirth']").val();
+            if(doId != ''){
+                var url = "http://192.168.0.145/api/donor/read/"+doId
+                $.get(url,function(donor){
+                    window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+doId       
+                })
+                .fail(function() {
+                    alert("Hematos ID not found")
+                })
+            }else if(natId != ''){
+                var url = "http://192.168.0.145/api/donor/read_ssid/"+natId
+                $.get(url,function(donor){
+                    window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+donor.DONOR_ID       
+                })
+                .fail(function() {
+                    alert("National ID not found")
+                })
+            }else if(abmId != ''){
+                var url = "http://192.168.0.145/api/donor/read_abmdr/"+abmId
+                $.get(url,function(donor){
+                    window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+donor.DONOR_ID       
+                })
+                .fail(function() {
+                    alert("ABMDR ID not found")
+                })
+            }else if(name != '' && sname != ''||name != '' && dob != ''||dob != '' && sname != ''||name!=''&&sname!=''&&dob!=''){
+                var detail = {FIRST_NAME:name+"%",SURNAME:sname+"%",DATE_OF_BIRTH:dob};
+                var json = JSON.stringify(detail);
+                console.log(json);
+                // var url = "http://192.168.0.145/api/donor/search_by_detail"
+                // $.post(url,json,"json").done(function( data ) {
+                //     window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+data.DONOR_ID
+                // }).fail(function(data){
+                //     alert("Not found")
+                // });
+            }else{
+                alert("Please enter some infomation")
+            }
+        })
+    })
+    
 </script>
     <div id="<?php echo $pageClass; ?>" class="container">
         <div class="form-group">
@@ -59,7 +111,9 @@ include ("pages/header.php");
                     <label for="abmdrId">ABMDR ID</label>
                 </div>
                 <div class="col-sm-3">
-                    <input class="form-control" type="text" name="abmdrId" id="abmdrId" value="" tabindex="3">
+                    <input class="f
+                    
+                    orm-control" type="text" name="abmdrId" id="abmdrId" value="" tabindex="3">
                 </div>
             </div>
         </div>
@@ -123,7 +177,7 @@ include ("pages/header.php");
         <div class="row actions clearfix">
             <div class="col-sm-3 pull-left">
                 <a href="#">
-                    <button class="btn btn-info btn-lg" tabindex="9">
+                    <button type="button" id="searchBtn" class="btn btn-info btn-lg" tabindex="9">
                         <i class="glyphicon glyphicon-search"></i>
                          Search
                     </button>
@@ -131,7 +185,7 @@ include ("pages/header.php");
             </div>
             <div class="col-sm-3 pull-right text-right">
                 <a href="#">
-                    <button class="btn btn-danger btn-lg" tabindex="10">
+                    <button class="btn btn-danger btn-lg" id="exitBtn" tabindex="10">
                         <i class="glyphicon glyphicon-remove-sign"></i>
                          Exit
                     </button>
