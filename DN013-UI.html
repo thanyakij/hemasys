@@ -65,7 +65,11 @@
 
 			// })
 			$("#abortBtn").click(function(){
-				
+				if(confirm("Are you confirm to cancel change ?")){
+					location.reload();
+				}else{
+					return;
+				}
 			})
 			$("#saveBtn").click(function(){
 				let url = "http://192.168.0.145/api/collection_point_contact/lists/"+code
@@ -83,7 +87,7 @@
 					NOTE: $("#note").val(),
 					};
                 let json = JSON.stringify(detail);
-				if(confirm("Are you confirm to save change")){
+				if(confirm("Are you confirm to save change ?")){
 					$.toast("Saved",2000);
 				}else{
 					return ;
