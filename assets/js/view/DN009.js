@@ -27,6 +27,7 @@ app.controller('searchPlanCtrl', ['$scope', '$http', function($scope, $http) {
   }
 
   $scope.searchCollectionPointList = function() {
+    // console.log($scope.COLLECTION_POINT_CODE);
     $http({
       method: 'GET',
       url: 'http://192.168.0.145/api/collection_point/'
@@ -43,7 +44,12 @@ app.controller('searchPlanCtrl', ['$scope', '$http', function($scope, $http) {
 
       }
     }).then(function(response) {
-      console.log('Search');
+      if (response.data.length == 1 && $scope.COLLECTION_POINT_CODE.length == 6) {
+        console.log('Link to Collection plan and send data', response.data[0]);
+      } else {
+        console.log('Show modal list data', response.data);
+      }
+
       // $scope.collection_point_list2 = response.data;
     });
   }
