@@ -63,9 +63,9 @@
                  <tr><td class="grey lighten-3">Code</td><td class="grey lighten-3">Description</td></tr>
               </thead>
               <tbody>
-                <tr class="colitem" ng-repeat="item in collection_point_list | filter: searchfilter | filter: code" ng-click="selectedRow(item)">
-                  <td>{{ item.code }}</td>
-                  <td>{{ item.description }}</td>
+                <tr class="colitem" ng-repeat="item in collection_point_list | filter: searchfilter | filter: COLLECTION_POINT_CODE" ng-click="selectedRow(item)">
+                  <td>{{ item.COLLECTION_POINT_CODE }}</td>
+                  <td>{{ item.LOCATION_NAME }}</td>
                 </tr>
               </tbody>
             </table>
@@ -107,7 +107,7 @@
               <tbody>
                 <tr class="colitem" ng-repeat="item in collection_point_list2 | filter: searchfilter2" ng-click="selectedRow2(item)">
                   <td>{{ item.start_date }}</td>
-                  <td>{{ item.description }}</td>
+                  <td>{{ item.LOCATION_NAME }}</td>
                 </tr>
               </tbody>
           	</table>
@@ -141,15 +141,19 @@
         <div class="row">
           <div class="input-field col s3 ">
             <label for="code" class="col-sm-3 control-label">Code</label>
-            <input type="text" class="form-control" id="code" ng-model="code" max-length="6" uppercase  placeholder="">
+            <input type="text" class="form-control" id="code" ng-model="COLLECTION_POINT_CODE" max-length="6" uppercase  placeholder="">
           </div>
 
           <div class="form-group col s2 ">
-            <br><a class="modal-trigger btn grey" href="#collectionlist"> >> </a>
+            <br>
+              <button
+                class="modal-trigger btn grey"
+                href="#collectionlist"
+                ng-click="searchCollectionPointList()"> >> </button>
           </div>
 
           <div class="input-field col s6 blue-text text-darken-2 left-align">
-            <p>{{ list_selected.description }}</p>
+            <p>{{ list_selected.LOCATION_NAME }}</p>
           </div>
 
           <div class="input-field padding col s12">
@@ -170,9 +174,9 @@
               <div class="col s4">
                 <button
                   class="btn grey modal-trigger"
-                  ng-class="{ disabled: !(code.length==6 || plandate) }"
-                  ng-disabled="!(code.length==6 || plandate)"
-                  ng-href="{{ (code.length==6 || plandate) ? '#planlist' : '#' }}"
+                  ng-class="{ disabled: !(COLLECTION_POINT_CODE.length==6 || plandate) }"
+                  ng-disabled="!(COLLECTION_POINT_CODE.length==6 || plandate)"
+                  ng-href="{{ (COLLECTION_POINT_CODE.length==6 || plandate) ? '#planlist' : '#' }}"
                   ng-click="search()">Search</button>
               </div>
               <div class="col s4">

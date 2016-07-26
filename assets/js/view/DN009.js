@@ -1,24 +1,17 @@
 app.controller('searchPlanCtrl', ['$scope', '$http', function($scope, $http) {
   function init() {
-    $scope.collection_point_list = [
-      { code: '0A0900', description: 'ศูนย์บริการโลหิตแห่งชาติ' },
-      { code: '0A0901', description: 'เนื่องในโอกาสพิเศษต่างๆ' },
-      { code: '0A0902', description: 'เจ้าหน้าที่ศูนย์บริการโลหิตฯ' },
-      { code: '0A0903', description: 'COLLECTION POINT TEST' }
-    ];
+    $scope.collection_point_list = [];
     $scope.collection_point_list2 = [
-      { start_date: '0A0900', description: 'ศูนย์บริการโลหิตแห่งชาติ 2' },
-      { start_date: '0A0901', description: 'เนื่องในโอกาสพิเศษต่างๆ 2' },
-      { start_date: '0A0902', description: 'เจ้าหน้าที่ศูนย์บริการโลหิตฯ 2' },
-      { start_date: '0A0903', description: 'COLLECTION POINT TEST 2' }
+      { start_date: '0A0900', LOCATION_NAME: 'ศูนย์บริการโลหิตแห่งชาติ 2' },
+      { start_date: '0A0901', LOCATION_NAME: 'เนื่องในโอกาสพิเศษต่างๆ 2' },
+      { start_date: '0A0902', LOCATION_NAME: 'เจ้าหน้าที่ศูนย์บริการโลหิตฯ 2' },
+      { start_date: '0A0903', LOCATION_NAME: 'COLLECTION POINT TEST 2' }
     ];
     $scope.choice_checked = 'site';
     $scope.choice_checked2 = 'site';
     $scope.list_selected = {};
     $scope.transaction_item = {};
     $scope.selectedItem = {};
-
-    getCollectionPointList();
 
     $('.modal-trigger').leanModal();
 
@@ -33,13 +26,12 @@ app.controller('searchPlanCtrl', ['$scope', '$http', function($scope, $http) {
     });
   }
 
-  function getCollectionPointList() {
+  $scope.searchCollectionPointList = function() {
     $http({
       method: 'GET',
-      url: 'http://192.168.0.145/api/donor_biological/lists/0000010195' // จะต้องเปลี่ยน path
+      url: 'http://192.168.0.145/api/collection_point/'
     }).then(function(response) {
-      console.log('Init');
-      // $scope.collection_point_list = response.data;
+      $scope.collection_point_list = response.data;
     });
   }
 
@@ -81,12 +73,12 @@ app.controller('searchPlanCtrl', ['$scope', '$http', function($scope, $http) {
 
   function setSelected() {
     $scope.list_selected = $scope.transaction_item;
-    $scope.code = $scope.transaction_item.code;
+    $scope.COLLECTION_POINT_CODE = $scope.transaction_item.COLLECTION_POINT_CODE;
   }
 
-  $scope.$watch('code', function(newVal, oldVal) {
+  $scope.$watch('COLLECTION_POINT_CODE', function(newVal, oldVal) {
     $scope.collection_point_list.forEach(item => {
-      if (item.code == newVal) {
+      if (item.COLLECTION_POINT_CODE == newVal) {
         $scope.selectedRow(item);
         setSelected()
       }
