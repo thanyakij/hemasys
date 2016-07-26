@@ -2,7 +2,7 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
   
   var donor_id = '1004621184';
   $scope.donor = {};
-  $scope.medical = [];
+  $scope.medical = {};
   $scope.selectedMedical = {};
   $scope.selectedMedical2 = {};
   $scope.checkAuthen = true;
@@ -17,7 +17,7 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
       method: 'GET',
       url: VariablesService.host + '/api/Donor_medical/lists/' + $scope.donor.DONOR_ID
     }).then(function(response) {
-      $scope.medical.push(response.data);
+      $scope.medical = response.data;
       // $scope.medical = response;
     })
 
