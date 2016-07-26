@@ -1,4 +1,4 @@
-<section>
+<section class="body">
 <div style="display:inline-block;width:600px;background:#ffffff;" >
   <div style="float:left;display:block;width:150px;padding:20px;"><img src="images/logo-drop.jpg" style="width: 100px;" /></div>
   <div style="float:left;display:block;width:400px;">
