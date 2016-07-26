@@ -70,12 +70,12 @@ include ("pages/header.php");
                 var detail = {FIRST_NAME:name+"%",SURNAME:sname+"%",DATE_OF_BIRTH:dob};
                 var json = JSON.stringify(detail);
                 console.log(json);
-                // var url = "http://192.168.0.145/api/donor/search_by_detail"
-                // $.post(url,json,"json").done(function( data ) {
-                //     window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+data.DONOR_ID
-                // }).fail(function(data){
-                //     alert("Not found")
-                // });
+                var url = "http://192.168.0.145/api/donor/search"
+                $.post(url,json,"json").done(function( data ) {
+                    window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+data.DONOR_ID
+                }).fail(function(data){
+                    alert("Not found")
+                });
             }else{
                 alert("Please enter some infomation")
             }

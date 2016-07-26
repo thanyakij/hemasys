@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
 
-		<meta charset="UTF-8">
-    
-		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
-				<script src="jquery.min.js"></script>
-		<script src="js/materialize.min.js"></script>	
-  
-    </head>
-    <body>
-        <style>
-            body{
-               
-            }
-            .UIboxborder{
-                border:1px #999 solid; 
-                padding:5px;
-            }
-            .padding{
-              
-            }
-			
-			    .input-field label {
-				 color: #333;
-			   }
+	<meta charset="UTF-8">
+	
+	<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+			<link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+			<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+			<link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+			<link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+			<link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+			<script src="jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>	
 
-				label {
-					color: #333;
-				}	
-			   /* label focus color */
-			   .input-field input[type=text]:focus + label {
-				 color: #333;
-			   }
+	</head>
+	<body>
+	<style>
+			body{
+					
+			}
+			.UIboxborder{
+					border:1px #999 solid; 
+					padding:5px;
+			}
+			.padding{
+				
+			}
 
-        </style>
-        <script>
+			.input-field label {
+			color: #333;
+			}
+
+			label {
+				color: #333;
+			}	
+			/* label focus color */
+			.input-field input[type=text]:focus + label {
+			color: #333;
+			}
+	</style>
+  <script>
 		$(document).ready(function(){
 			$('.modal-trigger').leanModal();
 						var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
-		
 		
 				$(document).on("click", ".colitem", function(){
 					$(".colitem").removeClass("yellow");
@@ -68,21 +66,20 @@
 				var today = now.getDate();
 				var thismonth = now.getMonth()+1;
 				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
-				
 				var newstrdate = "";
 				if (getdate[0] > 31) {getdate[0] = 31;}
 				if (getdate[1] > 12) {getdate[1] = 12;}
 				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
 				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
 				if (getdate[2]) {
-				      if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
-					  if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
-					  if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
-					  newstrdate+=getdate[2];
-					  }else{
-					  if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
-					  if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
-					  }
+				if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
+				if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
+				if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
+				newstrdate+=getdate[2];
+				}else{
+				if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
+				if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
+				}
 				// กรณีใส่มาติดกันไม่มีคั่น
 				if ($("#plandate").val().length == 8 && !isNaN($("#plandate").val())) {
 					var data1 = parseInt($("#plandate").val().substr(0,2));
@@ -157,20 +154,18 @@
 				$('#searchfilter').bind('keyup', function(e) {
 					$(this).val($(this).val().toUpperCase());
 				});
-		
             var d = new Date()
-            
             //d.setDate()=d.getDate()
             console.log(d)
             $("#plandate").val(d.getUTCDate());
 			});
 			
-        </script>
+  </script>
 		
 		
 		
-			<!-- Collection Point List -->
-			  <div id="collectionlist" class="modal" >
+  <!-- Collection Point List -->
+	<div id="collectionlist" class="modal" >
     <div class="modal-content">
       <h4>List of collection points</h4>
 	  <p>Choice: 
@@ -329,10 +324,10 @@
         </div>
 			</div>
 			</div>
-<div class="footer-copyright">
+			<div class="footer-copyright">
             <div class="container">
             <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
-			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
+						<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
 			</div>
 			</div>
 		</footer>

@@ -1,49 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
 		<meta charset="UTF-8">
-    
-		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
-				<script src="jquery.min.js"></script>
-		<script src="js/materialize.min.js"></script>	
-    </head>
-    <body>
-        <style>
-            body{
-                
-            }
 
-            
-        </style>
-		<script>
-			$(document).ready(function(){
-				$("select").material_select();
-				$('.modal-trigger').leanModal();
-				
-								$(document).on("click", ".item1", function(){
-					//$(".item1").removeClass("yellow lighten-1");
-					//$(this).addClass("yellow");
-				});
-				
-				$(document).on("click", ".useritem", function(){
-					$(".useritem").removeClass("yellow");
-					$(this).toggleClass("yellow");
-				});
-				
-				
-				$(document).on("click", ".siteitem", function(){
-					$(".siteitem").removeClass("yellow");
-					$(this).toggleClass("yellow");
-				});
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="jquery.min.js"></script>
+		<script src="js/materialize.min.js"></script>	
+	</head>
+    <body>
+	<style>
+		body{
+			
+		}
+
+		
+	</style>
+	<script>
+		$.urlParam = function(name){
+			var param = new RegExp('[\?&]'+ name +'=([^&#]*)').exec(window.location.href);
+			if(param == null){
+				return null
+			}else{
+				return param[1]||0
+			}
+		}
+		var code = $.urlParam("code")
+		var url = "http://192.168.0.145/api/collection_point_contact/lists/"+code
+		$.get(url,function(data){
+			var trtd = ''
+			for(var i=0;i<data.length;i++){
+				trtd += '<tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">'+data[i].FIRST_NAME+"  "+data[i].NAME+'</td><td><a class="btn grey  modal-trigger" href="#personnellist">>></a></td></tr>'
+			}
+			$(".col-lg-10 .col table tbody").html(trtd)
+			$(".col-lg-10 .col table tbody").on('click','tr',function(){
+				var name = $(this).children('td:nth-child(2)').text()
+				var a = name.split(" ")
+				for(let i=0;i<data.length;i++){
+					if(data[i].FIRST_NAME == a[0]){
+						$("#desc").focus().val(data[i].FIRST_NAME+" "+data[i].NAME)
+						$("#addr1").focus().val(data[i].ADDRESS_1)
+						$("#addr2").focus().val(data[i].ADDRESS_2)
+						$("#no1").focus().val(data[i].TEL_1)
+						$("#no2").focus().val(data[i].TEL_2)
+						$("#fax").focus().val(data[i].FAX)
+						$("#note").focus().val(data[i].NOTE)
+						$("#country").focus().val(data[i].COUNTRY_CODE)
+						$("#postcode").focus().val(data[i].POSTAL_ZIP_CODE).blur()
+					}
+				}
+			})
+		})
+		$(document).ready(function(){
+			$("select").material_select();
+			$('.modal-trigger').leanModal();
+			$(document).on("click", ".item1", function(){
+				//$(".item1").removeClass("yellow lighten-1");
+				//$(this).addClass("yellow");
 			});
 			
+			$(document).on("click", ".useritem", function(){
+				$(".useritem").removeClass("yellow");
+				$(this).toggleClass("yellow");
+			});
+			
+			$(document).on("click", ".siteitem", function(){
+				$(".siteitem").removeClass("yellow");
+				$(this).toggleClass("yellow");
+			});
+			
+		});
+		
 
-		</script>
+	</script>
 		
 		
 		  <!-- Display of available personnel -->
@@ -117,7 +150,7 @@
   </div>
 		
 		
-			  				<nav class="red lighten-2">
+		<nav class="red lighten-2">
 		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
 		 
 		 <ul class="right hide-on-med-and-down">
@@ -135,17 +168,14 @@
         <div class="container row">
             
             <div class="col-lg-10 ">
-				<div class="col s10" style="height: 200px;overflow-y: scroll;">
-                <table class="highlight center">
+			<div class="col s10" style="height: 200px;overflow-y: scroll;">
+			<table class="highlight center">
                 <thead>
-                    <th style="width:50%">Role</th>
+                    <th style="width:40%">Role</th>
                     <th class="center-align" colspan="2">User</th>
                 </thead>
                 <tbody>
-                    <tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">User xxxxxxxxxxxx</td><td><a class="btn grey  modal-trigger" href="#personnellist">>></a></td></tr>
-	                <tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">User</td><td><a class="btn grey  modal-trigger" href="#personnellist">>></a></td></tr>
-                    <tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">User</td><td><a class="btn grey modal-trigger" href="#personnellist">>></a></td></tr>
-                    <tr class="useritem"><td><select class="form-control"></select><label></label></td><td class="center-align">User</td><td><a class="btn grey modal-trigger" href="#personnellist">>></a></td></tr>
+
                 </tbody>
             </table>
 				</div>
@@ -163,39 +193,39 @@
 				<h5>Details</h5>
             <div class="input-field col s12">  
                     <label for="" class="col-sm-2 control-label">Description</label>
-					<input type="text">
+					<input type="text" id="desc">
             </div> 
             <div class="input-field col s12">  
                     <label for="" class="col-sm-2 control-label">address1</label>
-					<input type="text">
+					<input type="text" id="addr1">
             </div>
             <div class="input-field col s12">  
                     <label for="" class="col-sm-2 control-label">Address2</label>
-					<input type="text">
+					<input type="text" id="addr2">
             </div>
             <div class="input-field col s6">  
                     <label for="" class="col-sm-2 control-label">Postcode</label>
-					<input type="text">
+					<input type="text" id="postcode">
             </div>
             <div class="input-field  col s6">  
                     <label for="" class="col-sm-2 control-label">Country</label>
-					<input type="text">
+					<input type="text" id="country">
             </div>
             <div class="input-field  col s4">  
                     <label for="" class="col-sm-2 control-label">1st phone number</label>
-					<input type="text">
+					<input type="text" id="no1">
             </div>
             <div class="input-field  col s4">  
                     <label for="" class="col-sm-1 control-label">2nd phone number</label>
-					<input type="text">
+					<input type="text" id="no2">
             </div>
             <div class="input-field  col s4">  
                     <label for="" class="col-sm-1 control-label">Fax</label>
-					<input type="text">
+					<input type="text" id="fax">
             </div>
             <div class="input-field col s12">  
                     <label for="" class="col-sm-2 control-label">Notes</label>
-                    <input type="text">
+                    <input type="text" id="note">
             </div>
 		</div>
             
