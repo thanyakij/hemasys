@@ -63,7 +63,7 @@
                  <tr><td class="grey lighten-3">Code</td><td class="grey lighten-3">Description</td></tr>
               </thead>
               <tbody>
-                <tr class="colitem" ng-repeat="item in collection_point_list | filter: searchfilter" ng-click="selectedRow(item)">
+                <tr class="colitem" ng-repeat="item in collection_point_list | filter: searchfilter | filter: code" ng-click="selectedRow(item)">
                   <td>{{ item.code }}</td>
                   <td>{{ item.description }}</td>
                 </tr>
