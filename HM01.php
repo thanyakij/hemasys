@@ -1,27 +1,25 @@
 <section>
-
-<div class="center-align"><br><br>
-	<img src="images/logo-drop.jpg" style="width: 150px;">
-</div>
-	<div class="container center-align" style="padding-left: 20%;padding-right: 20%;">
-		<h3>&nbsp;Login to NBCSys</h3>
-			<hr><br>
-		<div class="row center-align " >
-			<div class="input-field col s12 center-align">
+<div style="display:inline-block;width:600px;background:#ffffff;" >
+  <div style="float:left;display:block;width:150px;padding:20px;"><img src="images/logo-drop.jpg" style="width: 100px;" /></div>
+  <div style="float:left;display:block;width:400px;">
+    <h4>please sign in</h4>
+		<div class="">
+			<div class="input-field">
 				<input type="text" id="username">
 				<label for="username" class="validate active" tabindex="1">Username</label>
 			</div>
-			<div class="input-field col s12">
+			<div class="input-field">
 				<input type="password" id="pass">
 				<label for="pass" class="validate" tabindex="2">Password</label>
 			</div>
+      <div class="">
+		    <a class="btn green" tabindex="3">Login</a> <button class="btn grey">Exit</button>
+      </div>
 		</div>
-		
-	</div>
-		
-<div class="center-align">
-		<a class="btn green" tabindex="3">Login</a> <button class="btn grey">Exit</button>
-</div>		
+  </div>
+  <div class="clearboth"></div>
+</div>
+
 </section>
 
 <script>
@@ -53,14 +51,7 @@
 			});
 </script>
 
-
-
-
-
-
-
-
-
+<div style="display:none;">
 
       <!--
 		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
@@ -89,8 +80,4 @@
         </style>   
         -->
 
-		<script>
-		</script>
-    
-
-
+</div>

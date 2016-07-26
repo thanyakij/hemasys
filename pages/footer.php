@@ -1,6 +1,6 @@
-		<footer class="wrap">
+		<footer class="wrap" style="margin-top:2em;">
 			<div class="container text-center">
-			This is footer.
+			Footer.
 			</div>
 		</footer>
 	</body>
