@@ -1,12 +1,24 @@
+/*
+ * 
+ * colour pallet accorded from Tetrad coulour set from primary color of NBC
+ * http://paletton.com/palette.php?uid=75B0O0ksmuh1X3YfAkBTdLj%2B%2BGA
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 body {
   height: 100%;
 }
-nav {
-  position:fixed; top:0; right:0;
-  width:100%;
-  height:35px;
-  overflow:hidden;
-  z-index:10;
+nav.main-nav {
+  background:#CE352C;
+  color:#ffffff;
 }
 .container {
   margin-top: 20px;
@@ -23,13 +35,13 @@ textarea {
   padding: 5px 10px;
 }
 */
-footer {
-  background-color: #ddd;
-  padding: 10px 0;
+
+.center {
+  text-align:center;
 }
-.UIboxborder {
-  border: 1px solid #999;
-  padding: 5px;
+
+.text-white {
+  color:#ffffff; 
 }
 #dn016 .button-actions {
   padding-top: 40px;

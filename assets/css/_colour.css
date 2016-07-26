@@ -1,0 +1,11 @@
+.mainmenu-tile {
+  background:#CE352C;
+}
+.mainmenu-tile:hover {
+  background:#9A1616;
+  cursor:pointer;
+}
+tile a, .tile a {
+  color:#ffffff !important;
+  text-decoration:none !important;
+}
