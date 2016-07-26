@@ -6,6 +6,7 @@
       <link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css" />
       <link rel="stylesheet" type="text/css" href="assets/css/main.css">
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/_UI12col.css">
       
       <script src="assets/js/components/scripts.js"></script>
       <script src="assets/js/jquery-2.2.1.js"></script>
