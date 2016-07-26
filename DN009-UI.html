@@ -1,209 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html>
-	<head>
-
-	<meta charset="UTF-8">
-	
-	<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
-			<link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
-			<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
-			<link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
-			<link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
-			<link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
-			<script src="jquery.min.js"></script>
-	<script src="js/materialize.min.js"></script>	
-
-	</head>
-	<body>
-	<style>
-			body{
-					
-			}
-			.UIboxborder{
-					border:1px #999 solid; 
-					padding:5px;
-			}
-			.padding{
-				
-			}
-
-			.input-field label {
-			color: #333;
-			}
-
-			label {
-				color: #333;
-			}	
-			/* label focus color */
-			.input-field input[type=text]:focus + label {
-			color: #333;
-			}
-	</style>
-  <script>
-		$(document).ready(function(){
-			$('.modal-trigger').leanModal();
-						var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
-		
-				$(document).on("click", ".colitem", function(){
-					$(".colitem").removeClass("yellow");
-					$(this).toggleClass("yellow");
-				});
-		
-				$(document).on("click", ".planitem", function(){
-					$(".planitem").removeClass("yellow");
-					$(this).toggleClass("yellow");
-				});
-
-				$("#code").change(function(){
-					if ($(this).val().length >= 1) {$("#searchbtn").removeClass("disabled");}else{$("#searchbtn").addClass("disabled");}
-				});
-				
-		// DATE VALIDATION
-				$("#plandate").blur(function(){
-				
-				var getdate = $("#plandate").val().split("/");
-				var now = new Date();
-				var today = now.getDate();
-				var thismonth = now.getMonth()+1;
-				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
-				var newstrdate = "";
-				if (getdate[0] > 31) {getdate[0] = 31;}
-				if (getdate[1] > 12) {getdate[1] = 12;}
-				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
-				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
-				if (getdate[2]) {
-				if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
-				if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
-				if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
-				newstrdate+=getdate[2];
-				}else{
-				if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
-				if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
-				}
-				// กรณีใส่มาติดกันไม่มีคั่น
-				if ($("#plandate").val().length == 8 && !isNaN($("#plandate").val())) {
-					var data1 = parseInt($("#plandate").val().substr(0,2));
-					var data2 = parseInt($("#plandate").val().substr(2,2));
-					var data3 = parseInt($("#plandate").val().substr(4,4));
-					if (data3 < 2500) {data3+=543;}
-					newstrdate = data1 + " " + month[data2] + " " + data3;
-				}
-				$("#plandate").val(newstrdate);
-			});
-			
-			$("#plandate").focus(function(){
-				if ($("#plandate").val()){
-					var getdate = $("#plandate").val().split(" ");
-					var newstrdate = "";
-					newstrdate+=getdate[0]+"/";
-					switch(getdate[1]) {
-					case "ม.ค." : getdate[1]="1";break;
-					case "ก.พ." : getdate[1]="2";break;
-					case "มี.ค." : getdate[1]="3";break;
-					case "เม.ย." : getdate[1]="4";break;
-					case "พ.ค." : getdate[1]="5";break;
-					case "มิ.ย." : getdate[1]="6";break;
-					case "ก.ค." : getdate[1]="7";break;
-					case "ส.ค." : getdate[1]="8";break;
-					case "ก.ย." : getdate[1]="9";break;
-					case "ต.ค." : getdate[1]="10";break;
-					case "พ.ย." : getdate[1]="11";break;
-					case "ธ.ค." : getdate[1]="12";break;
-					}
-					newstrdate+=getdate[1]+"/";		
-					newstrdate+=getdate[2];
-					$("#plandate").val(newstrdate);
-				}
-			});
-			
-			$('#plandate').bind('keypress', function(e) {
-	//				if($('#point').val().length != 0){
-						var k = e.which;
-						var ok = k == 8 || k == 47 || // a-z, / , bspc
-								k >= 48 && k <= 57; // 0-9
-						if (!ok){
-							e.preventDefault();
-						}else{}
-	//				}
-			}); 
-		
-			// Binding event to code type
-				$('#code').bind('keypress', function(e) {
-						var k = e.which;
-						var ok = k == 8 || k >= 65 && k <= 90 || // A-Z
-								k >= 97 && k <= 122 || // a-z
-								k >= 48 && k <= 57; // 0-9
-						if (!ok){
-							e.preventDefault();
-						}else{}
-				}); 
-				$('#code').bind('keyup', function(e) {
-					$(this).val($(this).val().toUpperCase());
-				});
-		
-			// HERMATOS NO  --- COMMON CODE
-				$('#searchfilter').bind('keypress', function(e) {
-					var k = e.which;
-						var ok = k == 8 || k >= 65 && k <= 90 || // A-Z
-								k >= 97 && k <= 122 || // a-z
-								k >= 48 && k <= 57; // 0-9
-						if (!ok){
-							e.preventDefault();
-						}
-				}); 
-				$('#searchfilter').bind('keyup', function(e) {
-					$(this).val($(this).val().toUpperCase());
-				});
-            var d = new Date()
-            //d.setDate()=d.getDate()
-            console.log(d)
-            $("#plandate").val(d.getUTCDate());
-			});
-			
-  </script>
-		
-		
-		
-  <!-- Collection Point List -->
-	<div id="collectionlist" class="modal" >
-    <div class="modal-content">
-      <h4>List of collection points</h4>
-	  <p>Choice: 
-	  <input name="group1" type="radio" id="test1" checked/>
-      <label for="test1">Site</label>
-	  
-	  <input name="group1" type="radio" id="test2" />
-      <label for="test2">Regroupment</label>
-	  
-	  <input name="group1" type="radio" id="test3" />
-      <label for="test3">Centre</label>
-	  
-	  <input name="group1" type="radio" id="test4" />
-      <label for="test4">All</label>
-	  </p>
-	  
-	  <div>
-	  Filter
-	  </div>
-	  <div class="input-field">
-			<label>Description</label><input type="text" id="searchfilter">
-	  </div>
-	  
-   <div class="collection" style="height: 200px;overflow: scroll;">
-<table class="highlight">
-<thead>
-   <tr><td  class="grey lighten-3">Code</td><td class="grey lighten-3">Description</td></tr>
-</thead>
-<tbody>
-   <tr class="colitem"><td  class="">00000W</td><td>COLLECTION POINT TEST</td></tr>
-   <tr class="colitem"><td  class="">0A000</td><td>ศูนย์บริการโลหิตแห่งชาติ</td></tr>
-   <tr class="colitem"><td  class="">0A0900</td><td>เนื่องในโอกาสพิเศษต่างๆ</td></tr>
-   <tr class="colitem"><td  class="">0A0901</td><td>เจ้าหน้าที่ศูนย์บริการโลหิตฯ</td></tr>
-</tbody>
-</table>
-  </div>
-=======
 <html ng-app='hemasys'>
   <head>
 		<meta charset="UTF-8">
@@ -237,132 +32,134 @@
     }
   </style>
   <body>
-		<!-- Collection Point List -->
-	  <div id="collectionlist" class="modal" >
-      <div class="modal-content">
-        <h4>List of collection points</h4>
-        <p>Choice:
-      	  <input name="group1" type="radio" id="test1" checked/>
-          <label for="test1">Site</label>
+    <div ng-controller="searchPlanCtrl">
+  		<!-- Collection Point List -->
+  	  <div id="collectionlist" class="modal" >
+        <div class="modal-content">
+          <h4>List of collection points</h4>
+          <p>Choice:
+        	  <input name="group1" type="radio" id="test1" checked/>
+            <label for="test1">Site</label>
 
-      	  <input name="group1" type="radio" id="test2" />
-          <label for="test2">Regroupment</label>
+        	  <input name="group1" type="radio" id="test2"/>
+            <label for="test2">Regroupment</label>
 
-	        <input name="group1" type="radio" id="test3" />
-          <label for="test3">Centre</label>
+  	        <input name="group1" type="radio" id="test3"/>
+            <label for="test3">Centre</label>
 
-	        <input name="group1" type="radio" id="test4" />
-          <label for="test4">All</label>
-	      </p>
+  	        <input name="group1" type="radio" id="test4"/>
+            <label for="test4">All</label>
+  	      </p>
 
-    	  <div>Filter</div>
+      	  <div>Filter</div>
 
-    	  <div class="input-field">
-    			<label>Description</label><input type="text" id="searchfilter" ng-model="searchfilter" uppercase string-and-number>
-    	  </div>
+      	  <div class="input-field">
+      			<label>Code</label><input type="text" id="searchfilter" ng-model="searchfilter" uppercase string-and-number>
+      	  </div>
 
-        <div class="collection" style="height: 200px;overflow: scroll;">
-          <table class="highlight">
-            <thead>
-               <tr><td class="grey lighten-3">Code</td><td class="grey lighten-3">Description</td></tr>
-            </thead>
-            <tbody>
-               <tr class="colitem"><td class="">00000W</td><td>COLLECTION POINT TEST</td></tr>
-               <tr class="colitem"><td class="">0A000</td><td>ศูนย์บริการโลหิตแห่งชาติ</td></tr>
-               <tr class="colitem"><td class="">0A0900</td><td>เนื่องในโอกาสพิเศษต่างๆ</td></tr>
-               <tr class="colitem"><td class="">0A0901</td><td>เจ้าหน้าที่ศูนย์บริการโลหิตฯ</td></tr>
-            </tbody>
-          </table>
+          <div class="collection" style="height: 280px;overflow: auto;">
+            <table class="highlight">
+              <thead>
+                 <tr><td class="grey lighten-3">Code</td><td class="grey lighten-3">Description</td></tr>
+              </thead>
+              <tbody>
+                <tr class="colitem" ng-repeat="item in collection_point_list | filter: searchfilter" ng-click="selectedRow(item)">
+                  <td>{{ item.code }}</td>
+                  <td>{{ item.description }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+    		  <a href="#!" ng-click="closeModal(false)" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
+          <a href="#!" ng-click="closeModal(true)" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
         </div>
       </div>
 
-      <div class="modal-footer">
-  		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
-      </div>
->>>>>>> 958b2d5ed94565bc07d78b1191ae7366de89c667
-    </div>
+      <div id="planlist" class="modal" >
+        <div class="modal-content">
+          <h4>Planning List</h4>
+          <p>Choice:
+        	  <input name="group2" type="radio" id="test5" checked/>
+            <label for="test5">Site</label>
 
-    <div id="planlist" class="modal" >
-      <div class="modal-content">
-        <h4>Planning List</h4>
-    	  <p>Choice:
-      	  <input name="group1" type="radio" id="test1" checked/>
-          <label for="test1">Site</label>
+        	  <input name="group2" type="radio" id="test6"/>
+            <label for="test6">Regroupment</label>
 
-      	  <input name="group1" type="radio" id="test2" />
-          <label for="test2">Regroupment</label>
+  	        <input name="group2" type="radio" id="test7"/>
+            <label for="test7">Centre</label>
 
-      	  <input name="group1" type="radio" id="test3" />
-          <label for="test3">Centre</label>
+  	        <input name="group2" type="radio" id="test8"/>
+            <label for="test8">All</label>
+  	      </p>
 
-      	  <input name="group1" type="radio" id="test4" />
-          <label for="test4">All</label>
-    	  </p>
+      	  <div class="input-field">
+      			<label>Start Date</label><input type="text" id="searchfilter2" ng-model="searchfilter2">
+      	  </div>
 
-    	  <div class="input-field">
-    			<label>Start Date</label><input type="text" id="searchfilter">
-    	  </div>
+          <div style="height: 200px; overflow: scroll;">
+          	<table class="highlight">
+              <thead>
+                 <tr><td class="grey lighten-3">Date</td><td class="grey lighten-3">Description</td></tr>
+              </thead>
+              <tbody>
+                <tr class="colitem" ng-repeat="item in collection_point_list2 | filter: searchfilter2" ng-click="selectedRow2(item)">
+                  <td>{{ item.start_date }}</td>
+                  <td>{{ item.description }}</td>
+                </tr>
+              </tbody>
+          	</table>
+          </div>
+        </div>
 
-        <div style="height: 200px; overflow: scroll;">
-        	<table class="highlight">
-        		<THEAD><Tr><TD>Code</TD><TD>Description</TD></Tr></THEAD>
-        		<TBODY>
-        			<TR class="planitem"><TD>02-Oct-2559</TD><TD>0E0964 : บริษัทอิซุซุมอเตอร์ (ประเทศไทย) จำกัด</TD></TH>
-        			<TR class="planitem"><TD>20-Jun-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
-        			<TR class="planitem"><TD>26-May-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
-        			<TR class="planitem"><TD>14-Mar-2559</TD><TD>0C0013 : ตำรวจภูธรภาค 1</TD></TH>
-        		</TBODY>
-        	</table>
+        <div class="modal-footer">
+          <a href="#!" ng-click="closeModal2(false)" class="modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
+          <a href="#!" ng-click="closeModal2(true)" class="modal-action modal-close waves-effect waves-green btn green">Ok</a>
         </div>
       </div>
 
-      <div class="modal-footer">
-  		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Ok</a>
-      </div>
-    </div>
+  		<nav class="red lighten-2">
+  		  <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+    		<ul class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="btn grey">Logout</a></li>
+    		</ul>
+  		  <div class="right">&nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล</div>
 
-		<nav class="red lighten-2">
-		  <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
-  		<ul class="right hide-on-med-and-down">
-        <li><a href="sass.html" class="btn grey">Logout</a></li>
-  		</ul>
-		  <div class="right">&nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล</div>
+  		  <div class="right-align ">
+    			<div class="valign-wrapper right">
+    				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+    			</div>
+  		  </div>
+      </nav>
 
-		  <div class="right-align ">
-  			<div class="valign-wrapper right">
-  				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
-  			</div>
-		  </div>
-    </nav>
+  	  <br><br>
 
-	  <br><br>
+      <div class="container">
+      	<h4>Search for planning file</h4>
+        <div class="row">
+          <div class="input-field col s3 ">
+            <label for="code" class="col-sm-3 control-label">Code</label>
+            <input type="text" class="form-control" id="code" ng-model="code" max-length="6" uppercase  placeholder="">
+          </div>
 
-    <div class="container">
-    	<h4>Search for planning file</h4>
-      <div class="row">
-        <div class="input-field col s3 ">
-          <label for="code" class="col-sm-3 control-label">Code</label>
-          <input type="text" class="form-control" id="code" ng-model="code" max-length="6" uppercase>
-        </div>
+          <div class="form-group col s2 ">
+            <br><a class="modal-trigger btn grey" href="#collectionlist"> >> </a>
+          </div>
 
-        <div class="form-group col s2 ">
-          <br><a class="modal-trigger btn grey" href="#collectionlist">>></a>
-        </div>
+          <div class="input-field col s6 blue-text text-darken-2 left-align">
+            <p>{{ list_selected.description }}</p>
+          </div>
 
-        <div class="input-field col s6 blue-text text-darken-2 left-align">
-          <p>               ชื่อหน่วย ชื่อหน่วย ชื่อหน่วย</p>
-        </div>
-
-        <div class="input-field padding col s12">
-          <label for="" class="">Planning Date</label>
-          <input type="text" class="form-control" id="plandate" ng-model="plandate" date-input  placeholder="">
+          <div class="input-field padding col s12">
+            <label for="" class="">Planning Date</label>
+            <input type="text" class="form-control" id="plandate" ng-model="plandate" date-input placeholder="">
+          </div>
         </div>
       </div>
-    </div>
 
-		<footer class="page-footer red lighten-2">
+  		<footer class="page-footer red lighten-2">
   			<div class="container">
     			<div class="row center-align ">
 
@@ -371,24 +168,15 @@
                 <button class="btn grey" type="">Create</button>
               </div>
               <div class="col s4">
-                <a id="searchbtn" class="btn grey modal-trigger" ng-class="{ disabled: !(code.length==6 && plandate) }" href="#planlist">Search</a>
+                <button
+                  class="btn grey modal-trigger"
+                  ng-class="{ disabled: !(code.length==6 || plandate) }"
+                  ng-disabled="!(code.length==6 || plandate)"
+                  ng-href="{{ (code.length==6 || plandate) ? '#planlist' : '#' }}"
+                  ng-click="search()">Search</button>
               </div>
               <div class="col s4">
                 <button class="btn grey" type="">Exit</button>
-<<<<<<< HEAD
-            </div> 
-        </div>
-			</div>
-			</div>
-			<div class="footer-copyright">
-            <div class="container">
-            <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
-						<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
-			</div>
-			</div>
-		</footer>
-    </body>
-=======
               </div>
             </div>
     			</div>
@@ -399,7 +187,7 @@
     			  <p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
     			</div>
   			</div>
-	  </footer>
+  	  </footer>
+    </div>
   </body>
->>>>>>> 958b2d5ed94565bc07d78b1191ae7366de89c667
 </html>

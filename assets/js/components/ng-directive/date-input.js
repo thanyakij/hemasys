@@ -42,6 +42,7 @@ app.directive('dateInput', function() {
   }
 
   function replaceLabel(value, a, b) {
+    if (b == '00') return '';
     var value = value.split('-');
     var day_length = value[0].length;
     var year_length = value[2].length;
@@ -92,6 +93,10 @@ app.directive('dateInput', function() {
       ctrl.$parsers.push(function(val) {
         if(angular.isUndefined(val)) val = '';
         var clean = val.substring(0, 11);
+        clean = clean.replace(/\-\-/g, '-');
+        clean = clean.replace(/^\-/, '');
+        clean = clean.replace(/[^0-9A-Z\-]+/g, '');
+
         if(val !== clean) render(ctrl, clean);
         return clean;
       });
@@ -103,7 +108,16 @@ app.directive('dateInput', function() {
       element.bind('blur', function() {
         var val = element.val();
         val = setDay(val);
-        if (!val || invalid(val)) val = now();
+
+        if (val.length == 0) {
+          val = (attrs.dateInput != 'true') ? '' : now();
+          if (val == '') {
+            render(ctrl, val);
+            return;
+          }
+        }
+
+        if (invalid(val)) val = now();
         var month = val.split('-')[1];
         var label = monthLabel(month);
 
@@ -116,7 +130,9 @@ app.directive('dateInput', function() {
 
       element.bind('focus', function() {
         var val = element.val();
-        if (!val) val = now();
+        if (val.length == 0) {
+          val = (attrs.dateInput != 'true') ? '' : now();
+        }
         var month = val.split('-')[1];
         render(ctrl, replaceLabel(val, month, monthNumber(month)));
         this.select();
