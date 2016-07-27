@@ -10,20 +10,15 @@ include ("pages/header.php");
 <script src="assets/jquery-ui/jquery-ui.js" type="text/javascript"></script>
 <script src="assets/js/main.js" type="text/javascript"></script>
 <script src="assets/js/calendar.js" type="text/javascript"></script>
-
 <link rel="stylesheet" href="assets/jquery-ui/themes/redmond/jquery-ui.css" type="text/css"/>
 <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
 
 <script type="text/javascript">
     $(window).load(function(){
-        $.urlParam = function (name){
-            var param = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-            if(param == null){return null}else{return param[1]||0}
-        }
+        var today = new Date();
         var donorId = $.urlParam("donor_id")
         var url = "http://192.168.0.145/api/donor/read/"+donorId
         $.get( url, function( data ) {
-            console.log(data.SEX_OF_DONOR)
             if(data.SEX_OF_DONOR=="1"){
                 $("#mr1").attr({"checked":true})
             }
@@ -40,7 +35,7 @@ include ("pages/header.php");
             $("input[name=Sname]").val(data.SURNAME)
             $("input[name=dob]").val(data.FIRST_NAME)
             $("#addr").val(data.ADDRESS)
-            $(".id").html(data.DONOR_ID)
+            $("#id").text("Donor : " + data.DONOR_ID +" - Administrative coordinates -"+ today)
             $("input[name=postCode]").val(data.POSTAL_OR_ZIP_CODE)
             $("input[name=town]").val(data.MARRIED_TOWN)
             $("input[name=rout]").val(data.ROUT_CODE)
@@ -67,10 +62,7 @@ include ("pages/header.php");
     <!--Donor ID-->
     <div class="panel panel-default">
         <div class="panel-body text-center">
-        <strong>Donor : </strong>
-        <span class="id"><span> - 
-        <strong>Administrative coordinates</strong> - 
-        <span class="date">8 Dec 2016</span>
+        <strong id="id"></strong> - 
         </div>
     </div>
     <!--Identity-->
