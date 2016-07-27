@@ -1,12 +1,17 @@
+<?php
+  include ("pages/setting.php");
+  include ("pages/header.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-
         <script src="assets/js/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/view/DN004.js"></script>
   
     </head>
-    <body>
+    <body ng-controller="collectionPointCtrl">
         <style>
             body{
                 padding:20px;
@@ -32,13 +37,13 @@
             <div class="form-group padding">
                 <label for="" class="col-sm-3 control-label">Code</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  placeholder="">
+                  <input type="" class="form-control"  placeholder="" ng-model="cpCode">
                 </div>
             </div>
             <div class="form-group padding">
                 <label for="" class="col-sm-3 control-label">Description</label>
                 <div class="col-sm-9">
-                  <input type="" class="form-control" id="plandate"  placeholder="">
+                  <input type="" class="form-control" id="plandate"  placeholder="" ng-model="cpDesc">
                 </div>
             </div>
         </div>
@@ -47,7 +52,7 @@
                 <button class="btn btn-primary btn-block" type="">Create</button>
             </div>
             <div class="col-lg-2">
-                <button type="" class="btn btn-info btn-block">Search</button>
+                <button type="" class="btn btn-info btn-block" ng-click="searchCollectionPoint()">Search</button>
             </div>
             <div class="col-lg-2">
                 <button class="btn btn-danger btn-block" type="">Exit</button>

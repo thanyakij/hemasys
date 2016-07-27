@@ -384,7 +384,7 @@ include ("pages/header.php");
                 
             </div>
             <div class="col-md-2">
-                <button type="button" tabindex="40" id="btnSave" name="btnSave" class="btn btn-success btn-block">Save</button>
+                <button type="button" tabindex="40" id="btnSave" name="btnSave" class="btn btn-success btn-block" ng-click="checkEvent()">Save</button>
             </div>
             <div class="col-md-2"> </div>
             <div class="col-md-2">
