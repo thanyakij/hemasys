@@ -30,10 +30,29 @@ include ("pages/header.php");
 			$("#age").html(calDOB(strToDate($(this).val()))+" years");
 		});
         $("#exitBtn").click(function(){
-            window.location.href="http://127.0.0.1:1212/hemasys2/views/DN016.php"
+            window.location.href="http://127.0.0.1:1212/hemasys/DN016.php"
+        })
+        $("#donorli form table tbody").on('click','tr',function(){
+            var do_id = $(this).children("td:last-child").text()
+            console.log($(this).children("td:last-child").text())
+            window.location.href = "http://127.0.0.1:1212/hemasys/DN025.php?donor_id="+do_id
         })
 	});
     $(document).ready(function(){
+        var donorlist = $( "#donorli" ).dialog({
+            autoOpen: false,
+            height: 500,
+            width: 900,
+            modal: true,
+            buttons: {
+                Ok: function() {
+                    donorlist.dialog( "close" );
+                } ,
+                Cancel: function() {
+                    donorlist.dialog( "close" );
+                }
+            },
+        });
         $("#searchBtn").click(function(){
             //console.log("Testing Function")
             var doId = $("#donor_id").val();
@@ -45,7 +64,7 @@ include ("pages/header.php");
             if(doId != ''){
                 var url = "http://192.168.0.145/api/donor/read/"+doId
                 $.get(url,function(donor){
-                    window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+doId       
+                    window.location.href="http://127.0.0.1:1212/hemasys/DN025.php?donor_id="+doId       
                 })
                 .fail(function() {
                     alert("Hematos ID not found")
@@ -53,7 +72,7 @@ include ("pages/header.php");
             }else if(natId != ''){
                 var url = "http://192.168.0.145/api/donor/read_ssid/"+natId
                 $.get(url,function(donor){
-                    window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+donor.DONOR_ID       
+                    window.location.href="http://127.0.0.1:1212/hemasys/DN025.php?donor_id="+donor.DONOR_ID       
                 })
                 .fail(function() {
                     alert("National ID not found")
@@ -61,28 +80,65 @@ include ("pages/header.php");
             }else if(abmId != ''){
                 var url = "http://192.168.0.145/api/donor/read_abmdr/"+abmId
                 $.get(url,function(donor){
-                    window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+donor.DONOR_ID       
+                    window.location.href="http://127.0.0.1:1212/hemasys/DN025.php?donor_id="+donor.DONOR_ID       
                 })
                 .fail(function() {
                     alert("ABMDR ID not found")
                 })
             }else if(name != '' && sname != ''||name != '' && dob != ''||dob != '' && sname != ''||name!=''&&sname!=''&&dob!=''){
-                var detail = {FIRST_NAME:name+"%",SURNAME:sname+"%",DATE_OF_BIRTH:dob};
+                var detail = {FIRST_NAME:name,SURNAME:sname,DATE_OF_BIRTH:dob};
                 var json = JSON.stringify(detail);
-                console.log(json);
-                var url = "http://192.168.0.145/api/donor/search"
-                $.post(url,json,"json").done(function( data ) {
-                    window.location.href="http://127.0.0.1:1212/hemasys2/views/DN025.php?donor_id="+data.DONOR_ID
-                }).fail(function(data){
-                    alert("Not found")
+                console.log(json)
+                var url = "http://192.168.0.145/api/donor/search_by_detail"
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: json,
+                    success: function(data){
+                        if(jQuery.isEmptyObject(data)){
+                            return alert("Not Found")
+                        }else{
+                            var innerTr = ''
+                            donorlist.dialog("open")
+                            for(var i=0;i<data.length;i++){
+                                innerTr += "<tr><td>"+data[i].FIRST_NAME+"</td><td>"+data[i].SURNAME+"</td><td>"+data[i].DATE_OF_BIRTH+"</td><td>__</td><td>"+data[i].DONOR_ID+"</td></tr>"
+                            }
+                            $("#donorli form table tbody").html(innerTr)
+                        }
+                        },
+                    contentType: "application/json",
+                    dataType: 'json'
                 });
+                // $.post(url,json,function(data,status,xhr){
+                //     console.log(data+status+xhr)
+                // },"json").done(function( data ) {
+                //     window.location.href="http://localhost:1212/hemasys2/views/DN025.php?donor_id="+data.DONOR_ID
+                // }).fail(function(data){
+                //     alert("Not found")
+                // });
+
             }else{
                 alert("Please enter some infomation")
             }
         })
     })
-    
 </script>
+<div id="donorli" title="Search for donor name" class="modal">
+    <form action="">
+        <table class="table table-bordered table-hover">
+                <thead>
+                    <th style="width:20%;">Name</th>
+                    <th style="width:20%;">Surname</th>
+                    <th style="width:20%;">ABO D</th>
+                    <th style="width:20%;">DOB</th>
+                    <th style="width:20%;">Hematos ID</th>
+                </thead>
+                <tbody>
+            
+                </tbody>
+        </table>
+    </form>
+</div>
     <div id="<?php echo $pageClass; ?>" class="container">
         <div class="form-group">
             <div class="row">

@@ -2,6 +2,7 @@
 <html>
     <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
@@ -9,7 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="assets/primeui/primeui.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
 	<script src="jquery.min.js"></script>
-	<script src="js/materialize.min.js"></script>	
+	<script src="js/materialize.min.js"></script>
+	<script src="assets/js/main.js"></script>	
 	<link rel="" href=""> 
 	<style>
 		.UIboxborder{
@@ -30,6 +32,15 @@
 	</style>   
 
 	<script>
+	var id = $.urlParam("donor_id")
+	var url = "http://192.168.0.145/api/donor/read/"+id
+	$.get(url,function(data){
+		console.log(data)
+	}).done(function(data){
+		$.toast("Done",2000)
+	}).fail(function(data){
+		$.toast("Load data failed",2000)
+	})
 	$(document).ready(function(){
 		$(document).on("click", ".qualitylist", function(){
 			$(".qualitylist").removeClass("yellow lighten-1");
