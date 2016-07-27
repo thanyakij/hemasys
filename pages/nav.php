@@ -3,7 +3,7 @@
     <ul>
       <li></li>
     </ul>
-    Hemasys | {{nav text}}
+    <a href="?">Hemasys</a> | {{nav text}}
   </div>
   
    <ul class="right hide-on-med-and-down">
