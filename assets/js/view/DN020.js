@@ -1,11 +1,13 @@
 app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($scope, $http, VariablesService) {
   
   var donor_id = '1004621184';
+  var dateInterview;
   $scope.donor = {};
   $scope.medical = {};
   $scope.selectedMedical = {};
   $scope.selectedMedical2 = {};
   $scope.checkAuthen = true;
+  $scope.test = {};
 
   $http({
     method: 'GET',
@@ -18,13 +20,12 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
       url: VariablesService.host + '/api/Donor_medical/lists/' + $scope.donor.DONOR_ID
     }).then(function(response) {
       $scope.medical = response.data;
-      // $scope.medical = response;
-    })
-
+    });
   });
 
   $scope.clickRow = function(data) {
-    var v_date = moment(data.DATE_OF_INTERVIEW, 'DD-MMM-YYYY').format('YYYY-MM-DD');
+    dateInterview = data.DATE_OF_INTERVIEW;
+    var v_date = moment(data.DATE_OF_INTERVIEW, 'YYYY-MM-DD').format('YYYY-MM-DD');
     var v_donor_id = data.DONOR_ID.trim();
     $http({
       method: 'GET',
@@ -36,7 +37,7 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
 
     $http({
       method: 'GET',
-      url: VariablesService.host + '/api/Complementary_to_medical/data/' + v_donor_id + '/' + v_date
+      url: VariablesService.host + '/api/Complementary_to_medical/detail/' + v_donor_id + '/' + v_date
     }).then(function(response) {
       angular.extend($scope.selectedMedical, response.data);
     })
@@ -47,15 +48,17 @@ app.controller('medicalFile', ['$scope', '$http', 'VariablesService', function($
   }
 
   $scope.saveData = function(){
-    $http({
-      method: 'POST',
-      url: VariablesService.host + '/api/Donor_medical/create',
-      data: $scope.selectedMedical
-    }).then(function(response) {
-      console.log(response);
-    })
-    console.log("SAVE ONE : ", $scope.selectedMedical);
-    // console.log("SAVE TWO : ", $scope.selectedMedical2);
+    if($scope.donor.DONOR_ID && dateInterview) {
+      $scope.selectedMedical.DONOR_ID = $scope.donor.DONOR_ID.trim();
+      $scope.selectedMedical.DATE_OF_INTERVIEW = moment(dateInterview, 'YYYY-MM-DD').format('YYYY-MM-DD');
+      $http({
+        method: 'POST',
+        url: VariablesService.host + '/api/Donor_medical/update',
+        data: $scope.selectedMedical
+      }).then(function(response) {
+        console.log(response);
+      })
+    }
   }
 
 }]);

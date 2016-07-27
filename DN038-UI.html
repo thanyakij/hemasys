@@ -1,151 +1,148 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<meta charset="UTF-8">
+		  <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+      <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+      <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+      <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+      <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+      
+      <script src="assets/js/components/scripts.js"></script>
+      <script src="assets/js/angular-service/variables-service.js"></script>
+      <script src="assets/js/angular-service/collection_point-factory.js"></script>
+      <script src="assets/js/view/DN038.js"></script> 
 
-<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
-		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<script src="jquery.min.js"></script>
-		<script src="js/materialize.min.js"></script>	
-        <style>
-            .UIboxborder {
-                border: 1px solid #999;
-                padding: 5px;
-            }
-			
-			 .input-field label {
-				 color: #333;
-			   }
-			   /* label focus color */
-			   .input-field input[type=text]:focus + label {
-				 color: #333;
-			   }
-        </style>
+      <script src="jquery.min.js"></script>
+      <script src="js/materialize.min.js"></script>	
+      <style>
+        .UIboxborder {
+            border: 1px solid #999;
+            padding: 5px;
+        }
+		
+		    .input-field label {
+          color: #333;
+		    }
+		    /* label focus color */
+		    .input-field input[type=text]:focus + label {
+			     color: #333;
+		    }
+      </style>
     <script>
-		var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
-		$(document).ready(function(){
-		
-			$("#getdate").blur(function(){
-				var getdate = $("#getdate").val().split("/");
-				var now = new Date();
-				var today = now.getDate();
-				var thismonth = now.getMonth()+1;
-				//alert(now.getYear());
-				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
-				
-				var newstrdate = "";
-				if (getdate[0] > 31) {getdate[0] = 31;}
-				if (getdate[1] > 12) {getdate[1] = 12;}
-				
-				
-				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
-				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
-				if (getdate[2]) {
-				      if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
-					  if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
-					  if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
-					  newstrdate+=getdate[2];
-					  }else{
-					  if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
-					  if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
-					  }
-				// กรณีใส่มาติดกันไม่มีคั่น
-				if ($("#getdate").val().length == 8 && !isNaN($("#getdate").val())) {
-					var data1 = parseInt($("#getdate").val().substr(0,2));
-					var data2 = parseInt($("#getdate").val().substr(2,2));
-					var data3 = parseInt($("#getdate").val().substr(4,4));
-					if (data3 < 2500) {data3+=543;}
-					newstrdate = data1 + " " + month[data2] + " " + data3;
-				}
-				$("#getdate").val(newstrdate);
-			});
-		
-			$("#getdate").focus(function(){
-				if ($("#getdate").val()){
-					var getdate = $("#getdate").val().split(" ");
-					var newstrdate = "";
-					newstrdate+=getdate[0]+"/";
-					switch(getdate[1]) {
-					case "ม.ค." : getdate[1]="1";break;
-					case "ก.พ." : getdate[1]="2";break;
-					case "มี.ค." : getdate[1]="3";break;
-					case "เม.ย." : getdate[1]="4";break;
-					case "พ.ค." : getdate[1]="5";break;
-					case "มิ.ย." : getdate[1]="6";break;
-					case "ก.ค." : getdate[1]="7";break;
-					case "ส.ค." : getdate[1]="8";break;
-					case "ก.ย." : getdate[1]="9";break;
-					case "ต.ค." : getdate[1]="10";break;
-					case "พ.ย." : getdate[1]="11";break;
-					case "ธ.ค." : getdate[1]="12";break;
-					}
-					newstrdate+=getdate[1]+"/";		
-					newstrdate+=getdate[2];
-					$("#getdate").val(newstrdate);
-				}
-			});
-			$('#getdate').bind('keypress', function(e) {
-	//				if($('#point').val().length != 0){
-						var k = e.which;
-						var ok = k == 8 || k == 47 || // a-z, / , bspc
-								k >= 48 && k <= 57; // 0-9
-						if (!ok){
-							e.preventDefault();
-						}else{}
-	//				}
-			}); 
+  		var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
+  		$(document).ready(function(){
+  		
+  			$("#getdate").blur(function(){
+  				var getdate = $("#getdate").val().split("/");
+  				var now = new Date();
+  				var today = now.getDate();
+  				var thismonth = now.getMonth()+1;
+  				//alert(now.getYear());
+  				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
+  				
+  				var newstrdate = "";
+  				if (getdate[0] > 31) {getdate[0] = 31;}
+  				if (getdate[1] > 12) {getdate[1] = 12;}
+  				
+  				
+  				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
+  				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
+  				if (getdate[2]) {
+  				      if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
+  					  if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
+  					  if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
+  					  newstrdate+=getdate[2];
+  					  }else{
+  					  if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
+  					  if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
+  					  }
+  				// กรณีใส่มาติดกันไม่มีคั่น
+  				if ($("#getdate").val().length == 8 && !isNaN($("#getdate").val())) {
+  					var data1 = parseInt($("#getdate").val().substr(0,2));
+  					var data2 = parseInt($("#getdate").val().substr(2,2));
+  					var data3 = parseInt($("#getdate").val().substr(4,4));
+  					if (data3 < 2500) {data3+=543;}
+  					newstrdate = data1 + " " + month[data2] + " " + data3;
+  				}
+  				$("#getdate").val(newstrdate);
+  			});
+  		
+  			$("#getdate").focus(function(){
+  				if ($("#getdate").val()){
+  					var getdate = $("#getdate").val().split(" ");
+  					var newstrdate = "";
+  					newstrdate+=getdate[0]+"/";
+  					switch(getdate[1]) {
+  					case "ม.ค." : getdate[1]="1";break;
+  					case "ก.พ." : getdate[1]="2";break;
+  					case "มี.ค." : getdate[1]="3";break;
+  					case "เม.ย." : getdate[1]="4";break;
+  					case "พ.ค." : getdate[1]="5";break;
+  					case "มิ.ย." : getdate[1]="6";break;
+  					case "ก.ค." : getdate[1]="7";break;
+  					case "ส.ค." : getdate[1]="8";break;
+  					case "ก.ย." : getdate[1]="9";break;
+  					case "ต.ค." : getdate[1]="10";break;
+  					case "พ.ย." : getdate[1]="11";break;
+  					case "ธ.ค." : getdate[1]="12";break;
+  					}
+  					newstrdate+=getdate[1]+"/";		
+  					newstrdate+=getdate[2];
+  					$("#getdate").val(newstrdate);
+  				}
+  			});
+  			$('#getdate').bind('keypress', function(e) {
+  	     //				if($('#point').val().length != 0){
+  						var k = e.which;
+  						var ok = k == 8 || k == 47 || // a-z, / , bspc
+  								k >= 48 && k <= 57; // 0-9
+  						if (!ok){
+  							e.preventDefault();
+  						}else{}
+  	   //				}
+  			}); 
 
-			
-			// Binding event to code type
-				$('#point').bind('keypress', function(e) {
-//					if($('#point').val().length != 0){
-						var k = e.which;
-						var ok = k == 8 || k >= 65 && k <= 90 || // A-Z
-								k >= 97 && k <= 122 || // a-z
-								k >= 48 && k <= 57; // 0-9
-						if (!ok){
-							e.preventDefault();
-						}else{}
-//					}
-				}); 
-				$('#point').bind('keyup', function(e) {
-					$(this).val($(this).val().toUpperCase());
-				});
-		});
-	
-	</script>
-	
-	
-	
-
-	
+  			
+  			// Binding event to code type
+  				$('#point').bind('keypress', function(e) {
+      //					if($('#point').val().length != 0){
+  						var k = e.which;
+  						var ok = k == 8 || k >= 65 && k <= 90 || // A-Z
+  								k >= 97 && k <= 122 || // a-z
+  								k >= 48 && k <= 57; // 0-9
+  						if (!ok){
+  							e.preventDefault();
+  						}else{}
+      //					}
+  				}); 
+  				$('#point').bind('keyup', function(e) {
+  					$(this).val($(this).val().toUpperCase());
+  				});
+  		});
+  	</script>
 	</head>
 	
-    <body>
+    <body ng-app="hemasys" ng-controller="medicalWaitingList">
         
 			<nav class="red lighten-2">
-		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
-		 
-		 <ul class="right hide-on-med-and-down">
-          <li><a href="sass.html" class="btn grey">Logout</a></li>
-		  </ul>
-		  <div class="right">
-		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
-		  </div>
-		 <div class="right-align ">
-			<div class="valign-wrapper right">
-				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
-			</div>
-		  </div>
-	</nav>
-		
-		
-		
+  		 <a href="#" class="brand-logo"> &nbsp;NBCSys</a>
+  		 
+  		 <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html" class="btn grey">Logout</a></li>
+  		  </ul>
+  		  <div class="right">
+  		 &nbsp; ชื่อชื่อชื่อ นามสกุลนามสกุล
+  		  </div>
+  		 <div class="right-align ">
+  			<div class="valign-wrapper right">
+  				<img src="images/profile1.jpg" class="circle valign" style="width: 40px;">
+  			</div>
+  		  </div>
+  	</nav>
+
         <!--DN38-Medical consultation-->
         <div class="row">
             <div class="col-lg-1 col-md-1 col-sm-1"></div>
@@ -155,8 +152,8 @@
                           <h3>Medical consultation waiting line</h3>
                       </div>
                       <div class="col s4">
-                          <label class="col-lg-4 col-md-4 col-sm-4" for="">Point</label><input class="col-lg-8 col-md-8 col-sm-8" type="text" id="point" name="" maxlength="6" readonly>
-                          <label class="col-lg-4 col-md-4 col-sm-4" for="">Date</label><input class="col-lg-8 col-md-8 col-sm-8" type="text" id="getdate" name="" readonly><br>
+                          <label class="col-lg-4 col-md-4 col-sm-4" for="">Point</label><input class="col-lg-8 col-md-8 col-sm-8" type="text" id="point" name="" maxlength="6" ng-model="site_code" readonly>
+                          <label class="col-lg-4 col-md-4 col-sm-4" for="">Date</label><input class="col-lg-8 col-md-8 col-sm-8" type="text" id="getdate" name="" ng-model="t_today" readonly><br>
                       </div>
                   </div>
                     <div class="row ">
@@ -167,25 +164,12 @@
                         <th>Sample Number</th>
                         <th>Notes</th>
                       </tr>
-                      <tr class="waitline">
-                        <td>10:49:40</td>
-                        <td>ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ</td>
-                        <td>NULL</td>
-                        <td>NULL</td>
+                      <tr class="waitline" ng-repeat="list in waitingLists">
+                        <td>{{list.TIME_OF_MEDICAL_RECEPTION}}</td>
+                        <td>{{list.NAME}}</td>
+                        <td>{{list.SAMPLE_NUMBER}}</td>
+                        <td>{{list.NOTE}}</td>
                       </tr>
-                      <tr class="waitline">
-                        <td>10:19:12</td>
-                        <td>NULL</td>
-                        <td>NULL</td>
-                        <td>NULL</td>
-                      </tr>
-                      <tr class="waitline">
-                        <td>10:00:44</td>
-                        <td>NULL</td>
-                        <td>NULL</td>
-                        <td>NULL</td>
-                      </tr>
-					  
                     </table>
                 </div>
 
