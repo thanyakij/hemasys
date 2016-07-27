@@ -1,0 +1,53 @@
+/*
+ * 
+ * colour pallet accorded from Tetrad coulour set from primary color of NBC
+ * http://paletton.com/palette.php?uid=75B0O0ksmuh1X3YfAkBTdLj%2B%2BGA
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+ 
+.mainmenu-tile {
+  background:#CE352C;
+}
+.mainmenu-tile:hover {
+  background:#9A1616;
+}
+tile a, .tile a, nav a {
+  color:#ffffff !important;
+  text-decoration:none !important;
+}
+
+
+
+.tile:hover, tile:hover {
+  outline: #e3e3e3 solid 3px !important;
+}
+.tile:active, tile:active {
+  outline: 0;
+}
+.tile.no-outline, tile.no-outline {
+  outline-color: transparent;
+}
+tile.disabled, .tile-disabled {
+  outline-color: transparent !important;
+}
+tile.disabled, .tile-disabled {
+  background:#cccccc;
+  color:#dddddd;
+}
+
+
+.col, col, cell, tile, .tile {
+  background:#dddddd;
+}
+tile, .tile, tile.wide, .tile-wide {
+  box-shadow: inset 0 0 2px #f4f4f4;
+  color:#ffffff;
+}

@@ -1,4 +1,4 @@
-app.directive('rowSelectedColor', ['$timeout', function($timeout) {
+app.directive('rowSelectedColor', function() {
   const CLASS_NAME = ' row-selected';
   const DEFAULT_COLOR = '#52adf1';
 
@@ -20,15 +20,13 @@ app.directive('rowSelectedColor', ['$timeout', function($timeout) {
         .find('head')
         .prepend('<style type="text/css">.'+CLASS_NAME.trim()+' { background-color: '+attrs.rowSelectedColor+'; opacity: 0.7; }</style>');
 
-      $timeout(function() {
-        angular.element(element).on('click', function(event) {
-          var parent = event.target.parentElement, tag_name = parent.children[0].tagName;
-          if (tag_name != 'TH' && tag_name == 'TD') {
-            removeClass(event);
-            parent.className += CLASS_NAME;
-          }
-        });
-      })
+      angular.element(element).on('click', function(event) {
+        var parent = event.target.parentElement, tag_name = parent.children[0].tagName;
+        if (tag_name == 'TD') {
+          removeClass(event);
+          parent.className += CLASS_NAME;
+        }
+      });
     }
   };
-}]);
+});

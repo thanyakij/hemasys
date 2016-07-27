@@ -16,22 +16,12 @@ $donor_id = $_GET['donorid']; // Example: 0000010195
 <link rel="stylesheet" href="assets/jquery-ui/themes/redmond/jquery-ui.css" type="text/css"/>
 <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
 
-<script type="text/javascript">
-	$(function(){
-		// $("input[id^='lastDate']").val(formatDate(new Date()));
-	});
-</script>
 <div id="<?php echo $pageClass; ?>" class="container" ng-controller="DN023Ctrl">
     <div ng-init="donor_id='<?php echo $donor_id ?>'"></div>
-    <!-- <pre>{{ donor_biological | json }}</pre>
-    <pre>{{ donor | json }}</pre>
-    <pre>{{ pexamen | json }}</pre>
-    <pre>{{ presultat | json }}</pre>
-    <pre>{{ pparecr | json }}</pre>
-    <pre>{{ ptitre | json }}</pre> -->
+
     <div class="row">
         <div class="name col-sm-12">
-            <p><strong>HIIG Donor No. 1005613568 : </strong><span>MR. Chalachai</span></p>
+            <p><strong>HIIG Donor No. {{ donor_id }} : </strong><span>{{ donor.FIRST_NAME }} {{ donor.SURNAME }}</span></p>
         </div>
 
         <!--DN23-Leftbox-->
@@ -42,60 +32,10 @@ $donor_id = $_GET['donorid']; // Example: 0000010195
                     <th>Result</th>
                     <th>Date of last det.</th>
                 </tr>
-                <tr>
-                    <td><label for="">HIV Ag/Ab</label></td>
-                    <td><input type="text" ng-model="random1" is-disabled class="form-control" tabindex="1" value="0"></td>
-                    <td><input type="text" ng-model="random2" is-disabled class="form-control dndate" tabindex="2" id="lastDate1"></td>
-                </tr>
-                <tr>
-                    <td><label for="">Anti HCV</label></td>
-                    <td><input type="text" ng-model="random3" is-disabled class="form-control" tabindex="3" value="0"></td>
-                    <td><input type="text" ng-model="random4" is-disabled class="form-control dndate" tabindex="4" id="lastDate2"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random5" is-disabled class="form-control" tabindex="5"></td>
-                    <td><input type="text" ng-model="random6" is-disabled class="form-control dndate" tabindex="6" id="lastDate3"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random7" is-disabled class="form-control" tabindex="7"></td>
-                    <td><input type="text" ng-model="random8" is-disabled class="form-control dndate" tabindex="8" id="lastDate4"></td>
-                </tr>
-                <tr>
-                    <td><label for="">Ab palu</label></td>
-                    <td><input type="text" ng-model="random9" is-disabled class="form-control" tabindex="11"></td>
-                    <td><input type="text" ng-model="random10" is-disabled class="form-control dndate" tabindex="12" id="lastDate6"></td>
-                </tr>
-                <tr>
-                    <td><label for="">CMV IgG</label></td>
-                    <td><input type="text" ng-model="random11" is-disabled class="form-control" tabindex="13"></td>
-                    <td><input type="text" ng-model="random12" is-disabled class="form-control dndate" tabindex="14" id="lastDate7"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random13" is-disabled class="form-control" tabindex="15"></td>
-                    <td><input type="text" ng-model="random14" is-disabled class="form-control dndate" tabindex="16" id="lastDate8"></td>
-                </tr>
-                <tr>
-                    <td><label for="">Ag P24</label></td>
-                    <td><input type="text" ng-model="random15" is-disabled class="form-control" tabindex="17"></td>
-                    <td><input type="text" ng-model="random16" is-disabled class="form-control dndate" tabindex="18" id="lastDate9"></td>
-                </tr>
-                <tr>
-                    <td><label for="">Conf HBs</label></td>
-                    <td><input type="text" ng-model="random17" is-disabled class="form-control" tabindex="19"></td>
-                    <td><input type="text" ng-model="random18" is-disabled class="form-control dndate" tabindex="20" id="lastDate10"></td>
-                </tr>
-                <tr>
-                    <td><label for="">Conf Syph</label></td>
-                    <td><input type="text" ng-model="random19" is-disabled class="form-control" tabindex="21"></td>
-                    <td><input type="text" ng-model="random20" is-disabled class="form-control dndate" tabindex="22" id="lastDate11"></td>
-                </tr>
-                <tr>
-                    <td><label for="">HIV Ag/Ab</label></td>
-                    <td><input type="text" ng-model="random21" is-disabled class="form-control" tabindex="23"></td>
-                    <td><input type="text" ng-model="random22" is-disabled class="form-control dndate" tabindex="24" id="lastDate12"></td>
+                <tr ng-repeat="item in first_list">
+                    <td><label for="">{{ item.SHORT_EXAM_NAME }}</label></td>
+                    <td><input type="text" ng-model="item.RESULT" disabled class="form-control"></td>
+                    <td><input type="text" ng-model="item.DATE_OF_LAST_DETERMINATION" disabled class="form-control dndate"></td>
                 </tr>
             </table>
         </div>
@@ -108,67 +48,17 @@ $donor_id = $_GET['donorid']; // Example: 0000010195
                     <th>Result</th>
                     <th>Date of last det.</th>
                 </tr>
-                <tr>
-                    <td><label for="">Syph</label></td>
-                    <td><input type="text" ng-model="random23" is-disabled class="form-control" tabindex="25"></td>
-                    <td><input type="text" ng-model="random24" is-disabled class="form-control dndate" tabindex="26" id="lastDate13"></td>
-                </tr>
-                <tr>
-                    <td><label for="">HBsAg</label></td>
-                    <td><input type="text" ng-model="random25" is-disabled class="form-control" tabindex="27"></td>
-                    <td><input type="text" ng-model="random26" is-disabled class="form-control dndate" tabindex="28" id="lastDate14"></td>
-                </tr>
-                <tr>
-                    <td><label for="">anti HBs</label></td>
-                    <td><input type="text" ng-model="random27" is-disabled class="form-control" tabindex="29"></td>
-                    <td><input type="text" ng-model="random28" is-disabled class="form-control dndate" tabindex="30" id="lastDate15"></td>
-                </tr>
-                <tr>
-                    <td><label for="">ALAT</label></td>
-                    <td><input type="text" ng-model="random29" is-disabled class="form-control" tabindex="31"></td>
-                    <td><input type="text" ng-model="random30" is-disabled class="form-control dndate" tabindex="32" id="lastDate16"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random31" is-disabled class="form-control" tabindex="35"></td>
-                    <td><input type="text" ng-model="random32" is-disabled class="form-control dndate" tabindex="36" id="lastDate18"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random33" is-disabled class="form-control" tabindex="37"></td>
-                    <td><input type="text" ng-model="random34" is-disabled class="form-control dndate" tabindex="36" id="lastDate19"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random35" is-disabled class="form-control" tabindex="37"></td>
-                    <td><input type="text" ng-model="random36" is-disabled class="form-control dndate" tabindex="38" id="lastDate20"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random37" is-disabled class="form-control" tabindex="39"></td>
-                    <td><input type="text" ng-model="random38" is-disabled class="form-control dndate" tabindex="40" id="lastDate21"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random39" is-disabled class="form-control" tabindex="41"></td>
-                    <td><input type="text" ng-model="random40" is-disabled class="form-control dndate" tabindex="42" id="lastDate22"></td>
-                </tr>
-                <tr>
-                    <td><label for="">Anti HCV</label></td>
-                    <td><input type="text" ng-model="random41" is-disabled class="form-control" tabindex="43"></td>
-                    <td><input type="text" ng-model="random42" is-disabled class="form-control dndate" tabindex="44" id="lastDate23"></td>
-                </tr>
-                <tr>
-                    <td><label for=""></label></td>
-                    <td><input type="text" ng-model="random43" is-disabled class="form-control" tabindex="45"></td>
-                    <td><input type="text" ng-model="random44" is-disabled class="form-control dndate" tabindex="46" id="lastDate24"></td>
+                <tr ng-repeat="item in second_list">
+                    <td><label for="">{{ item.SHORT_EXAM_NAME }}</label></td>
+                    <td><input type="text" ng-model="item.RESULT" disabled class="form-control"></td>
+                    <td><input type="text" ng-model="item.DATE_OF_LAST_DETERMINATION" disabled class="form-control dndate"></td>
                 </tr>
             </table>
         </div>
 
     </div>
     <section class="text-right">
-        <button class="btn btn-lg btn-danger" tabindex="47">EXIT</button>
+        <button class="btn btn-lg btn-danger">EXIT</button>
         <p></p>
     </section>
 

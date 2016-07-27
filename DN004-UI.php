@@ -1,16 +1,21 @@
+<?php
+  include ("pages/setting.php");
+  include ("pages/header.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
-	<meta charset="UTF-8">
-    
+		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
-        <!--<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />-->
-				<script src="jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />-->
+		<script src="jquery.min.js"></script>
 		<script src="js/materialize.min.js"></script>	
+		<script src="assets/js/view/DN004.js"></script>
 		
 		<script>
 			$(document).ready(function(){
@@ -161,7 +166,7 @@
 			});
 		</script>
     </head>
-    <body>
+    <body ng-controller="collectionPointCtrl">
         <style>
             body{
                
@@ -332,7 +337,7 @@
     <div class="modal-footer">
 		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Abort</a>
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn">Ok</a>
-<a href="#!" class=" modal-action modal-close waves-effect waves-green btn green">Save</a>
+			<button class="modal-action modal-close waves-effect waves-green btn green" ng-click="addCollectionPoint()">Save</button>
     </div>
   </div>
   
@@ -442,15 +447,12 @@
        
         <div class="row">
 		
-		
-		
-		
 			<div class="col s2 input-field">
-				<input type="text" id="code" maxlength="6">
+				<input type="text" id="code" maxlength="6" ng-model="cp.COLLECTION_POINT_CODE">
 				<label>Code</label>
 			</div>
 			<div class="col s4 input-field">
-				<input type="text" maxlength="4" id="site">
+				<input type="text" maxlength="4" id="site" ng-model="cp.SITE_CODE">
 				<label>Site</label>
 			</div>
 				<div class="col s2 input-field">
@@ -462,29 +464,29 @@
 				<a class="btn grey modal-trigger" href="#sitelist" id="sitelistbutton">>></a>
 			</div>
 			<div class="col s2 input-field">
-				<input type="checkbox" id="inuse" checked>
+				<input type="checkbox" id="inuse" ng-model="cp.ACTIVE" ng-true-value="'T'" ng-false-value="'F'">
 				<label for="inuse">In use</label>
 			</div>
 			<div class="col s9 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.NAME">
 				<label>Description</label>
 			</div>
 			<div class="col s3 input-field">
 				Disactivation date
-				<input type="text" id="disactivationdate" readonly>
+				<input id="disactivationdate" ng-model="cp.DEACTIVATED_DATE" readonly date-input>
 				<!--<label id="disactivationlabel" for="disactivationdate">Disactivation date</label>-->
 			</div>
 			
 			<div class="col s6 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.LOCATION_NAME">
 				<label>Name of Location</label>
 			</div>
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.ADDRESS1">
 				<label>Address 1</label>
 			</div>
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.ADDRESS2">
 				<label>Address 2</label>
 			</div>	
 
@@ -493,14 +495,16 @@
 				<label>Rout</label>
 			</div>-->
 			<div class="col s6 input-field">
-								<select>
-					<option></option>
+				<select ng-model="cp.COUNTY_CODE">
+					<option value="THAI">THAILAND</option>
+					<option value="LAO">LAOS</option>
+					<option value="CHA">CHINA</option>
 				</select>
 				<label>Country</label>
 			</div>
 
 			<div class="col s6 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.ZIPCODE">
 				<label>Postcode</label>
 			</div>	
 			<!--<div class="col s6 input-field">
@@ -514,15 +518,19 @@
 		<div  >	
 
 				<div class="col s12 input-field">
-				<select>
-					<option></option>
+				<select ng-model="cp.REGION_CODE">
+					<option value="NA">NA</option>
+					<option value="NB">NB</option>
+					<option value="NE">NE</option>
 				</select>
 				<label>Region</label>
 			</div>
 			
 				<div class="col s12 input-field">
-				<select>
-					<option></option>
+				<select ng-model="cp.LAND_CODE">
+					<option value="NA">NA</option>
+					<option value="NB">NB</option>
+					<option value="NE">NE</option>
 				</select>
 				<label>Region</label>
 			</div>
@@ -535,7 +543,7 @@
 			</div>	-->
 	
 			<div class="col s3 input-field">
-				<input type="text" maxlength="3" id="getassociation">
+				<input type="text" maxlength="3" id="getassociation" ng-model="cp.ASSOCIATION_CODE">
 				<label>Association</label>
 			</div>
 
@@ -543,50 +551,53 @@
 			<div class="col s4 input-field">
 				<a class="btn grey modal-trigger" href="#associationlist">>></a>
 			</div>
-		<div class="col s5 input-field blue-text text-darken-2">
+		<div class="col s5 input-field blue-text text-darken-2" ng-model="cp.NAME">
 				<p>SiteDesc</p>
 			</div>			
 		</div>	
 		<div class="col s12" style="border: solid #333 1px;">
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.NEW_COLLECTION_POINT_CODE">
 				<label>Community</label>
 			</div>
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" >
 				<label>Collection Location</label>
 			</div>
 			
 		</div>
 		<div class="col s12 input-field" style="border: solid 1px #333">
 		
-			<div class="col s6 input-field">
-				<input type="text">
+			<div class="col s12 input-field">
+				<input type="text" ng-disabled="true" ng-model="cp.SERFACE">
 				<label>Surface</label>
 			</div>
-			
+
+			<!--
 					<div class="col s6 input-field">
-				<input type="text">
+				<input type="text" ng-disabled="true" ng-model="cp.TOILET_COUNT">
 				<label>Sanitary Installation</label>
 			</div>
+
+			-->
 		
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-disabled="true" ng-model="cp.ELECTRICAL_SOCKET_COUNT">
 				<label>PowerSupply</label>
 			</div>
 			
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-disabled="true" ng-model="cp.TOILET_COUNT">
 				<label>Sanitary</label>
 			</div>
 
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-disabled="true" ng-model="cp.KITCHEN_COUNT">
 				<label>Kitchen</label>
 			</div>	
 
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-disabled="true" ng-model="cp.CABIN_COUNT">
 				<label>Cabin</label>
 			</div>	
 		</div>	
@@ -622,44 +633,50 @@
 		
 		<div style="border: solid 1px #333" class="col s12">	
 			<div class="col s12 input-field">
-				<select>
-					<option></option>
+				<select ng-model="cp.COLLECTION_TYPE_CODE">
+					<option value="1">Type 1</option>
+          <option value="2">Type 2</option>
+          <option value="3">Type 3</option>
 				</select>
 				<label>Type</label>
 			</div>
 			<div class="col s12 input-field">
-				<select>
-					<option></option>
+				<select ng-model="cp.CATEGORY_CODE">
+					<option value="1">Category 1</option>
+          <option value="2">Category 2</option>
+          <option value="3">Category 3</option>
 				</select>
 				<label>Category</label>
 			</div>
 			<div class="col s12 input-field">
-				<select>
-					<option></option>
+				<select ng-model="cp.COLLECTION_MODE">
+					<option value="1">Method 1</option>
+          <option value="2">Method 2</option>
+          <option value="3">Method 3</option>
 				</select>
 				<label>Method</label>
 			</div>
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.DISTANCE" ng-disabled="true">
 				<label>Distance</label>
 			</div>	
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.TRAVEL_TIME" ng-disabled="true">
 				<label>AccessTime</label>
 			</div>	
 			<div class="col s9 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.MAP" ng-disabled="true">
 				<label>Map</label>
 			</div>	
 			<div class="col s3 input-field">
 				<a class="btn grey">>></a>
 			</div>	
 			<div class="col s12 input-field">
-				<input type="checkbox" id="plasmaquarantine">
+				<input type="checkbox" id="plasmaquarantine" ng-model="cp.PLASMA_QUARANTINE_POSSIBLE" ng-true-value="'T'" ng-false-value="'F'" ng-disabled="true">
 				<label for="plasmaquarantine">Plasma-quarantine</label>
 			</div>
 			<div class="col s12 input-field">
-				<input type="text">
+				<input type="text" ng-model="cp.STAT_EXPECTED" ng-disabled="true">
 				<label>Donation Number</label>
 			</div>	
 		</div>	
@@ -971,7 +988,7 @@
 		<footer class="page-footer red lighten-2">
 			<div class="container">
 			<div class="row center-align ">
-            <div class="col m4"><button type="" class="btn green">Save</button></div>    
+            <div class="col m4"><button type="" class="btn green" ng-click="addCollectionPoint()">Save</button></div>    
             <div class="col m4"><button type="" class="btn grey">OK</button></div>
             <div class="col m4"><button type="" class="btn grey">Abort</button></div>
 			</div>

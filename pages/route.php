@@ -1,12 +1,13 @@
+
 <?php
 
 if(isset($_GET['page'])) {
   $page = $_GET['page'];
 } else {
-  $page = "HM01";
+  $page = "HM02";
 }
 
-include $page . ".php";
+$page = $page . ".php";
 ?>
 
 <?php /*
