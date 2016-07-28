@@ -33,7 +33,8 @@ include ("pages/header.php");
             }
             $("input[name=Fname]").val(data.FIRST_NAME)
             $("input[name=Sname]").val(data.SURNAME)
-            $("input[name=dob]").val(data.FIRST_NAME)
+            //$("input[name=dob]").val(data.DATE_OF_BIRTH)
+            $("#calDob").html(calDOB(strToDate($("#dob").val()))+" years");
             $("#addr").val(data.ADDRESS)
             $("#id").text("Donor : " + data.DONOR_ID +" - Administrative coordinates -"+ today)
             $("input[name=postCode]").val(data.POSTAL_OR_ZIP_CODE)
@@ -47,14 +48,14 @@ include ("pages/header.php");
     })
 
 	$(function(){		
-		$("#dob").val("18-ธ.ค-2528");
-		$("#calDob").html(calDOB(strToDate($("#dob").val()))+" years");
-		$("#dob").datepicker();
-		$("#dob").blur(function(){
-			$("#calDob").html(calDOB(strToDate($(this).val()))+" years");
-		});
-		$("#dateTimeOfSearch").val(getCurrentDateTimeString());
-		$(".date").html(getCurrentDateTimeString());
+		//$("#dob").val("18-ธ.ค-2528");
+		// $("#calDob").html(calDOB(strToDate($("#dob").val()))-5+" years");
+		// $("#dob").datepicker();
+		// $("#dob").blur(function(){
+		// 	$("#calDob").html(calDOB(strToDate($(this).val()))+" years");
+		// });
+		// $("#dateTimeOfSearch").val(getCurrentDateTimeString());
+		// $(".date").html(getCurrentDateTimeString());
 	});
     
 </script>
@@ -120,7 +121,7 @@ include ("pages/header.php");
                                 <label for="">DOB</label>
                             </div>
                             <div class="col-sm-5">
-                                <input type="text" name="dob" id="dob" class="form-control dndate" tabindex="8">
+                                <input type="text" ng-model="dob" date-input name="dob" id="dob" class="form-control dndate" tabindex="8">
                             </div>
                             <div class="col-sm-4">
                                 <h5 id="calDob"></h5>
