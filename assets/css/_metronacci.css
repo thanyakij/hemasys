@@ -20,6 +20,10 @@ nav {
   z-index:10;
 }
 
+section {
+  
+}
+
 .page-wrapper {
   width:1180px !important; margin: 0 auto;
   overflow:hidden;
@@ -39,11 +43,105 @@ footer {
   padding: 10px 0;
 }
 
-
+.clearboth {
+  clear:both;
+}
 
 .row:after,.row:before, row:after, row:before{
   display:table;content:" "
 }
+
+
+.UIrow, row {
+  display:flex;
+}
+
+  .trim, row ul, .UIrow ul {
+    margin:0; padding:0;
+  }
+  
+  .UIrow li, row ul li {
+    display:inline;
+  }
+
+  li.UItile, a.UItile, .UIbutton {
+    display:block;
+  }
+
+  li.UItile, a.UItile, .UIbutton, .UIblock {
+    float:left;
+    overflow:auto;
+    margin-left:10px;
+    margin:5px 10px;
+    margin-right:0;
+    position:relative;
+  }
+
+  li.UItile, a.UItile {
+    width:170px;
+    height:170px;
+  }
+
+  .UIbutton, button {
+    min-width:35px;
+    height:35px;
+    font-size:1.5em;
+    display:inline-block;
+  }
+
+.input-group,.input-group span,.input-group input {
+  height:35px;
+}
+
+.input-group span, .input-group input,.input-group button {
+  font-size:20px !important;
+} 
+
+.input-group button {
+  
+}
+    
+    .UIbutton span {
+      position: relative;
+      top: 20%;
+      transform: translateY(-50%);
+    }
+    .UIbutton:hover, button:hover {
+      cursor:pointer;
+    }
+
+  .UItile [class^="mif-"] {
+    font-size:5em;
+    position: relative; top: 45%;
+    transform: translateY(-50%);
+  }
+
+  .tile-active {
+    cursor:pointer;
+  }
+
+  .tile-disable {
+    cursor:pointer;
+  }
+
+  .tile-caption {
+    position:absolute; bottom:0; line-height:30px;
+    display:block; width:100%; font-size:1.5em;
+    padding-bottom:0.2em; 
+  }
+  .tile-badge {
+    position:absolute; top:0.5em; right:0.75em;
+    display:block; font-size:1.5em;
+  }
+
+
+
+
+
+
+
+
+
 row {
   display:flex;
 }
@@ -187,4 +285,23 @@ tile [class^="mif-"] {
 }
 .offset-12 {
   margin-left:1090px !important;
+}
+
+
+input {
+  height:35px;
+  font-size:1.5em;
+}
+
+.inline-input-group {
+  
+}
+  .inline-input-group label {
+    
+  }
+
+.btn {
+  padding:0 !important;
+  min-width:35px;
+  min-height:35px;
 }

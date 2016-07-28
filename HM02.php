@@ -1,4 +1,3 @@
-<section>
   <div class="page-container">
     <!--row class="center">
       <cell class="col span-1 tile tile-small">1</cell>

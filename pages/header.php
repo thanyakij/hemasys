@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
       <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css" />
+      <!--link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css" /-->
       <link rel="stylesheet" type="text/css" href="assets/css/metro-ui/metro.css">
       <link rel="stylesheet" type="text/css" href="assets/css/metro-ui/metro-icons.css">
       <link rel="stylesheet" type="text/css" href="assets/css/metro-ui/metro-colors.css">
