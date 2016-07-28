@@ -1,1 +1,1 @@
-const app = angular.module('hemasys', []);
+const app = angular.module('hemasys', ['datatables']);
