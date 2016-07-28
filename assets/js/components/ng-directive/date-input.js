@@ -16,9 +16,10 @@ app.directive('dateInput', function() {
     if (element.val()) val = element.val();
     if (attrs.ngValue) val = attrs.ngValue;
     if (attrs.dateInputFormat) input_format = attrs.dateInputFormat;
-
-    val = moment(val, input_format).format('DD-MMM-YYYY');
-    val = convertYear(val);
+    if (val) {
+      val = moment(val, input_format).format('DD-MMM-YYYY');
+      val = convertYear(val);
+    }
     render(ctrl, val)
   }
 
