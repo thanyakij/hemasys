@@ -1,37 +1,83 @@
 <!DOCTYPE html>
 <html>
     <head>
-			<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
-		<script src="jquery.min.js"></script>
-		<script src="js/materialize.min.js"></script>	
-        <link rel="" href=""> 
-        <style>
-            .UIboxborder{
-                border:1px #999 solid; 
-                padding:5px;
-            }
-			
-			   .input-field label {
-				 color: #333;
-			   }
-			   /* label focus color */
-			   .input-field input[type=text]:focus + label {
-				 color: #333;
-			   }
-        </style>   
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/primeui/primeui.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+	<script src="jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="assets/js/main.js"></script>	
+	<style>
+		.UIboxborder{
+			border:1px #999 solid; 
+			padding:5px;
+		}
+		
+		.input-field label {
+			color: #333;
+		}
+		/* label focus color */
+		.input-field input[type=text]:focus + label {
+			color: #333;
+		}
+		table thead tr{
+			display:block;
+		}
+		table th{
+			padding:10px;
+			text-align:center;
+			width:200px;//fixed width
+		}
+		table td{
+			padding:10px;
+			text-align:center;
+			width:200px;//fixed width
+		}
+		table  tbody{
+			display:block;
+			height:160px;
+			overflow:auto;//set tbody to auto
+		}
 
-		<script>
-			$(document).ready(function(){
-				$(".modalbtn").hide();
-				$(".reasonbtn").hide();
-				$("#deletebtn").hide();
+	</style>   
 
+	<script>
+		var data = ''
+		var donorId = $.urlParam("donorId");
+		var sampleId = $.urlParam("sampleId");
+		console.log(donorId +" "+ sampleId);
+		var url1 = "http://192.168.0.145/api/donation_examinations/lists/"+donorId+"/"+sampleId 
+		$.get(url1,function(data){
+			var innerTbody  = ''
+			for(var i =0;i<data.length;i++){
+				if(data[i].ABNORMAL_STATUS == null){
+					data[i].ABNORMAL_STATUS = "checked";
+				}else{
+					data[i].ABNORMAL_STATUS='';
+				}
+				if(data[i].COMMENTS == null){
+					data[i].COMMENTS = "checked";
+				}else{
+					data[i].ABNORMAL_STATUS = '';
+				}
+				innerTbody += "<tr><td>"+data[i].EXAMINATION_CODE+"</td><td>"+data[i].RESULTS+"</td><td>"+data[i].QUANTITATIVE_RESULT+"</td>"+
+							  "<td>NBC Lab("+data[i].LABORATORY_CODE+")<a class='btn grey tiny modal-trigger modalbtn href='#lablist'>>></a></td>"+
+							  "<td><input type='checkbox'"+data[i].ABNORMAL_STATUS+"value='' id='c3' disabled><label for='c3'></label></td>"+
+							  "<td><input type='checkbox'"+data[i].COMMENTS+"value='' id='c4' disabled><label for='c4'></label></td></tr>"
+			}
+			$("table tbody").html(innerTbody)
+
+		})
+		$(document).ready(function(){
+			$("p.center-align").text("Donation examination "+sampleId+" (NBC Donor No. "+donorId+")")
+			$(".modalbtn").hide();
+			$(".reasonbtn").hide();
+			$("#deletebtn").hide();
 			$("#authen-button").click(function(){
 				$("input").removeAttr("disabled");
 				$("input").removeAttr("readonly");
@@ -41,8 +87,6 @@
 				$("#modification").addClass("green");
 				$("#deletebtn").show();
 			});
-			
-
 			$("#detailbtn").click(function(){
 				$("input").attr("disabled", true);
 				$("input").attr("readonly", true);
@@ -51,87 +95,26 @@
 				$("#modification").removeClass("green");
 				$("#modification").addClass("yellow");
 				$("#deletebtn").hide();
-			});
-
+			})
 			$("#nottested").change(function(){
 				if ($(this).prop('checked')) {$(".reasonbtn").show();}else{$(".reasonbtn").hide();}
 			});
-			
 			var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
 			$('.modal-trigger').leanModal();
+			var now = new Date();
+			var today = now.getDate();
+			var thismonth = now.getMonth()+1;
+			var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543+1900;}
+			var getdate = today + "-" + month[thismonth] + "-" + thisyear;
+			var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+			$("#resultdate").val(getdate + " " + time);
+			// Materialized Init
+			Materialize.updateTextFields();
+		});
 			
-				
-				var now = new Date();
-				var today = now.getDate();
-				var thismonth = now.getMonth()+1;
-				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543+1900;}
-				var getdate = today + "-" + month[thismonth] + "-" + thisyear;
-				var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-				$("#resultdate").val(getdate + " " + time);
-				// Materialized Init
-				Materialize.updateTextFields();
-			/*
-				// DATE VALIDATION
-				$("#resultdate").blur(function(){
-				var getdate = $("#resultdate").val().split("/");
-				var now = new Date();
-				var today = now.getDate();
-				var thismonth = now.getMonth()+1;
-				var thisyear = now.getYear(); if (thisyear<2500) {thisyear+=543;}
-				
-				var newstrdate = "";
-				if (getdate[0] > 31) {getdate[0] = 31;}
-				if (getdate[1] > 12) {getdate[1] = 12;}
-				if (getdate[0]) {newstrdate+=getdate[0]+" ";}else{newstrdate+=today+" ";}
-				if (getdate[1]) {newstrdate+=month[getdate[1]] + " ";}else{newstrdate+=month[thismonth] + " ";}
-				if (getdate[2]) {
-				      if (getdate[2] < 25) {getdate[2]=2543+parseInt(getdate[2]);}
-					  if (getdate[2] > 25 && getdate[2] < 99) {getdate[2]=2500+parseInt(getdate[2]);}
-					  if (getdate[2] < 2100) {getdate[2]=543+parseInt(getdate[2]);}
-					  newstrdate+=getdate[2];
-					  }else{
-					  if (parseInt(thisyear) < 2500) {newstrdate+=1900+parseInt(thisyear);}
-					  if (parseInt(thisyear) >= 2500) {newstrdate+=1900+parseInt(thisyear);}
-					  }
-				$("#resultdate").val(newstrdate);
-			});
-		
-			$("#resultdate").focus(function(){
-				if ($("#resultdate").val()){
-					var getdate = $("#resultdate").val().split(" ");
-					var newstrdate = "";
-					newstrdate+=getdate[0]+"/";
-					switch(getdate[1]) {
-					case "ม.ค." : getdate[1]="1";break;
-					case "ก.พ." : getdate[1]="2";break;
-					case "มี.ค." : getdate[1]="3";break;
-					case "เม.ย." : getdate[1]="4";break;
-					case "พ.ค." : getdate[1]="5";break;
-					case "มิ.ย." : getdate[1]="6";break;
-					case "ก.ค." : getdate[1]="7";break;
-					case "ส.ค." : getdate[1]="8";break;
-					case "ก.ย." : getdate[1]="9";break;
-					case "ต.ค." : getdate[1]="10";break;
-					case "พ.ย." : getdate[1]="11";break;
-					case "ธ.ค." : getdate[1]="12";break;
-					}
-					newstrdate+=getdate[1]+"/";		
-					newstrdate+=getdate[2];
-					$("#resultdate").val(newstrdate);
-				}
-			});
-			$('#resultdate').bind('keypress', function(e) {			
-						var k = e.which;
-						var ok = k == 8 || k == 47 || // a-z, / , bspc
-								k >= 48 && k <= 57; // 0-9
-						if (!ok){
-							e.preventDefault();
-						}
-			}); 	*/		
-			
-			});
-		</script>
-		</head>
+	
+	</script>
+	</head>
     <body>
 	
 		<nav class="red lighten-2">
@@ -237,32 +220,23 @@
 	 
     </div>
   </div>
-  
-  
-  
-	
-        <p class="center-align blue-text text-darken-2">Donation examination 10059T1119 (NBC Donor No. 1006801646)</p>
-        <div class="col-md-10">
-            <div class="col-md-12">
-                <div class="" style="padding: 8px;height: 150px;overflow-y: scroll;">
-                    <table style="width: 100%" class="highlight">
-                        <th>Examination</th>
-                        <th>Results</th>
-                        <th>Quant.Result</th>
-                        <th>executing laboratory</th>
-                        <th>Abnormal</th>
-                        <th>Comm</th>
-                        <tr>
-                            <td>NULL</td><td>NULL</td><td>NULL</td><td>NULL <a class="btn grey tiny modal-trigger modalbtn" href="#lablist">>></a></td>
-                            <td><input type="checkbox" name="" value="" id="c1" disabled checked><label for="c1"></label></td>
-                            <td><input type="checkbox" name="" value="" id="c2" disabled><label for="c2"></label></td>
-                        </tr>
-                        <tr>
-                            <td>NULL</td><td>NULL</td><td>NULL</td><td>NULL  <a class="btn grey tiny modal-trigger modalbtn" href="#lablist">>></a></td>
-                            <td><input type="checkbox" name="" value="" id="c3" disabled><label for="c3"></label></td>
-                            <td><input type="checkbox" name="" value="" id="c4" disabled><label for="c4"></label></td>
-                        </tr>
-                    </table>
+<p class="center-align blue-text text-darken-2"></p>
+<div class="col-md-10">
+	<div class="col-md-12">
+		<div class="" style="padding: 8px;height: 200px;">
+			<table class="highlight">
+				<thead>
+					<th>Examination</th>
+					<th>Results</th>
+					<th>Quant.Result</th>
+					<th>executing laboratory</th>
+					<th>Abnormal</th>
+					<th>Comm.</th>
+				</thead>
+				<tbody >
+
+				</tbody>
+			</table>
  </div>
 <p class="right-align"><a class="btn grey" id="deletebtn">Delete</a>
 

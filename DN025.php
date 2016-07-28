@@ -9,13 +9,14 @@ include ("pages/header.php");
 <script src="assets/js/jquery-2.2.1.js" type="text/javascript"></script>
 <script src="assets/jquery-ui/jquery-ui.js" type="text/javascript"></script>
 <script src="assets/js/main.js" type="text/javascript"></script>
+<script src="assets/js/components/ng-module/moment.min.js"></script>
 <script src="assets/js/calendar.js" type="text/javascript"></script>
 <link rel="stylesheet" href="assets/jquery-ui/themes/redmond/jquery-ui.css" type="text/css"/>
 <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
 
 <script type="text/javascript">
     $(window).load(function(){
-        var today = new Date();
+        var today = moment().format('MMMM Do YYYY, h:mm:ss a');
         var donorId = $.urlParam("donorId")
         var url = "http://192.168.0.145/api/donor/read/"+donorId
         $.get( url, function( data ) {
@@ -33,7 +34,9 @@ include ("pages/header.php");
             }
             $("input[name=Fname]").val(data.FIRST_NAME)
             $("input[name=Sname]").val(data.SURNAME)
-            $("input[name=dob]").val(data.FIRST_NAME)
+            $("#dateTimeOfSearch").val(today)
+            $("input[name=dob]").val(data.DATE_OF_BIRTH)
+            $("#calDob").html(calDOB(strToDate($("#dob").val()))-543+" years");
             $("#addr").val(data.ADDRESS)
             $("#id").text("Donor : " + data.DONOR_ID +" - Administrative coordinates -"+ today)
             $("input[name=postCode]").val(data.POSTAL_OR_ZIP_CODE)
@@ -47,14 +50,14 @@ include ("pages/header.php");
     })
 
 	$(function(){		
-		$("#dob").val("18-ธ.ค-2528");
-		$("#calDob").html(calDOB(strToDate($("#dob").val()))+" years");
-		$("#dob").datepicker();
-		$("#dob").blur(function(){
-			$("#calDob").html(calDOB(strToDate($(this).val()))+" years");
-		});
-		$("#dateTimeOfSearch").val(getCurrentDateTimeString());
-		$(".date").html(getCurrentDateTimeString());
+		//$("#dob").val("18-ธ.ค-2528");
+		// $("#calDob").html(calDOB(strToDate($("#dob").val()))-5+" years");
+		// $("#dob").datepicker();
+		// $("#dob").blur(function(){
+		// 	$("#calDob").html(calDOB(strToDate($(this).val()))+" years");
+		// });
+		// $("#dateTimeOfSearch").val(getCurrentDateTimeString());
+		// $(".date").html(getCurrentDateTimeString());
 	});
     
 </script>

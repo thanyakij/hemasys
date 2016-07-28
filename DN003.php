@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <script src="assets/js/jquery-1.11.2.min.js"></script>
         <script src="assets/js/view/DN004.js"></script>
+        <script src="assets/js/main.js" type="text/javascript"></script>
   
     </head>
     <body ng-controller="collectionPointCtrl">
