@@ -1,13 +1,12 @@
-
 <?php
 
 if(isset($_GET['page'])) {
-  $page = $_GET['page'];
+  $pageID = $_GET['page'];
 } else {
-  $page = "HM02";
+  $pageID = "HM02";
 }
 
-$page = $page . ".php";
+//$page = $page . ".php";
 
 
 if(isset($_GET['modulenumber'])) {
@@ -17,7 +16,6 @@ if(isset($_GET['modulenumber'])) {
         $pageID = "DN001";
         break;
     default:
-        echo "0";
         break;
    }
 } 
@@ -37,7 +35,7 @@ if(isset($pageID)) {
     default:
         $page = "HM02.php";
         $title = "Main menu";
-        break;
+        break;  
   }
 } 
 

@@ -4,7 +4,7 @@
 }
 
 @font-face {
-    font-family: LeelawadeeUI;
+    font-family: LeelawadeeUIBold;
     src: url(../fonts/leelawadee/LeelaUIb.ttf);
     font-weight:bold;
 }
@@ -13,25 +13,54 @@ nav, body, a, div, td, p, li, h1, h2, h3, h4, h5, h6, span, small, strong {
     font-family: LeelawadeeUI;
 }
 
-nav {
-  position:fixed; top:0; right:0;
-  width:100%;
-  height:50px;
-  z-index:10;
+a {
+  font-size:inherit;
+  font-weight:inherit;
 }
 
+.hamburger {
+  font-size:1.5em;
+  width:50px !important;
+  text-align:center;
+  padding:0 !important;
+}
+
+.mainnavlink {
+  display:inline-block;
+  height:50px !important;
+  line-height:35px !important;
+  min-width:50px; padding:0 10px;
+}
+
+a.mainnavlink {
+}
+
+.main-nav {
+  position:fixed; top:0; right:0;
+  width:100%;
+  height:50px !important;
+  clear:both;
+  z-index:10;
+  font-size:20px !important;
+}
+
+  nav .sitename {
+    font-size:26px !important;
+    font-weight:bold; 
+    position:relative;
+  }
+
 section {
-  
+  position:relative;top:0;
 }
 
 .page-wrapper {
   width:1180px !important; margin: 0 auto;
-  overflow:hidden;
+  position:relative; top:0;
 }
 
 .page-container {
-  background:#ffffff;
-  padding:5px 0;
+  margin:10px 0;
 }
 
 section.body, .section-body {
@@ -47,13 +76,33 @@ footer {
   clear:both;
 }
 
+.inline {
+  display:inline;
+}
+
+  ul.inline li {
+    display:inline;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+.centervert {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 .row:after,.row:before, row:after, row:before{
-  display:table;content:" "
+  display:table;content:" ";
 }
 
 
 .UIrow, row {
-  display:flex;
+  display:flex; 
+  padding:5px 0;
 }
 
   .trim, row ul, .UIrow ul {
@@ -63,13 +112,22 @@ footer {
   .UIrow li, row ul li {
     display:inline;
   }
+  
+  
+  .trim li {
+    display:inline-block;
+  }
+  
+  row ul.trim li {
+    float:left;
+  }
 
   li.UItile, a.UItile, .UIbutton {
-    display:block;
+    display:inline-block;
   }
 
   li.UItile, a.UItile, .UIbutton, .UIblock {
-    float:left;
+    float:left !important;
     overflow:auto;
     margin-left:10px;
     margin:5px 10px;
@@ -83,8 +141,15 @@ footer {
   }
 
   .UIbutton, button {
+    min-width:50px;
+    height:50px;
+  }
+  .UIbutton-inline, button.inline {
     min-width:35px;
     height:35px;
+  }
+
+  .UIbutton, button, .UIbutton-inline, button.inline {
     font-size:1.5em;
     display:inline-block;
   }
@@ -92,19 +157,27 @@ footer {
 .input-group,.input-group span,.input-group input {
   height:35px;
 }
+  .input-inline input, .input-inline span, .input-inline button  {
+    height:34px !important;
+  }
+  .input-inline {
+    height:26px !important; 
+  }
+  
+
 
 .input-group span, .input-group input,.input-group button {
   font-size:20px !important;
 } 
 
-.input-group button {
+
+.input-inline button {
   
 }
     
     .UIbutton span {
-      position: relative;
-      top: 20%;
-      transform: translateY(-50%);
+      line-height:48px;
+      font-size:24px;
     }
     .UIbutton:hover, button:hover {
       cursor:pointer;
@@ -125,9 +198,10 @@ footer {
   }
 
   .tile-caption {
-    position:absolute; bottom:0; line-height:30px;
-    display:block; width:100%; font-size:1.5em;
-    padding-bottom:0.2em; 
+    position:absolute; bottom:0; 
+    display:block; width:100%; 
+    padding-bottom:0.5em; 
+    font-size:20px; line-height:24px;
   }
   .tile-badge {
     position:absolute; top:0.5em; right:0.75em;
@@ -135,9 +209,9 @@ footer {
   }
 
 
-
-
-
+.goto-navi {
+  height:50px !important;
+}
 
 
 
@@ -146,18 +220,32 @@ row {
   display:flex;
 }
 
+.row-topic {
+  height:100px;
+}
+
+.row-control {
+  padding-top:40px;
+}
+
 .col, col, cell, tile, .tile {
   display:block;
   overflow:auto;
   margin-left:10px;
 }
-tile, .tile, tile.wide, .tile-wide {
+tile, .tile, tile.wide, .tile-wide, .tile-like {
   float:left;
   margin:5px 10px;
   margin-right:0;
   position:relative;
+  outline: 3px;
+  outline-color: transparent !important;
 }
 
+.tile-wide, .tile-like {
+}
+
+ 
 tile, .tile {
   width:170px;
   height:170px;
@@ -171,32 +259,32 @@ tile.small, .tile-small {
   width:80px;
   height:80px;
 }
+tile.tiny, tile-tiny {
+  width:50px;
+  height:50px;
+  margin-right:30px;
+}
 tile [class^="mif-"] {
   font-size:5em;
   position: relative; top: 45%;
   transform: translateY(-50%);
 }
 
-  tile .tile-caption {
-    position:absolute; bottom:0;
-    display:block; width:100%; font-size:1.5em;
-    padding-bottom:0.1em;
-  }
+.tile-groupname {
+  text-align:left;
+  font-size:30px;
+  line-height:30px;
+  padding-top:20px;
+}
 
-  tile.wide .tile-caption, .tile-wide .tile-caption {
-    position:absolute; bottom:0; left:0.5em !important;
-    display:inline-block; text-align:left; width:90%; font-size:1.5em;
-    padding-bottom:0.1em;
-  }
-  
-  tile .tile-badge {
-    position:absolute; top:0.5em; right:1em;
-    display:block; font-size:1.5em;
-  }
 
 
 .mainmenu-tile {
   cursor:pointer;
+}
+
+.align-left {
+  text-align:left;
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, 
@@ -248,8 +336,6 @@ tile [class^="mif-"] {
   width:1160px !important;
 }
 
-
-
 .offset-1 {
   margin-left:100px !important;
 }
@@ -288,6 +374,93 @@ tile [class^="mif-"] {
 }
 
 
+
+/*
+ * Condended columning, spaning and offsetting
+ */
+
+
+
+.span-1c {
+  width:90px !important;
+}
+.span-2c {
+  width:180px !important;
+}
+.span-3c {
+  width:270px !important;
+}
+.span-4c {
+  width:360px !important;
+}
+.span-5c {
+  width:450px !important;
+}
+.span-6c {
+  width:540px !important;
+}
+.span-7c {
+  width:630px !important;
+}
+.span-8c {
+  width:720px !important;
+}
+.span-9c {
+  width:810px !important;
+}
+.span-10c {
+  width:900px !important;
+}
+.span-11c {
+  width:990px !important;
+}
+.span-12c {
+  width:1080px !important;
+}
+.span-13c {
+  width:1180px !important;
+}
+
+
+.offset-1c {
+  margin-left:90px !important;
+}
+.offset-2c {
+  margin-left:180px !important;
+}
+.offset-3c {
+  margin-left:270px !important;
+}
+.offset-4c {
+  margin-left:360px !important;
+}
+.offset-5c {
+  margin-left:450px !important;
+}
+.offset-6c {
+  margin-left:540px !important;
+}
+.offset-7c {
+  margin-left:630px !important;
+}
+.offset-8c {
+  margin-left:720px !important;
+}
+.offset-9c {
+  margin-left:810px !important;
+}
+.offset-10c {
+  margin-left:900px !important;
+}
+.offset-11c {
+  margin-left:9900px !important;
+}
+.offset-12c {
+  margin-left:1080px !important;
+}
+
+
+
 input {
   height:35px;
   font-size:1.5em;
@@ -304,4 +477,8 @@ input {
   padding:0 !important;
   min-width:35px;
   min-height:35px;
+}
+
+.floatleft {
+  float:left !important;
 }

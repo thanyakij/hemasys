@@ -1,7 +1,6 @@
-
-
 body {
-  background:#f4f4f4 url(../../images/hemasys-bg.png) top right fixed no-repeat;
+  background:#646473 url(../../images/hemasys-bg.png) top right fixed no-repeat;
+  margin:0; padding:0;
 }
 
 

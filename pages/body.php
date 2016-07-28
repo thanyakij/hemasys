@@ -1,10 +1,9 @@
-<?php
-  include ("pages/nav.php");
-?>
+<?php include ("pages/nav.php"); ?>   
+ 
+<!-- ========================= Body ========================== -->
 <div class="page-wrapper section-body">
-<?php include $page; ?>
+  <?php include $page; ?>
 </div>
-
 <?php /*
 echo $pageBody; 
 echo '<br>';

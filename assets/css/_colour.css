@@ -18,6 +18,17 @@
   text-decoration:none !important;
 }
 
+.page-container {
+  background:#eeeeee;
+}
+.page-container-1090 {
+  background:#eeeeee;
+  width:1090px !important;
+}
+
+.hamburger {
+}
+
 .UItile {
   box-shadow: inset 0 0 1px #ffffff;
   color:#ffffff;
@@ -26,10 +37,10 @@
   .tile-active, .tile-active a {
     color:#ffffff;
   }
-  .tile-active:hover, .UIbutton:hover, button:hover, input:hover, .tile:hover, tile:hover {
-    outline: #ffff66 solid 3px !important; /*#dbdbea*/
+  .tile-active:hover, .UIbutton:hover, button:hover, input:hover,input:focus, .outlinehover:hover {
+    outline: #ffff00 solid 3px !important; /*#dbdbea*/
   }
-  .tile-active:active {
+  .tile-active:active, .outlinehover {
     outline: 0;
   }
   
@@ -39,30 +50,31 @@
     outline-color: transparent !important;
   }
   
-  .tile-mainmenu {
+  .tile-mainmenu, .mainnavlink {
     background:#ce352c;
+  }
+  
+  .tile-mainmenu:hover, .mainnavlink:hover {
+    background:#9A1616;
   }
 
 
-
-input, .UIbutton, button,.input-group input, .input-group-addon {
-  border:1px #eeeeee solid !important;
+input, .input-group input, .input-group-addon {
+  border:1px #e5e5e5 solid !important;
   border-radius:0 !important;
-  border-right:1px #cccccc solid !important;
+}
+
+.UIbutton, button {
+  border:1px #aaaaaa solid !important;
+  border-radius:10 !important;
 }
 
 .input-group {
-  border-bottom:2px #999999 solid !important;
+  border-bottom:2px #aaaaaa solid !important;
 }
   
   .input-group:hover {
     border-bottom:2px #FFFF00 solid !important;
-  }
-  .input-group input, .input-group span, .input-group button  {
-    height:34px !important;
-  }
-  .input-group {
-    height:26px !important; 
   }
 
 input:hover, .UIbutton:hover, button:hover {
@@ -74,7 +86,7 @@ input:hover, .UIbutton:hover, button:hover {
 
 .input-group-addon {
   border-right:0 !important;
-  background:#f4f4f4;
+  background:#eeeeee;
 }
 
 .UIbutton, button {
@@ -95,7 +107,9 @@ input:hover, .UIbutton:hover, button:hover {
 }
 
 
-
+.row-control {
+  background:#dddddd;
+}
 
 
 
@@ -125,22 +139,22 @@ tile.disabled, .tile-disabled {
   color:#dddddd;
 }
 
-
+/*
 .col, col, cell, tile, .tile {
   background:#dddddd;
-}
+}*/
 tile, .tile, tile.wide, .tile-wide {
   box-shadow: inset 0 0 2px #f4f4f4;
   color:#ffffff;
 }
 
-.mainmenu-tile {
-  background:#CE352C;
-}
-.mainmenu-tile:hover {
-  background:#9A1616;
+.tile-module {
+  background:#CECEBF;
 }
 
+.tile-module:hover {
+  background:#acac90;
+}
 
 .UIboxwindows {
   position: relative;
