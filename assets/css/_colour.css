@@ -46,22 +46,43 @@
 
 
 input, .UIbutton, button,.input-group input, .input-group-addon {
-  border:1px #aaaaaa solid !important;
+  border:1px #eeeeee solid !important;
+  border-radius:0 !important;
+  border-right:1px #cccccc solid !important;
 }
-input, .UIbutton, button,.input-group input,.input-group span {
+
+.input-group {
+  border-bottom:2px #999999 solid !important;
+}
+  
+  .input-group:hover {
+    border-bottom:2px #FFFF00 solid !important;
+  }
+  .input-group input, .input-group span, .input-group button  {
+    height:34px !important;
+  }
+  .input-group {
+    height:26px !important; 
+  }
+
+input:hover, .UIbutton:hover, button:hover {
+  border:1px #aaaaaa solid !important;
   border-radius:0 !important;
 }
+
+
+
 .input-group-addon {
   border-right:0 !important;
   background:#f4f4f4;
 }
 
 .UIbutton, button {
-  background:#eeeeee;
+  background:#dddddd;
   color:#333333;
 }
   .UIbutton:hover, button:hover {
-    background:#dddddd;
+    background:#cccccc;
     color:#333333;
     text-decoration:none;
   }

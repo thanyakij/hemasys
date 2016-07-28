@@ -1,6 +1,5 @@
 <?php
   include ("pages/nav.php");
-  include ("pages/route.php");
 ?>
 <div class="page-wrapper section-body">
 <?php include $page; ?>

@@ -140,12 +140,17 @@
     <row class="center">
       <ul class="trim">
         <li>
-          <div class="UIblock input-group span-2 offset-8">
+          <div class="UIblock input-group span-2 offset-8" method="get">
+          
             <span class="input-group-addon" id="basic-addon1">goto:</span>
-            <input type="text" class="form-control" placeholder="choice">
+            <form style="display:flex">
+              <input type="text" class="form-control" placeholder="choice" name="modulenumber" autofocus>
+            </form>
+            
             <!--span class="input-group-btn">
               <button class="btn span-1" type="button" >Go</button>
             </span-->
+          
           </div>
         </li>
         <li>

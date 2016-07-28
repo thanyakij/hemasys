@@ -22,7 +22,8 @@
       <?php
 
       include ("pages/setting.php");
-
+      include ("pages/route.php");
+      
       ?>
       <title><?php
         echo $title;
