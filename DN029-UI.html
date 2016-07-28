@@ -2,30 +2,61 @@
 <html>
     <head>
 		<meta charset="UTF-8">
-      		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
     <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/primeui/primeui.css" />
+		<link rel="stylesheet" type="text/css" href="assets/primeui/themes/smoothness/theme.css" />
+		<script src="assets/js/components/scripts.js"></script>	
 		<script src="jquery.min.js"></script>
 		<script src="js/materialize.min.js"></script>	
-        <style>
-            .UIboxborder {
-                border: 1px solid #999;
-                padding: 5px;
-            }
-					   .input-field label {
-				 color: #333;
-			   }
-			   /* label focus color */
-			   .input-field input[type=text]:focus + label {
-				 color: #333;
-			   }
-        </style>
+		<script src="assets/js/main.js"></script>	
+		<style>
+				.UIboxborder {
+						border: 1px solid #999;
+						padding: 5px;
+				}
+				.input-field label {
+						color: #333;
+				}
+						/* label focus color */
+				.input-field input[type=text]:focus + label {
+						color: #333;
+				}
+		</style>
 		<script>
+			var today = moment().format("Do MMM YY");
+			var donorId = $.urlParam("donorId")
+			var url1 = "http://192.168.0.145/api/donor/read/"+donorId
+			var abo
+			$.get("http://192.168.0.145/api/donor/get_aborh/"+donorId,function(abo){
+				$("h1.red-text").text(abo.ABORH)
+			})
+			$.ajax({
+				url:url1,
+				type:'GET',
+				success:function(data){
+					$("#hermatosno").text(data.DONOR_ID)
+					$("#name").focus().val(data.FIRST_NAME+" "+data.SURNAME)
+					$("#dob").focus().val(data.DATE_OF_BIRTH)
+					$("#addr").focus().val(data.ADDRESS)
+					$("#tel").focus().val(data.PERSONAL_PHONE_NUMBER)
+					$("#post").focus().val(data.POSTAL_OR_ZIP_CODE)
+					$("#telBus").focus().val(data.OTHER_TELEPHONE_NUMBER)
+					$("#pheno").focus().val()
+					$("#company").focus().val(data.COMPANY)
+					$("#profession").focus().val(data.PROFESSION)
+					$("#first").focus().val(data.DATE_FIRST_DONATION)
+					$("#firstdate").focus().val(today)
+					$("h1.red-text").text()
+					//$().vaL(TYPE_OF_DONOR)
+				},
+			})
+
 			$(document).ready(function(){
-						var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
+				var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
 				Materialize.updateTextFields();
 				$("select").material_select();
 				
@@ -125,7 +156,7 @@
         <!--Medical file--><br><br>
         <div class="row container">
 			<div class="col s12 m4">
-             <label for="hermatosno">NBC Donor ID</label> <p id="hermatosno">1000012323</p>
+             <label for="hermatosno">NBC Donor ID</label> <p id="hermatosno"></p>
 			</div>
 			
 			
@@ -137,47 +168,47 @@
 			</div>
             
 			<div class="col s12 m8 input-field">
-			<label for="">Surname</label><input type="text" readonly>
+			<label for="">Name</label><input id="name" type="text" readonly>
 			</div>
 			
 			<div class="col s12 m4 input-field">
-			<label for=""> DOB</label><input type="text" readonly> (28 years)
+			<label for=""> DOB</label><input id="dob" type="text" readonly> (28 years)
 			</div>
             
 			
 			<div class="col s12 m4 input-field">
-			<label for="">Address</label><input type="text" readonly>
+			<label for="">Address</label><input id="addr" type="text" readonly>
 			</div>
             
 			<div class="col s12 m4 input-field">
-						<select id="telper">
+			<select id="telper">
 				<option></option>
 			</select>
 			<label for="telper">Tel. Per</label> 
 			</div>
             
 			<div class="col s12 m4 input-field">
-			<label for="">in</label><input type="text" readonly>
+			<label for="">in</label><input id="tel" type="text" readonly>
 			</div>
             
 			<div class="col s12 m4 input-field">
-            <label for="">Post Code/Country</label><input type="text" readonly>
+            <label for="">Post Code/Country</label><input id="post" type="text" readonly>
 			</div>
 			
 			<div class="col s12 m4 input-field">
-            <label for="">Tel. Bus</label><input type="text" readonly>
+            <label for="">Tel. Bus</label><input id="telBus" type="text" readonly>
             </div>
 			
 			
 			 <div class="col m4 input-field">
 						<select id="donortype">
-				<option></option>
-			</select>
-			<label for="donortype">Donor Type</label> 
-             </div>
+							<option></option>
+						</select>
+						<label for="donortype">Donor Type</label> 
+      </div>
 			
 			 <div class="col m4 input-field">
-            <input type="text" readonly><label for="">Pheno</label>
+            <input id="pheno" type="text" readonly><label for="">Pheno</label>
 			</div>
 			
 			 <div class="col m4 input-field">			
@@ -195,12 +226,12 @@
         <!--Medical-Table-Left-->
 
 
-         <div class="col s12 m4 input-field">   
+    <div class="col s12 m4 input-field">   
 			<label for="first">1st Donation</label> 
 			<input type="text" id="first">
 		</div>	
 		
-		         <div class="col s12 m4 input-field">   
+		<div class="col s12 m4 input-field">   
 			<label for="first">Date</label> 
 			<input type="text" id="firstdate">
 		</div>	
