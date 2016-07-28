@@ -1,4 +1,4 @@
-app.controller('collectionPointCtrl', ['$scope', '$rootScope', '$http', 'VariablesService', '$location', 'CollectionFactory', function($scope, $rootScope, $http, VariablesService, $location, CollectionFactory) {
+app.controller('collectionPointCtrl', ['$scope', '$http', 'VariablesService', '$location', 'CollectionFactory', function($scope, $http, VariablesService, $location, CollectionFactory) {
 
   $scope.cpCode = '';              //for sample DN003
   $scope.cpDesc = '';              //for get page DN003 [search]
@@ -6,8 +6,6 @@ app.controller('collectionPointCtrl', ['$scope', '$rootScope', '$http', 'Variabl
   var cpCode = $.urlParam("cpCode");             //for get page DN003 [search]
   $scope.cp = {};             //save data of collection point.
   $scope.data = {};           //save other data.
-
-  console.log('DN003 ' + $scope.cpCode);
 
   //if event for search.
   if(cpCode !== null) {

@@ -6,7 +6,11 @@ include ("pages/setting.php");
 include ("pages/header.php");
 
 ?>
-<div id="<?php echo $pageClass; ?>" class="container">
+
+<script src="assets/js/view/DN045.js"></script>
+<script src="assets/js/main.js"></script>
+
+<div id="<?php echo $pageClass; ?>" class="container" ng-controller="donationRequestCtrl">
     <div class="row">
         <div class="col-sm-5">
             <p>
@@ -14,18 +18,18 @@ include ("pages/header.php");
                     <strong>Hermatos No</strong>
                 </span>
                 <span> : </span>
-                <span>1123123213</span>
+                <span>{{ donMed.DONOR_ID }}</span>
             </p>
         </div>
         <div class="col-sm-5 pull-right">
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="text" id="" name="" class="form-control" style="margin-bottom: 10px;">
+                    <input type="text" id="" name="" class="form-control" style="margin-bottom: 10px;" disabled="true" ng-model="donor.FULL_NAME">
                 </div>
             </div>
             <div class="form-group form-inline">
                 <div class="col-sm-8">
-                    <input type="text" id="" name="" class="form-control"><small style="margin-left: 10px;">(28 years)</small>
+                    <input type="text" id="" name="" class="form-control" ng-model="donor.DATE_OF_BIRTH"><small style="margin-left: 10px;">( years)</small>
                 </div>
             </div>
         </div>
@@ -44,7 +48,7 @@ include ("pages/header.php");
                                 <h5>Date</h5>
                             </div>
                             <div class="col-sm-5">
-                                <input type="date" name="" class="form-control">
+                                <input name="" class="form-control" date-input="true"  ng-model="donMed.DATE_OF_INTERVIEW">
                             </div>
                         </div>
                     </div>
@@ -54,10 +58,10 @@ include ("pages/header.php");
                                 <h5>Outcome</h5>
                             </div>
                             <div class="col-sm-5">
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
+                                <select class="form-control" ng-model="donMed.DONATION_ORIENTATION">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
                             </div>
                         </div>
@@ -69,10 +73,10 @@ include ("pages/header.php");
                                 <h5>Category</h5>
                             </div>
                             <div class="col-sm-5">
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
+                                <select class="form-control" ng-model="donMed.CATEGORY_OF_DONATION">
+                                    <option value="WA">A</option>
+                                    <option value="WB">B</option>
+                                    <option value="WC">C</option>
                                 </select>
                             </div>
                         </div>
@@ -84,7 +88,7 @@ include ("pages/header.php");
                             </div>
                             <div class="col-sm-5">
                                 <div class="input-group">
-                                    <input type="text" name="" class="form-control" placeholder="Bag type">
+                                    <input type="text" name="" class="form-control" placeholder="Bag type" ng-model="donMed.TYPE_OF_BAG">
                                     <div class="input-group-addon">Sample bag type</div>
                                 </div>
                             </div>
@@ -96,10 +100,10 @@ include ("pages/header.php");
                                 <h5>Use</h5>
                             </div>
                             <div class="col-sm-5">
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
+                                <select class="form-control" ng-model="donMed.USE_OF_DONATION">
+                                    <option value="A">A</option>
+                                    <option value="G">G</option>
+                                    <option value="H ">H</option>
                                 </select>
                             </div>
                         </div>
@@ -111,7 +115,7 @@ include ("pages/header.php");
                                 <h5>Volume</h5>
                             </div>
                             <div class="col-sm-1">
-                                <input type="text" name="" class="form-control">
+                                <input type="text" name="" class="form-control" ng-model="donMed.EXPECTED_VOLUME">
                             </div>
                         </div>
                     </div>
@@ -122,7 +126,7 @@ include ("pages/header.php");
                                 <h5>Sample number</h5>
                             </div>
                             <div class="col-sm-5">
-                                <input type="text" name="" class="form-control">
+                                <input type="text" name="" class="form-control" ng-model="donMed.SAMPLE_NUMBER">
                             </div>
                         </div>
                     </div>
