@@ -88,7 +88,25 @@
 					};
                 let json = JSON.stringify(detail);
 				if(confirm("Are you confirm to save change ?")){
-					$.toast("Saved",2000);
+					$.toast("Saved");
+					$.ajax({
+						type: 'POST',
+						url: "http://192.168.0.145/api/collection_point_contact/update",
+						data: json,
+						// statusCode: {
+						// 	200: function (response) {
+						// 		$.toast("Saved",2000);
+						// 	},
+						// 	404: function (response) {
+						// 		$.toast("Can not save",2000);
+						// 	},
+						// },
+						success: function(data, textStatus, xhr){
+							console.log(textStatus)
+							},
+						contentType: "application/json",
+						dataType: 'json'
+					});
 				}else{
 					return ;
 				}
