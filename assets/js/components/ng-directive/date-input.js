@@ -11,10 +11,13 @@ app.directive('dateInput', function() {
   var currentYear = parseInt(today.format('YYYY')) + 543;
 
   function init(scope, element, attrs, ctrl) {
-    var val = '';
+    var val = '', input_format = 'YYYY-MM-DD';
     if (scope[attrs.ngModel]) val = scope[attrs.ngModel];
     if (element.val()) val = element.val();
     if (attrs.ngValue) val = attrs.ngValue;
+    if (attrs.dateInputFormat) input_format = attrs.dateInputFormat;
+
+    val = moment(val, input_format).format('DD-MMM-YYYY');
     val = convertYear(val);
     render(ctrl, val)
   }
@@ -22,6 +25,16 @@ app.directive('dateInput', function() {
   function render(ctrl, value) {
     ctrl.$setViewValue(value);
     ctrl.$render();
+  }
+
+  function convertYear(value) {
+    var value = value.split('-');
+    if (isNaN(parseInt(value[2]))) {
+      return value.join('-');
+    }
+    value[2] = parseInt(value[2]) + 543;
+    if ((value[2] - currentYear) > 400) value[2] -= 543;
+    return value.join('-');
   }
 
   function monthNumber(value) {
@@ -73,15 +86,6 @@ app.directive('dateInput', function() {
     }
 
     return value
-  }
-
-  function convertYear(value) {
-    var value = value.split('-');
-    if (isNaN(parseInt(value[2]))) {
-      return value.join('-');
-    }
-    value[2] = parseInt(value[2]) + 543;
-    return value.join('-');
   }
 
   return {
