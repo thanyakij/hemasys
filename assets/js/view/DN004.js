@@ -9,18 +9,13 @@ app.controller('collectionPointCtrl', ['$scope', '$rootScope', '$http', 'Variabl
 
   //if event for search.
   
+  if(cpCode !== null) {
     $http({
       method: 'GET',
       url: VariablesService.host + '/api/Collection_point/read/' + cpCode
     }).then(function(res) {
       if(!Object.keys(res.data).length == 0) {
         $scope.cp = res.data;
-        $scope.cp.COLLECTION_TYPE_CODE = '2';
-        $scope.cp.CATEGORY_CODE = '3';
-        $scope.cp.COLLECTION_MODE = '1';
-        $scope.cp.COMMUNITY_TEL = '0837627839';
-        $scope.cp.COMMUNITY_SITE_TEL = '028765462';
-
         //window.location.assign('DN004-UI.php')
       }else {
         alert("No Data.");
@@ -30,18 +25,42 @@ app.controller('collectionPointCtrl', ['$scope', '$rootScope', '$http', 'Variabl
       console.log("Error search collection point.");
       return;
     });
+
+    $scope.checkEvent = function() {
+      if(cpCode !== null) {
+        updateCollectionPoint();
+      }else {
+        addCollectionPoint();
+      }
+    }
+  }
     
   
 
-  $scope.addCollectionPoint = function(){
+  addCollectionPoint = function(){
     $http({
       method: 'POST',
       url: VariablesService.host + '/api/Collection_point/create',
       data: $scope.cp
     }).then(function(res) {
-      return;
+      console.log("Create success.");
     }, function(err) {
+      console.log(err);
+      console.log("Create fail.");
       //window.location.assign('DN003.php');
+    });
+  }
+
+  updateCollectionPoint = function() {
+    $http({
+      method: 'POST',
+      url: VariablesService.host + '/api/Collection_point/update/' + cpCode,
+      data: $scope.cp
+    }).then(function(res) {
+      console.log("Update success.");
+    },function(err) {
+      console.log(err);
+      console.log("Update fail");
     });
   }
 
