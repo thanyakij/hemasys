@@ -3,9 +3,19 @@ app.directive('isDisabled', ['$interval', function($interval) {
 
   function init(scope, element, attrs, ctrl) {
     var val = '';
-    if (scope[attrs.ngModel]) val = scope[attrs.ngModel];
+    var attrs_ng_model = (attrs.ngModel || '').split('.'), temp = scope;
+    for (var i=0; i<attrs_ng_model.length; i++) {
+      temp = temp[attrs_ng_model[i]];
+    }
+    if (temp) val = temp;
+
+    var attrs_ng_value = (attrs.ngValue || '').split('.'), temp = scope;
+    for (var i=0; i<attrs_ng_value.length; i++) {
+      temp = temp[attrs_ng_value[i]];
+    }
+    if (temp) val = temp;
+
     if (element.val()) val = element.val();
-    if (attrs.ngValue) val = attrs.ngValue;
     render(ctrl, val)
   }
 

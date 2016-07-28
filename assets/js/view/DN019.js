@@ -7,6 +7,13 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
   let ageDifMs = '';
   let ageDate = '';
 
+  //test add sample data.
+  if(addDonorId !== null) {
+    $scope.donor.DATE_OF_BIRTH = moment(new Date()).format('YYYY-MM-DD');
+    $scope.donor.DATE_OF_LAST_VISIT = moment(new Date()).format('YYYY-MM-DD');
+  }
+
+  //test get data.
   if(donor_id !== null) {
     $http({
       method: 'GET',
@@ -19,8 +26,8 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
 
       console.log(res.data);
 
-      $scope.donor.DATE_OF_BIRTH = moment(res.data.DATE_OF_BIRTH, 'DD-MMM-YYYY').format('DD-MMM-YYYY');
-      $scope.donor.DATE_OF_LAST_VISIT = moment(res.data.DATE_OF_LAST_VISIT, 'DD-MMM-YYYY').format('DD-MMM-YYYY');
+      $scope.donor.DATE_OF_BIRTH = moment(res.data.DATE_OF_BIRTH, 'DD-MMM-YYYY').format('YYYY-MM-DD');
+      $scope.donor.DATE_OF_LAST_VISIT = moment(res.data.DATE_OF_LAST_VISIT, 'DD-MMM-YYYY').format('YYYY-MM-DD');
 
       /*
       ageDifMs = Date.now() - $scope.dob.getTime();
@@ -42,10 +49,8 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
 
   $scope.checkEvent = function() {
     if(donor_id !== null) {
-      //alert("donor = null");
       updateDonorProfile();
     }else {
-      //alert("donor != null");
       addDonorProfile();
     }
   }

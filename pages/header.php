@@ -11,19 +11,20 @@
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
       <link rel="stylesheet" type="text/css" href="assets/css/_metronacci.css">
       <link rel="stylesheet" type="text/css" href="assets/css/_colour.css">
-      
+      <link rel="stylesheet" type="text/css" href="assets/css/angular-datatables.css">
+
       <script src="assets/js/components/scripts.js"></script>
       <script src="assets/js/jquery-2.2.1.js"></script>
       <script src="assets/js/bootstrap.min.js"></script>
-      
+
       <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/materialize.min.js"></script>	
+      <script src="assets/js/materialize.min.js"></script>
       <script src="assets/js/metro-ui/metro.js"></script>
       <?php
 
       include ("pages/setting.php");
       include ("pages/route.php");
-      
+
       ?>
       <title><?php
         echo $title;

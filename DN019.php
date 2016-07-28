@@ -23,17 +23,22 @@ include ("pages/header.php");
 		setGlobalCode($("#rank"), 0, 0, true);
 		setGlobalCode($("#postcode"), 5, 5, true);
 		
-		$("#dob").val("18-ธ.ค-2528");
-		$("#age").val(calDOB(strToDate($("#dob").val())));
 		$("#btnSave").click(function(){
 			$.validate();
 		});
-		$("#dob").datepicker();
+
 		$("#dob").blur(function(){
-			$("#age").val(calDOB(strToDate($(this).val())));
+            var age = calDOB(strToDate($(this).val()));
+
+            if(age >= 543) {
+                age -= 543;
+            }else if(isNaN(age)) {
+                age = 0;
+            }
+
+			$("#age").val(age);
 		});
 		
-		$("input[id^='date']").val(formatDate(new Date()));
 		$("#timeConsultation").val(getCurrentTimeWithSecString());
 		
 		$("#latinFirstname").attr("disabled", "disabled");
@@ -48,6 +53,7 @@ include ("pages/header.php");
 				$("#latinLastname").attr("disabled", "disabled");
 			}
 		});
+        /*
 		$("#postcode").keyup(function(e){
 			var val = $(this).val();
 			if(val.length===5){
@@ -55,6 +61,7 @@ include ("pages/header.php");
 				$("#country").html(option);
 			}
 		});
+        */
 	});
 </script>
 
@@ -144,9 +151,10 @@ include ("pages/header.php");
                 <div class="form-group">
                     <label for="dob" class="col-sm-2 control-label">DOB</label>
                     <div class="col-sm-4">
-                        <input id="dob" name="dob" class="form-control"  tabindex="7" placeholder="" ng-model="donor.DATE_OF_BIRTH" date-input>
+                        <input id="dob" name="dob" class="form-control"  tabindex="7" placeholder="" ng-model="donor.DATE_OF_BIRTH" date-input="true">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="age" class="col-sm-2 control-label">Age</label>
                     <div class="col-sm-2">
@@ -228,7 +236,7 @@ include ("pages/header.php");
                 <div class="form-group">
                     <label for="" class="col-sm-1 control-label">Postcode</label>
                     <div class="col-sm-2">
-                        <input type="" class="form-control required" id="postcode" name="postcode" tabindex="18" placeholder="" ng-model="donor.POSTAL_OR_ZIP_CODE">
+                        <input type="" class="form-control required" id="postcode" name="postcode" tabindex="18" placeholder="" ng-model="donor.POSTAL_OR_ZIP_CODE" number-only max-length="5">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:0;">
@@ -314,7 +322,7 @@ include ("pages/header.php");
                 <div class="form-group form-group-sm">
                     <label for="dateLastAttendance" class="col-sm-4 control-label">Last attendance</label>
                     <div class="col-sm-8">
-                        <input class="form-control" tabindex="30" id="dateLastAttendance" name="dateLastAttendance" placeholder="" ng-model="donor.DATE_OF_LAST_VISIT" date-input>
+                        <input class="form-control" tabindex="30" id="dateLastAttendance" name="dateLastAttendance" placeholder="" ng-model="donor.DATE_OF_LAST_VISIT" date-input="true">
                     </div>
                     <label for="" class="col-sm-4 control-label">Total donations</label>
                     <div class="col-sm-2 rmpadding">

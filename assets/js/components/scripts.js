@@ -5,9 +5,11 @@
 	      'components/ng-module/moment.min.js',
         'components/global-methods/for-array.js',
         'components/global-methods/for-string.js',
-        'components/ng-module/angular.min.js',
         'components/ng-module/jquery.min.js',
+        'components/ng-data-table/jquery.dataTables.min.js',
+        'components/ng-module/angular.min.js',
         'components/ng-module/angular-module.js',
+        'components/ng-data-table/angular-datatables.min.js',
         'components/ng-directive/number-only.js',
         'components/ng-directive/uppercase.js',
         'components/ng-directive/lowercase.js',
@@ -23,6 +25,7 @@
         'components/ng-directive/display-rows.js',
         'components/ng-directive/no-space.js',
         'components/ng-directive/focus.js',
+        'components/ng-directive/set-display-length.js',
         'angular-service/variables-service.js',
         'angular-service/collection_point-factory.js'
       ];
