@@ -1,6 +1,6 @@
 app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope, $http, VariablesService) {
   
-  var donor_id = '10100000';
+  var donor_id = '0000010195';
   var chkUpdate = true;
   $scope.donor = {};
   $scope.dob = '';
@@ -17,16 +17,10 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
       $scope.dob = new Date(res.data.DATE_OF_BIRTH);
       $scope.donor = res.data;
 
+      console.log(res.data);
+
       $scope.donor.DATE_OF_BIRTH = moment(res.data.DATE_OF_BIRTH, 'DD-MMM-YYYY').format('DD-MMM-YYYY');
       $scope.donor.DATE_OF_LAST_VISIT = moment(res.data.DATE_OF_LAST_VISIT, 'DD-MMM-YYYY').format('DD-MMM-YYYY');
-
-      $scope.donor.CODE_OF_COUNTRY_OF_NATIONALITY = '1';
-      $scope.donor.CODE_OF_COUNTRY_OF_RESIDENCE = '2';
-      $scope.donor.LAST_AWARD = '2';
-      $scope.donor.CODE_OF_REGION = '2';
-      $scope.donor.TOWN = 'ตำบลเงาะแงะ';
-      $scope.donor.SOCIO_PROFESSIONAL_CATEGORY = '2';
-      $scope.donor.FAMILY_DOCTOR = '3';
 
       ageDifMs = Date.now() - $scope.dob.getTime();
       ageDate = new Date(ageDifMs);                       //miliseconds from epoch
