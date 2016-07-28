@@ -1,13 +1,12 @@
 app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope, $http, VariablesService) {
   
   var donor_id = $.urlParam("donorId");
-  var chkUpdate = true;
   $scope.donor = {};
   $scope.dob = '';
   let ageDifMs = '';
   let ageDate = '';
 
-  if(chkUpdate) {
+  if(donor_id !== null) {
     $http({
       method: 'GET',
       url: VariablesService.host + '/api/Donor/read/' + donor_id
