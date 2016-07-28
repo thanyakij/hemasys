@@ -150,7 +150,7 @@ include ("pages/header.php");
                 <div class="form-group">
                     <label for="age" class="col-sm-2 control-label">Age</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="age" name="age" placeholder="" tabindex="8" ng-model="donor.AGE">
+                        <input type="text" class="form-control" id="age" name="age" placeholder="" tabindex="8" value="0">
                     </div>
                     <div class="col-sm-2" style="line-height: 30px">
                         ปี
