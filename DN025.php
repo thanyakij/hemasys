@@ -16,7 +16,7 @@ include ("pages/header.php");
 <script type="text/javascript">
     $(window).load(function(){
         var today = new Date();
-        var donorId = $.urlParam("donor_id")
+        var donorId = $.urlParam("donorId")
         var url = "http://192.168.0.145/api/donor/read/"+donorId
         $.get( url, function( data ) {
             if(data.SEX_OF_DONOR=="1"){
