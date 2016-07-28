@@ -30,12 +30,12 @@ include ("pages/header.php");
 			$("#age").html(calDOB(strToDate($(this).val()))+" years");
 		});
         $("#exitBtn").click(function(){
-            window.location.href="http://127.0.0.1:1212/hemasys/DN016.php"
+            window.location.href="DN016.php"
         })
         $("#donorli form table tbody").on('click','tr',function(){
             var do_id = $(this).children("td:last-child").text()
             console.log($(this).children("td:last-child").text())
-            window.location.href = "http://127.0.0.1:1212/hemasys/DN025.php?donorId="+do_id
+            window.location.href = "DN019.php?page=DN019&donorId="+do_id
         })
 	});
     $(document).ready(function(){
@@ -64,7 +64,7 @@ include ("pages/header.php");
             if(doId != ''){
                 var url = "http://192.168.0.145/api/donor/read/"+doId
                 $.get(url,function(donor){
-                    window.location.href="http://127.0.0.1:1212/hemasys/DN019.php?donorId="+doId       
+                    window.location.href="DN019.php?page=DN019&donorId="+doId       
                 })
                 .fail(function() {
                     alert("Hematos ID not found")
@@ -72,7 +72,7 @@ include ("pages/header.php");
             }else if(natId != ''){
                 var url = "http://192.168.0.145/api/donor/read_ssid/"+natId
                 $.get(url,function(donor){
-                    window.location.href="http://127.0.0.1:1212/hemasys/DN019.php?donorId="+donor.DONOR_ID       
+                    window.location.href="DN019.php?page=DN019&donorId="+donor.DONOR_ID       
                 })
                 .fail(function() {
                     alert("National ID not found")
@@ -80,7 +80,7 @@ include ("pages/header.php");
             }else if(abmId != ''){
                 var url = "http://192.168.0.145/api/donor/read_abmdr/"+abmId
                 $.get(url,function(donor){
-                    window.location.href="http://127.0.0.1:1212/hemasys/DN019.php?donorId="+donor.DONOR_ID       
+                    window.location.href="DN019.php?page=DN019&donorId="+donor.DONOR_ID       
                 })
                 .fail(function() {
                     alert("ABMDR ID not found")

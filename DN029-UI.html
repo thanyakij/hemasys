@@ -28,11 +28,15 @@
 		</style>
 		<script>
 			var today = moment().format("Do MMM YY");
+			//var v_date = moment(data.DATE_OF_INTERVIEW, 'YYYY-MM-DD').format('YYYY-MM-DD');
 			var donorId = $.urlParam("donorId")
 			var url1 = "http://192.168.0.145/api/donor/read/"+donorId
 			var abo
 			$.get("http://192.168.0.145/api/donor/get_aborh/"+donorId,function(abo){
 				$("h1.red-text").text(abo.ABORH)
+			})
+			$.get("http://192.168.0.145/api/Donor_medical/lists/"+donorId,function(lab1){
+				console.log(lab1)
 			})
 			$.ajax({
 				url:url1,
@@ -54,7 +58,6 @@
 					//$().vaL(TYPE_OF_DONOR)
 				},
 			})
-
 			$(document).ready(function(){
 				var month = new Array("", "ม.ค." , "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
 				Materialize.updateTextFields();
@@ -279,65 +282,48 @@
          <!--Medical-Table-Right-->
 		 
 		 
-		<div class="col s12 m12">	
-            
-            <table style="width:100%" class="highlight">
+		<div class="col s12 m12">	   
+        <table style="width:100%" class="highlight">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Type</th>
+							<th>Deferral reason</th>
+							<th>Rank</th>
+							<th>Pressure</th>
 
-                <tr>
-				    <th>Date</th>
-                    <th>Type</th>
-                    <th>Deferral reason</th>
-                    <th>Rank</th>
-                    <th>Pressure</th>
-                    <th>ABOD</th>
-                    <th>DAT</th>
-                    <th>DATF</th>
-                    <th>Anti HBs</th>
-                    <th>Lipemic</th>
-                    <th>DAbsp</th>
-                    <th>HBsAg</th>
-                    <th>Anti HCV</th>
-                    <th>Syph</th>
-                    <th>HIV</th>
-                </tr>
-                <tr>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                </tr>
-            </table>
-			
-			<div class="center-align"> <a class="btn grey"> << </a> <button type="" class="btn grey">Exit</button> <a class="btn grey"> >> </a> </div>
-		</div>
-			
-			
-			
-		 </div>
-		 
-		 		<footer class="page-footer red lighten-2">
+							<th>ABOD</th>
+							<th>DAT</th>
+							<th>DATF</th>
+							<th>Anti HBs</th>
+							<th>Lipemic</th>
+							<th>DAbsp</th>
+							<th>HBsAg</th>
+							<th>Anti HCV</th>
+							<th>Syph</th>
+							<th>HIV</th>
+          	</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>	
+        </table>	
+<div class="center-align"> <a class="btn grey"> << </a> <button type="" class="btn grey">Exit</button> <a class="btn grey"> >> </a> </div>
+</div>
+</div>
+<footer class="page-footer red lighten-2">
 			<div class="container">
 			<div class="row center-align ">
-                <!--<div class="col s6 m3"><button type="" class="btn yellow darken-2">Modification</button></div>
-                <div class="col s6 m3"><button type="" class="btn grey">Details</button></div>
-                
-                <div class="col s6 m3"><button type="" class="btn grey">Regents</button></div>-->
-                <div class="col s12 m12"></div>
+        <div class="col s12 m12"></div>
+				</div>
 			</div>
-			</div>
-<div class="footer-copyright">
+			<div class="footer-copyright">
             <div class="container">
             <p>© 2016 สงวนลิขสิทธิ์โดย ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย เลขที่ 1871 ถ.อังรีดูนังต์ ปทุมวัน กรุงเทพฯ 10330</p><br>
 			<p>© 2016 Copyright by National Blood Centre, The Thai Red Cross Society 1871 Henry Dunant Rd., Patumwan Bangkok, 10330</p>
 			</div>
 			</div>
-		</footer>
+</footer>
 		 
 		 
     </body>
