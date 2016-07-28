@@ -28,17 +28,19 @@ if(isset($_GET['modulenumber'])) {
  *
  * -------------------------------------------------- */
 
+if(isset($pageID)) {
+  switch ($pageID) {
+    case "DN001":
+        $page = "DN001.php";
+        $title = "Donor Module";
+        break;
+    default:
+        $page = "HM02.php";
+        $title = "Main menu";
+        break;
+  }
+} 
 
-switch ($pageID) {
-  case "DN001":
-      $page = "DN001.php";
-      $title = "Donor Module";
-      break;
-  default:
-      $page = "HM02.php";
-      $title = "Main menu";
-      break;
-}
 
 ?>
 
