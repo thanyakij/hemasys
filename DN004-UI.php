@@ -9,6 +9,7 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+
     <!--<link rel="stylesheet" type="text/css" href="assets/jquery-ui/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/primeui/production/primeui-2.1-min.css" />
@@ -16,6 +17,7 @@
 		<script src="jquery.min.js"></script>
 		<script src="js/materialize.min.js"></script>	
 		<script src="assets/js/view/DN004.js"></script>
+		<script src="assets/js/main.js" type="text/javascript"></script>
 		
 		<script>
 			$(document).ready(function(){
@@ -988,7 +990,7 @@
 		<footer class="page-footer red lighten-2">
 			<div class="container">
 			<div class="row center-align ">
-            <div class="col m4"><button type="" class="btn green" ng-click="addCollectionPoint()">Save</button></div>    
+            <div class="col m4"><button type="" class="btn green" ng-click="checkEvent()">Save</button></div>    
             <div class="col m4"><button type="" class="btn grey">OK</button></div>
             <div class="col m4"><button type="" class="btn grey">Abort</button></div>
 			</div>

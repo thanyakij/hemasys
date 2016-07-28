@@ -41,10 +41,11 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
   }
 
   $scope.checkEvent = function() {
-    if(!chkUpdate) {
+    if(donor_id == null) {
       addDonorProfile();
-    }
+    }else {
       updateDonorProfile();
+    }
   }
 
   addDonorProfile = function() {

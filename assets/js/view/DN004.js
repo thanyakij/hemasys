@@ -1,6 +1,6 @@
 app.controller('collectionPointCtrl', ['$scope', '$rootScope', '$http', 'VariablesService', '$location', 'CollectionFactory', function($scope, $rootScope, $http, VariablesService, $location, CollectionFactory) {
 
-  $scope.cpCode;              //for get page DN003 [search]
+  var cpCode = $.urlParam("cpCode");             //for get page DN003 [search]
   $scope.cpDesc;              //for get page DN003 [search]
   $scope.cp = {};             //save data of collection point.
   $scope.data = {};           //save other data.
@@ -8,10 +8,10 @@ app.controller('collectionPointCtrl', ['$scope', '$rootScope', '$http', 'Variabl
   //$scope.data.event = 'search';
 
   //if event for search.
-  $scope.searchCollectionPoint = function() {
+  
     $http({
       method: 'GET',
-      url: VariablesService.host + '/api/Collection_point/read/' + $scope.cpCode
+      url: VariablesService.host + '/api/Collection_point/read/' + cpCode
     }).then(function(res) {
       if(!Object.keys(res.data).length == 0) {
         $scope.cp = res.data;
@@ -31,7 +31,7 @@ app.controller('collectionPointCtrl', ['$scope', '$rootScope', '$http', 'Variabl
       return;
     });
     
-  }
+  
 
   $scope.addCollectionPoint = function(){
     $http({
