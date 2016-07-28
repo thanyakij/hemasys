@@ -171,8 +171,8 @@ footer {
 } 
 
 
-.input-inline button {
-  
+.input-inline [class^="mif-"] {
+  line-height:1.5em !important;
 }
     
     .UIbutton span {
@@ -213,7 +213,12 @@ footer {
   height:50px !important;
 }
 
-
+.h1-mif {
+  padding: 0 10px;
+  line-height: 50px;
+  position: relative;
+  top: -5px;
+}
 
 
 row {
@@ -477,6 +482,7 @@ input {
   padding:0 !important;
   min-width:35px;
   min-height:35px;
+  border-radius:0 !important;
 }
 
 .floatleft {

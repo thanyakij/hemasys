@@ -1,24 +1,6 @@
 <?php
 
-if(isset($_GET['page'])) {
-  $pageID = $_GET['page'];
-} else {
-  $pageID = "HM02";
-}
-
-//$page = $page . ".php";
-
-
-if(isset($_GET['modulenumber'])) {
-  $modulenumber = $_GET['modulenumber'];
-  switch ($modulenumber) {
-    case 1:
-        $pageID = "DN001";
-        break;
-    default:
-        break;
-   }
-} 
+include "routecheck.php";
 
 /* -------------------------------------------------- * 
  *
@@ -31,6 +13,10 @@ if(isset($pageID)) {
     case "DN001":
         $page = "DN001.php";
         $title = "Donor Module";
+        break;
+    case "DN016":
+        $page = "DN016.php";
+        $title = "Collection Initialisation";
         break;
     default:
         $page = "HM02.php";

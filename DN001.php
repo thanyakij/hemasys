@@ -3,7 +3,7 @@
     <row class="center row-topic">
       <ul class="trim">
         <li class="tile-like span-6 align-left">
-          <h1><?php echo $title; ?></h1>
+          <h1><span class="mif-users h1-mif"></span><?php echo $title; ?></h1>
         </li>
         <li class="tile-like span-3 offset-4">
           <div class="UIblock input-group goto-navi ">
@@ -29,7 +29,7 @@
           </a>
         </li><!--
       --><li>
-          <a href="?donormoduleitem=1" class="UItile tile-active tile-module">
+          <a href="?donormoduleitem=2" class="UItile tile-active tile-module">
             <span class="mif-clipboard"></span>
             <span class="tile-badge">(2)</span>
             <span class="tile-caption">Planning</span>
@@ -48,14 +48,14 @@
       <ul class="trim span-2c offset-1c">
         <li class="tile-like span-2 tile-groupname">Reception</li>
         <li>
-          <a href="?donormoduleitem=1" class="UItile tile-active tile-module">
+          <a href="?donormoduleitem=11" class="UItile tile-active tile-module">
             <span class="mif-profile"></span>
             <span class="tile-badge">(11)</span>
             <span class="tile-caption">Donor Reception</span>
           </a>
         </li><!--
       --><li>
-          <a href="?donormoduleitem=1" class="UItile tile-active tile-module">
+          <a href="?donormoduleitem=12" class="UItile tile-active tile-module">
             <span class="mif-user-md"></span>
             <span class="tile-badge">(12)</span>
             <span class="tile-caption">Donor Consultation</span>
@@ -66,7 +66,7 @@
       <ul class="trim span-4c offset-1c">
         <li class="tile-like span-4 tile-groupname">Management</li>
         <li>
-          <a href="?donormoduleitem=1" class="UItile tile-active tile-module">
+          <a href="?donormoduleitem=23" class="UItile tile-active tile-module">
             <span class="mif-lab"></span>
             <span class="tile-badge">(23)</span>
             <span class="tile-caption">Samples in progress</span>
