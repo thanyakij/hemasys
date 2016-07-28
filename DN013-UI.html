@@ -19,7 +19,16 @@
 	</style>
 	<script>
 		var code = $.urlParam("code")
+		var roleCode = ''
+		var personCode = ''
+		var description = ''
 		var url = "http://192.168.0.145/api/collection_point_contact/lists/"+code
+		// $.get("http://192.168.0.145/api/prows",function(dt){
+		// 	var opt = ''
+		// 	for(var i=0;i<dt.length;i++){
+		// 		opt += "<option value='"+dt.+"'>"+dt.+"</option>"
+		// 	}
+		// })
 		$.get(url,function(data){
 			var trtd = ''
 			for(var i=0;i<data.length;i++){
@@ -29,17 +38,22 @@
 			$(".col-lg-10 .col table tbody").on('click','tr',function(){
 				var name = $(this).children('td:nth-child(2)').text()
 				var a = name.split(" ")
+				
 				for(let i=0;i<data.length;i++){
 					if(data[i].FIRST_NAME == a[0]){
+						roleCode = data[i].ROLE_CODE
+						personCode = data[i].PERSON_CODE
+						description = data[i].DESCRIPTION
+						console.log(roleCode +"-"+personCode+"-"+description)
 						$("#desc").focus().val(data[i].FIRST_NAME+" "+data[i].NAME)
-						$("#addr1").focus().val(data[i].ADDRESS_1)
-						$("#addr2").focus().val(data[i].ADDRESS_2)
+						$("#addr1").focus().val(data[i].ADDRESS1)
+						$("#addr2").focus().val(data[i].ADDRESS2)
 						$("#no1").focus().val(data[i].TEL_1)
 						$("#no2").focus().val(data[i].TEL_2)
 						$("#fax").focus().val(data[i].FAX)
 						$("#note").focus().val(data[i].NOTE)
-						$("#country").focus().val(data[i].COUNTRY_CODE)
-						$("#postcode").focus().val(data[i].POSTAL_ZIP_CODE).blur()
+						$("#country").focus().val(data[i].PROVINCE)
+						$("#postcode").focus().val(data[i].ZIPCODE).blur()
 					}
 				}
 			})
@@ -75,47 +89,51 @@
 				let url = "http://192.168.0.145/api/collection_point_contact/lists/"+code
 				let name = $("#desc").val().split(' ')
 				let detail = {
-					FIRST_NAME:name[0],
-					NAME:name[1],
-					ADDRESS_1: $("#addr1").val(),
-					ADDRESS_2: $("#addr2").val(),
-					POSTAL_ZIP_CODE: $("#postcode").val(),
-					COUNTRY_CODE: $("#country").val(),
+					COLLECT_POINT_CODE:code,
+					PERSON_CODE:personCode,
+					DESCRIPTION:description,
+					ROLE_CODE:roleCode,
+					ADDRESS1: $("#addr1").val(),
+					ADDRESS2: $("#addr2").val(),
+					ZIPCODE: $("#postcode").val(),
+					PROVINCE: $("#country").val(),
 					TEL_1: $("#no1").val(),
 					TEL_2: $("#no2").val(),
 					FAX: $("#fax").val(),
 					NOTE: $("#note").val(),
 					};
-                let json = JSON.stringify(detail);
+          let json = JSON.stringify(detail);
+					console.log(json)
 				if(confirm("Are you confirm to save change ?")){
-					$.toast("Saved");
-					$.ajax({
-						type: 'POST',
-						url: "http://192.168.0.145/api/collection_point_contact/update",
-						data: json,
-						// statusCode: {
-						// 	200: function (response) {
-						// 		$.toast("Saved",2000);
-						// 	},
-						// 	404: function (response) {
-						// 		$.toast("Can not save",2000);
-						// 	},
-						// },
-						success: function(data, textStatus, xhr){
-							console.log(textStatus)
-							},
-						contentType: "application/json",
-						dataType: 'json'
+					// $.post({
+					var 	api="http://192.168.0.145/api/collection_point_contact/update/"
+					// 	dataType:"json",
+					// 	data:json,
+					// })
+					$.post({
+							type: 'POST',
+							url: api,
+							data: json,
+							success: function(data){
+									// if(jQuery.isEmptyObject(data)){
+									// 		return alert("Not Found")
+									// }else{
+										/*
+											var innerTr = ''
+											donorlist.dialog("open")
+											for(var i=0;i<data.length;i++){
+													innerTr += "<tr><td>"+data[i].FIRST_NAME+"</td><td>"+data[i].SURNAME+"</td><td>"+data[i].DATE_OF_BIRTH+"</td><td>__</td><td>"+data[i].DONOR_ID+"</td></tr>"
+											}
+											$("#donorli form table tbody").html(innerTr)
+										*/
+									//}
+									},
+							contentType: "application/json",
+							dataType: 'json'
 					});
 				}else{
 					return ;
 				}
-				//$.toast("Saved",2000)
-				// $.post(url,json,"json").done(function(data){
-				// 	$.toast("Saved",3000)
-				// }).fail(function(data){
-				// 	$.toast("Saved",3000)
-				// })
 			})
 			
 		});
