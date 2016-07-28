@@ -1,9 +1,10 @@
 ﻿( function( $ ) {
 
-	$.toast = function(massege,time){
-		$("body").append('<div class="snackbar"></div>')
-		$(".snackbar").text(massege).addClass("show")
-		setTimeout(function(){$(".snackbar").removeClass("show")},time)
+	$.toast = function(massege){
+		var time = 2000;
+		$("body").append('<div class="snackbar"></div>');
+		$(".snackbar").text(massege).addClass("show");
+		setTimeout(function(){$(".snackbar").removeClass("show")},time);
 	}
 	$.urlParam = function(name){
 			var param = new RegExp('[\?&]'+ name +'=([^&#]*)').exec(window.location.href);
