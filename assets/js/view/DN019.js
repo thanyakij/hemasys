@@ -1,6 +1,7 @@
 app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope, $http, VariablesService) {
   
   var donor_id = $.urlParam("donorId");
+  var addDonorId = $.urlParam("addId");
   $scope.donor = {};
   $scope.dob = '';
   let ageDifMs = '';
@@ -40,24 +41,19 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
   }
 
   $scope.checkEvent = function() {
-    if(donor_id == null) {
-      addDonorProfile();
-    }else {
+    if(donor_id !== null) {
+      //alert("donor = null");
       updateDonorProfile();
+    }else {
+      //alert("donor != null");
+      addDonorProfile();
     }
   }
 
   addDonorProfile = function() {
 
     //sample assign value
-    $scope.donor.DONOR_ID = donor_id;
-    $scope.donor.CODE_OF_COUNTRY_OF_NATIONALITY = '1';
-    $scope.donor.CODE_OF_COUNTRY_OF_RESIDENCE = '2';
-    $scope.donor.LAST_AWARD = '2';
-    $scope.donor.CODE_OF_REGION = '2';
-    $scope.donor.TOWN = 'ตำบลเงาะแงะ';
-    $scope.donor.SOCIO_PROFESSIONAL_CATEGORY = '2';
-    $scope.donor.FAMILY_DOCTOR = '3';
+    $scope.donor.DONOR_ID = addDonorId;
 
     $http({
       method: 'POST',
@@ -73,7 +69,6 @@ app.controller('dn019', ['$scope', '$http', 'VariablesService', function($scope,
   }
 
   updateDonorProfile = function() {
-    console.log($scope.donor);
     $scope.donor.DONOR_ID = donor_id;
     $http({
       method: 'POST',

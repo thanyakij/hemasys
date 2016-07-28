@@ -25,16 +25,16 @@ app.controller('collectionPointCtrl', ['$scope', '$rootScope', '$http', 'Variabl
       console.log("Error search collection point.");
       return;
     });
+  }
 
-    $scope.checkEvent = function() {
-      if(cpCode !== null) {
-        updateCollectionPoint();
-      }else {
-        addCollectionPoint();
-      }
+  $scope.checkEvent = function() {
+    if(cpCode !== null) {
+      updateCollectionPoint();
+    }else {
+      addCollectionPoint();
     }
   }
-    
+  
   
 
   addCollectionPoint = function(){
