@@ -25,6 +25,7 @@
         'components/ng-directive/display-rows.js',
         'components/ng-directive/no-space.js',
         'components/ng-directive/focus.js',
+        'components/ng-directive/set-display-length.js',
         'angular-service/variables-service.js',
         'angular-service/collection_point-factory.js'
       ];
