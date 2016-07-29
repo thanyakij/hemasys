@@ -1,21 +1,56 @@
-<?php
-global $title; 
-$title = "Planning File";
-
-include ("pages/setting.php");
-include ("pages/header.php");
-
-?>
+<section>
+  <div id="<?php echo $pageClass; ?>" class="page-container UIboxshadow">
+    <row class="center row-topic">
+      <ul class="trim">
+        <li class="tile-like span-13 align-left">
+          <h1><span class="mif-users h1-mif"></span><?php echo $title; ?></h1>
+        </li>
+      </ul>
+    </row>  
+    
+    <row class="center">
+      <ul class="trim">
+        <li class="tile-like span-6 offset-1 align-left">
+          <div class="input-group input-inline">
+            <span class="input-group-addon span-2 align-left" id="basic-addon1">Planning date:</span>
+            <form style="display:flex" method="get" action="">
+              <input type="text" class="form-control blurdate" id="plan_date" name="plan_date" tabindex="1" autofocus value="">
+            </form>
+            <span class="input-group-btn">
+              <button class="btn" id="plandateBtn" type="button"><span class="mif-forward"></span></button>
+            </span>         
+          </div>
+        </li>
+      </ul>
+    </row> 
+    
+    <row class="center">
+      <ul class="trim">
+        <li class="tile-like span-6 offset-1 align-left">
+          <div class="input-group input-inline">
+            <span class="input-group-addon span-2 align-left" id="basic-addon1">Point code:</span>
+            <form style="display:flex" method="get" action="">
+              <input type="text" class="form-control" id="collection_point_code" name="collection_point_code" tabindex="2" value="">
+            </form>
+            <span class="input-group-btn">
+              <button class="btn" id="plandateBtn" type="button"><span class="mif-forward"></span></button>
+            </span>         
+          </div>
+        </li>
+      </ul>
+    </row>
+    
+    
+    
+  </div>
+</section>
 
 <script src="assets/js/jquery-2.2.1.js" type="text/javascript"></script>
 <script src="assets/jquery-ui/jquery-ui.js" type="text/javascript"></script>
 <script src="assets/js/main.js" type="text/javascript"></script>
 <script src="assets/js/calendar.js" type="text/javascript"></script>
 <script src="assets/js/components/ng-module/moment.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="assets/jquery-ui/themes/redmond/jquery-ui.css" type="text/css"/>
-<link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
-<style>
-</style>
+
 <script type="text/javascript">
         function disableBtn(){
             $("#Secretarial").attr('disabled','disabled')
@@ -262,9 +297,9 @@ include ("pages/header.php");
                     </div>
                     <div class="col-sm-2">
                         <div class="input-group">
-                            <input id="plan_date" name="plan_date" class="form-control blurdate" tabindex="1" type="text" value="">
+                            <input class="form-control blurdate" tabindex="1" type="text" value="">
                             <span class="input-group-btn">
-                              <button class="btn btn-default" id="plandateBtn" type="button">
+                              <button type="button">
                                 <i class="glyphicon glyphicon-chevron-right"></i>
                               </button>
                             </span>
@@ -282,7 +317,7 @@ include ("pages/header.php");
                     </div>
                     <div class="col-sm-2">
                         <div class="input-group">
-                            <input id="collection_point_code" name="collection_point_code" tabindex="2" class="form-control" type="text" value="">
+                            <input tabindex="2" class="form-control" type="text" value="">
                             <span class="input-group-btn">
                               <button class="btn btn-default" id="codeBtn" type="button">
                                 <i class="glyphicon glyphicon-chevron-right"></i>
@@ -404,6 +439,3 @@ include ("pages/header.php");
         <button href="#" class="btn btn-lg btn-danger" tabindex="16">EXIT</button>
     </section>
 </div>
-<?php 
-  include ("pages/footer.php");
-?>
